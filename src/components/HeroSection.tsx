@@ -2,7 +2,7 @@ import heroImg from "../assets/heroImg.a885da91476b940bf532.png";
 import { IoIosArrowRoundDown } from "react-icons/io";
 const HeroSection = () => {
   return (
-    <section className="flex justify-between py-12">
+    <section className="flex justify-between py-12 w-[1280px] mx-auto">
       <div className="py-16 w-[650px] flex flex-col gap-7">
         <h1 className="text-[52px] font-bold leading-snug">
           Furniture design to <br /> make you feel at home
