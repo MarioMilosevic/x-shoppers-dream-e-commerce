@@ -3,7 +3,8 @@ import { IoIosArrowRoundDown } from "react-icons/io";
 const HeroSection = () => {
   return (
     <section className="flex flex-col lg:flex-row justify-between py-12 w-[1280px] mx-auto">
-      <div className="py-16 w-[650px] flex flex-col gap-7">
+      <div className="py-16 w-[50%] flex flex-col gap-7">
+      {/* <div className="py-16 w-[650px] flex flex-col gap-7"> */}
         <h1 className="text-[52px] font-bold leading-snug">
           Furniture design to <br /> make you feel at home
         </h1>
@@ -21,8 +22,10 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="w-[515px]">
+      <div className="w-[40%]">
         <img src={heroImg} alt="Hero img" />
+        {/* <div className="w-[515px]"> */}
+        {/* <img src={heroImg} alt="Hero img" />  */}
       </div>
     </section>
   );
