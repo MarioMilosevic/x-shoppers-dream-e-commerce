@@ -2,6 +2,7 @@ import { BsBag } from "react-icons/bs";
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaWindowClose } from "react-icons/fa";
+import ListItem from "./ListItem";
 const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -10,24 +11,16 @@ const Header = () => {
   };
   return (
     <>
-      <header className="flex justify-between py-8 pr-8 lg:w-[1220px] mx-auto border border-black">
+      <header className="flex justify-between py-8 pr-7 lg:w-[1220px] mx-auto">
         <div className="flex items-center font-medium gap-1 text-sm lg:text-base">
           <BsBag className="text-[1.25rem]" />
-          <span className=" text-slate-700">
-            X Shoppers Dream
-          </span>
+          <span className=" text-slate-700">X Shoppers Dream</span>
         </div>
         <nav className="hidden lg:flex">
           <ul className="flex gap-10 text-base font-medium text-slate-700">
-            <li className="underline underline-offset-[6px] decoration-fuchsia-600">
-              <a href="#">Home</a>
-            </li>
-            <li>
-              <a href="#">About</a>
-            </li>
-            <li>
-              <a href="#">Products</a>
-            </li>
+            <ListItem isUnderlined={true}>Home</ListItem>
+            <ListItem isUnderlined={false}>About</ListItem>
+            <ListItem isUnderlined={false}>Products</ListItem>
           </ul>
         </nav>
 
@@ -54,15 +47,9 @@ const Header = () => {
               onClick={toggleIsOpen}
             />
             <ul className="flex flex-col gap-16 text-lg font-medium text-slate-700">
-              <li className="underline underline-offset-[6px] decoration-fuchsia-600">
-                <a href="#">Home</a>
-              </li>
-              <li>
-                <a href="#">About</a>
-              </li>
-              <li>
-                <a href="#">Products</a>
-              </li>
+              <ListItem isUnderlined={true}>Home</ListItem>
+              <ListItem isUnderlined={false}>About</ListItem>
+              <ListItem isUnderlined={false}>Products</ListItem>
             </ul>
           </div>
         </div>
