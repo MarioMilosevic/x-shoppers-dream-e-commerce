@@ -11,7 +11,7 @@ const Header = () => {
   };
   return (
     <>
-      <header className="flex justify-between py-8 pr-7 lg:w-[1220px] mx-auto">
+      <header className="flex justify-between pr-7 py-8  lg:w-[1220px] mx-auto">
         <div className="flex items-center font-medium gap-1 text-sm lg:text-base">
           <BsBag className="text-[1.25rem]" />
           <span className=" text-slate-700">X Shoppers Dream</span>
@@ -34,7 +34,7 @@ const Header = () => {
 
         <div className="lg:hidden flex px-8 relative">
           <GiHamburgerMenu
-            className="w-10 h-10 cursor-pointer absolute -top-2 right-6 lg:hidden"
+            className="w-6 h-6 cursor-pointer absolute -top-2 right-6 lg:hidden"
             onClick={toggleIsOpen}
           />
           <div
@@ -43,7 +43,7 @@ const Header = () => {
             } flex justify-center items-center lg:hidden`}
           >
             <FaWindowClose
-              className="absolute h-10 w-10 top-12 right-12 cursor-pointer  text-fuchsia-600"
+              className="absolute h-6 w-6 top-12 right-12 cursor-pointer  text-fuchsia-600"
               onClick={toggleIsOpen}
             />
             <ul className="flex flex-col gap-16 text-lg font-medium text-slate-700">
