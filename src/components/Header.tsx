@@ -11,7 +11,8 @@ const Header = () => {
   };
   return (
     <>
-      <header className="flex justify-between pr-7 py-8  lg:w-[1220px] mx-auto">
+      {/* <header className="flex justify-between pr-7 py-8  lg:w-[1220px] mx-auto"> */}
+      <header className="flex justify-between pr-7 py-custom-py  lg:w-[1220px] mx-auto">
         <div className="flex items-center font-medium gap-1 text-sm lg:text-base">
           <BsBag className="text-[1.25rem]" />
           <span className=" text-slate-700">X Shoppers Dream</span>

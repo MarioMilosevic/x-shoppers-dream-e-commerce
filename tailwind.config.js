@@ -2,11 +2,15 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    extend: {
+      padding: {
+        "custom-py": "5rem",
+      },
+    },
     screens: {
-      sm:'500px',
+      sm: "500px",
       lg: "1240px",
     },
-    extend: {},
   },
   plugins: [],
 };
