@@ -10,15 +10,15 @@ const Header = () => {
   };
   return (
     <>
-      <header className="flex justify-between py-10 pr-1 lg:w-[1280px] mx-auto">
-        <div className="flex items-center font-medium gap-2 text-sm lg:text-lg">
-          <BsBag className="text-[1.35rem]" />
-          <span className=" text-slate-700 font-semibold border border-black">
+      <header className="flex justify-between py-8 pr-8 lg:w-[1220px] mx-auto border border-black">
+        <div className="flex items-center font-medium gap-1 text-sm lg:text-base">
+          <BsBag className="text-[1.25rem]" />
+          <span className=" text-slate-700">
             X Shoppers Dream
           </span>
         </div>
         <nav className="hidden lg:flex">
-          <ul className="flex gap-10 text-lg font-medium text-slate-700">
+          <ul className="flex gap-10 text-base font-medium text-slate-700">
             <li className="underline underline-offset-[6px] decoration-fuchsia-600">
               <a href="#">Home</a>
             </li>
@@ -31,13 +31,14 @@ const Header = () => {
           </ul>
         </nav>
 
-        <div className="hidden lg:flex items-center gap-2 text-lg relative">
+        <div className="hidden lg:flex items-center gap-2 text-base relative">
           <span className="font-medium">Cart</span>
-          <BsBag className="text-[1.35rem] self-start" />
-          <span className="bg-fuchsia-600 text-fuchsia-50 text-xs px-1 rounded-full absolute top-2 -right-2">
+          <BsBag className="text-[1.25rem] self-start" />
+          <span className="bg-fuchsia-600 text-fuchsia-50 text-sm w-[1.1rem] h-[1.1rem] flex items-center justify-center rounded-full absolute top-1 -right-3">
             0
           </span>
         </div>
+
         <div className="lg:hidden flex px-8 relative">
           <GiHamburgerMenu
             className="w-10 h-10 cursor-pointer absolute -top-2 right-6 lg:hidden"
