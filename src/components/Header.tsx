@@ -11,9 +11,8 @@ const Header = () => {
   };
   return (
     <>
-      {/* <header className="flex justify-between pr-7 py-8  lg:w-[1220px] mx-auto"> */}
-      <header className="flex justify-between pr-7 py-custom-py  lg:w-[1220px] mx-auto">
-        <div className="flex items-center font-medium gap-1 text-sm lg:text-base">
+      <header className="flex justify-between pr-7 py-8 lg:w-[1220px] mx-auto">
+        <div className="hidden lg:flex items-center font-medium gap-1 text-sm lg:text-base">
           <BsBag className="text-[1.25rem]" />
           <span className=" text-slate-700">X Shoppers Dream</span>
         </div>
@@ -33,9 +32,9 @@ const Header = () => {
           </span>
         </div>
 
-        <div className="lg:hidden flex px-8 relative">
+        <div className="lg:hidden flex px-8 w-full relative">
           <GiHamburgerMenu
-            className="w-6 h-6 cursor-pointer absolute -top-2 right-6 lg:hidden"
+            className="w-6 h-6 cursor-pointer absolute -top-2 right-4 lg:hidden"
             onClick={toggleIsOpen}
           />
           <div
