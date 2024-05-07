@@ -10,3 +10,4 @@ export type ListItemProps = {
     isUnderlined: boolean;
 }
 
+export type Product

@@ -1,4 +1,5 @@
-import Description from "./components/Description";
+// import Description from "./components/Description";
+import FeaturedProducts from "./components/FeaturedProducts";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import News from "./components/News";
@@ -9,7 +10,8 @@ function App() {
       <main>
         <Hero />
         <News />
-        <Description/>
+        <FeaturedProducts/>
+        {/* <Description/> */}
       </main>
     </>
   );
