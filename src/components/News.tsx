@@ -4,11 +4,11 @@ import newYorkTImesImg from "../assets/newYorkTimes.1279b92266cf081e20a6.png";
 import forbesImg from "../assets/forbes.c9d98237f5d5f000eaad.png";
 import usaTodayImg from "../assets/usaToday.56382ee08e942ad7c93c.png";
 import NewsImg from "./NewsImg";
-const NewsSection = () => {
+const News = () => {
   return (
-    <section className="flex flex-col gap-7 py-24 w-[1300px] mx-auto">
-      <h2 className="text-center contrast-0 font-semibold">AS FEATURED IN</h2>
-          <div className="flex items-center justify-between">
+    <section className="flex flex-col gap-6 py-24 lg:w-[1300px] mx-auto">
+      <h2 className="text-center text-sm tracking-wider contrast-0 font-semibold">AS FEATURED IN</h2>
+          <div className="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between">
               <NewsImg image={techCrunchImg}/>
               <NewsImg image={bussinessInsiderImg}/>
               <NewsImg image={newYorkTImesImg}/>
@@ -19,4 +19,4 @@ const NewsSection = () => {
   );
 };
 
-export default NewsSection;
+export default News;

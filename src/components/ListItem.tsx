@@ -6,7 +6,7 @@ const ListItem = ({ children, isUnderlined }: ListItemProps) => {
       ? "underline underline-offset-[6px] decoration-fuchsia-600"
       : "";
   return (
-    <li className={`${underline}`}>
+    <li className={`${underline} font-normal`}>
       <a href="#">{children}</a>
     </li>
   );
