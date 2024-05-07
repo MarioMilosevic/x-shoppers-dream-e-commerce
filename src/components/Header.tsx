@@ -5,7 +5,6 @@ import { FaWindowClose } from "react-icons/fa";
 import ListItem from "./ListItem";
 const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
   const toggleIsOpen = () => {
     setIsOpen(!isOpen);
   };

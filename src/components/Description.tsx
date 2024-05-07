@@ -2,10 +2,27 @@ import { HiOutlineSparkles } from "react-icons/hi";
 import { FiEye } from "react-icons/fi";
 import { GiSofa } from "react-icons/gi";
 import Info from "./Info";
+import { useRef, useState, useEffect } from "react";
 const Description = () => {
+  const [isSectionVisible, setIsSectionVisible] = useState<boolean>(false);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (sectionRef.current) {
+      const observer = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+        setIsSectionVisible(entry.isIntersecting);
+      });
+      observer.observe(sectionRef.current);
+    }
+  }, []);
+
   return (
-    <section className="py-24 w-[1000px] mx-auto flex flex-col gap-24">
-      <div className="flex flex-col gap-2 ">
+    <section
+      className="py-24 w-[1000px] mx-auto flex flex-col gap-24"
+      ref={sectionRef}
+    >
+      <div className="flex flex-col gap-2">
         <h3 className="text-fuchsia-600 text-[1.1rem]">CREEDS WE LIVE BY</h3>
         <h2 className="text-4xl font-medium leading-[3.2rem]">
           Elevate your home with our attitude od excellence and timeless style.

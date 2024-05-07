@@ -2,7 +2,7 @@ import { ProductAttributes } from "../types/types";
 const Product = ({ attributes }: { attributes: ProductAttributes }) => {
   const { image, title, price } = attributes;
   return (
-    <article className="flex flex-col gap-4 text-center">
+    <article className="flex flex-col gap-4 text-center w-[30%]">
       <img
         src={image}
         alt={title}
