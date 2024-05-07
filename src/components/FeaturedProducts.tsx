@@ -12,7 +12,7 @@ const FeaturedProducts = () => {
           throw new Error("Network response was not ok");
         }
         const dataResponse = await response.json();
-          const { data } = dataResponse;
+        const { data } = dataResponse;
         setProducts(data.slice(0, 3));
       } catch (error) {
         console.error("Error fetching data", error);
@@ -23,11 +23,15 @@ const FeaturedProducts = () => {
   }, []);
 
   return (
-    <section className="grid grid-cols-3 w-[1250px] mx-auto gap-8 py-24">
-      {products.map((product) => (
-        <Product key={product.id} attributes={product.attributes} />
-      ))}
-    </section>
+    <>
+          <section className="w-full border-b border-b-neutral-300 pt-24 pb-12">
+              <div className="flex flex-col lg:flex-row h-[550px] justify-evenly lg:w-[1250px] mx-auto">     
+        {products.map((product) => (
+            <Product key={product.id} attributes={product.attributes} />
+        ))}
+        </div>
+      </section>
+    </>
   );
 };
 

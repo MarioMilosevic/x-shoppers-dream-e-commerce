@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <>
       <header className="flex justify-between pr-3 py-8 lg:w-[1200px] mx-auto">
-        <div className="hidden lg:flex items-center font-medium gap-[0.37rem] text-sm lg:text-base">
+        <div className="hidden lg:flex items-center font-medium gap-[0.37rem] text-sm lg:text-base cursor-pointer">
           <BsBag className="text-[1.25rem]" />
           <span className=" text-slate-700">X Shoppers Dream</span>
         </div>
@@ -24,7 +24,7 @@ const Header = () => {
           </ul>
         </nav>
 
-        <div className="hidden lg:flex items-center gap-2 text-base relative">
+        <div className="hidden lg:flex items-center gap-2 text-base relative cursor-pointer">
           <span>Cart</span>
           <BsBag className="text-[1.25rem] self-start" />
           <span className="bg-fuchsia-600 text-fuchsia-50 text-sm w-[1.1rem] h-[1.1rem] flex items-center justify-center rounded-full absolute top-1 -right-3">

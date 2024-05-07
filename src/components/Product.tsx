@@ -1,17 +1,19 @@
 import { ProductAttributes } from "../types/types";
-const Product = ({ attributes }: { attributes:ProductAttributes }) => {
-    const {image, title, price} = attributes
-    return (
-      <article className="flex flex-col gap-4 text-center">
-        <img
-          src={image}
-          alt={title}
-          className="h-[60%] w-full object-cover rounded-lg"
-        />
-        <h2 className="capitalize font-medium text-xl">{title}</h2>
+const Product = ({ attributes }: { attributes: ProductAttributes }) => {
+  const { image, title, price } = attributes;
+  return (
+    <article className="flex flex-col gap-4 text-center">
+      <img
+        src={image}
+        alt={title}
+        className="w-[60%] mx-auto lg:w-full lg:h-[75%] object-cover rounded-lg cursor-pointer"
+      />
+        <h2 className="capitalize text-medium font-medium lg:text-xl">
+          {title}
+        </h2>
         <span>${(parseFloat(price) / 100).toFixed(2)}</span>
-      </article>
-    );
-}
+    </article>
+  );
+};
 
-export default Product
+export default Product;

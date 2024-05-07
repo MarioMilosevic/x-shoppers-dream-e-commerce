@@ -20,7 +20,7 @@ const Hero = () => {
           </Button>
         </div>
       </div>
-      <div className="mx-auto lg:mx-0 flex flex-col lg:w-[41%]">
+      <div className="mx-auto w-[65%] lg:mx-0 flex flex-col lg:w-[41%]">
         <img src={heroImg} alt="Hero img" />
       </div>
     </section>
