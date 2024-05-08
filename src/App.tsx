@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Products from "./components/Products";
-import Home from "./components/Home";
-import About from "./components/About";
-import Cart from "./components/Cart";
+import Products from "./pages/Products";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Cart from "./pages/Cart";
 import SharedLayout from "./components/SharedLayout";
 
 function App() {

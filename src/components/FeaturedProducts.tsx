@@ -24,7 +24,7 @@ const FeaturedProducts = () => {
 
   return (
     <>
-      <section className="w-full border-b border-b-neutral-300 pt-24 pb-12">
+      <section className="w-full border-b border-b-neutral-300 py-24">
         <div className="flex flex-col lg:flex-row h-[550px] justify-evenly lg:w-[1250px] mx-auto">
           {products.map((product) => (
             <Product key={product.id} attributes={product.attributes} />

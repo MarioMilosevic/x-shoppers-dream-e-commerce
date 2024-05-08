@@ -12,7 +12,7 @@ const SharedLayout = () => {
   };
 
   const fixed = isNavFixed
-    ? "fixed bg-neutral-50 right-[50%] translate-x-[50%]"
+    ? "lg:fixed z-10 lg:bg-neutral-50 lg:right-[50%] lg:translate-x-[50%]"
     : "";
 
   return (
@@ -62,7 +62,9 @@ const SharedLayout = () => {
           </div>
         </div>
       </header>
+      <main>
       <Outlet context={{ isNavFixed, setIsNavFixed }} />
+      </main>
     </>
   );
 };
