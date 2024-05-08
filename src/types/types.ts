@@ -38,6 +38,12 @@ export type InfoProps = {
 };
 
 
+export type OperationProps = {
+  title: string;
+  text: string;
+  icon: IconType
+};
+
 export type OutletContext = {
   isNavFixed: boolean;
   setIsNavFixed: React.Dispatch<React.SetStateAction<boolean>>;
