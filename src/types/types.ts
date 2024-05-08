@@ -4,6 +4,7 @@ import { IconType } from "react-icons";
 export type ButtonProps = {
   children: ReactNode;
   color: string;
+  buttonHandler:() => void
 };
 
 export type ListItemProps = {
