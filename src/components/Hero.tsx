@@ -13,8 +13,8 @@ const Hero = () => {
           Create your perfect space with our designs.
         </h2>
         <div className="flex gap-4">
-          <Button color="Purple">Explore products</Button>
-          <Button color="Transparent">
+          <Button buttonHandler={() => console.log("kasnije")} color="Purple">Explore products</Button>
+          <Button buttonHandler={() => console.log("kasnije")} color="Transparent">
             <span>Learn more</span>
             <IoIosArrowRoundDown />
           </Button>

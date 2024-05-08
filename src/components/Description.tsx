@@ -2,28 +2,10 @@ import { HiOutlineSparkles } from "react-icons/hi";
 import { FiEye } from "react-icons/fi";
 import { GiSofa } from "react-icons/gi";
 import Info from "./Info";
-import { useRef, useEffect } from "react";
-import { useOutletContext } from "react-router";
-import { OutletContext } from "../types/types";
+
 const Description = () => {
-  const { setIsNavFixed } = useOutletContext() as OutletContext;
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    if (sectionRef.current) {
-      const observer = new IntersectionObserver((entries) => {
-        const entry = entries[0];
-        setIsNavFixed(entry.isIntersecting);
-      });
-      observer.observe(sectionRef.current);
-    }
-  }, [setIsNavFixed]);
-
   return (
-    <section
-      className="py-24 w-[1000px] mx-auto flex flex-col gap-24"
-      ref={sectionRef}
-    >
+    <section className="py-custom-py w-[1000px] mx-auto flex flex-col gap-24">
       <div className="flex flex-col gap-2">
         <h3 className="text-fuchsia-600 text-[1.1rem]">CREEDS WE LIVE BY</h3>
         <h2 className="text-4xl font-medium leading-[3.2rem]">

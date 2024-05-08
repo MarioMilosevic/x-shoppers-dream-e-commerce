@@ -6,7 +6,7 @@ import usaTodayImg from "../assets/usaToday.56382ee08e942ad7c93c.png";
 import NewsImg from "./NewsImg";
 const News = () => {
   return (
-    <section className="flex flex-col gap-6 py-24 lg:w-[1300px] mx-auto">
+    <section className="flex flex-col gap-6 py-custom-py lg:w-[1300px] mx-auto">
       <h2 className="text-center text-sm tracking-wider contrast-0 font-semibold">AS FEATURED IN</h2>
           <div className="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between">
               <NewsImg image={techCrunchImg}/>

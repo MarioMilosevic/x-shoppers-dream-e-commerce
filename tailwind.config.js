@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       padding: {
-        "custom-py": "5rem",
+        "custom-py": "6.25rem",
       },
     },
     screens: {

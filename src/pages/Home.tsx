@@ -6,11 +6,11 @@ import Operations from "../components/Operations";
 const Home = () => {
   return (
     <>
-        <Hero />
-        <News />
-        <FeaturedProducts />
+      <Hero />
+      <News />
+      <FeaturedProducts />
       <Description />
-      <Operations/>
+      <Operations />
     </>
   );
 };
