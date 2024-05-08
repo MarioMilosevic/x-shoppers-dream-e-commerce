@@ -1,14 +1,13 @@
-import { operationsData } from "../utils/constants";
+import { operations } from "../utils/constants";
 import Operation from "./Operation";
 import Button from "./Button";
 import { useState } from "react";
-// import { useState } from "react";
 import { useRef, useEffect } from "react";
 import { useOutletContext } from "react-router";
 import { OutletContext } from "../types/types";
 
 const Operations = () => {
-  // const [currentActiveIndex, setCurrentActiveIndex] = useState<number>(0);
+  const [currentActiveIndex, setCurrentActiveIndex] = useState<number>(0);
 
   const { setIsNavFixed } = useOutletContext() as OutletContext;
   const sectionRef = useRef(null);
@@ -23,17 +22,8 @@ const Operations = () => {
     }
   }, [setIsNavFixed]);
 
-  const [operations, setOperations] = useState(operationsData);
 
-  const changeActiveOperation = (id: string) => {
-    setOperations((prev) =>
-      prev.map((operation) =>
-        operation.id === id
-          ? { ...operation, isActive: true }
-          : { ...operation, isActive: false }
-      )
-    );
-  };
+
 
   return (
     <section
@@ -52,26 +42,20 @@ const Operations = () => {
           {operations.map((operation, index) => (
             <Button
               key={index}
-              color={operation.isActive ? "Purple" : ""}
-              buttonHandler={() => changeActiveOperation(operation.id)}
+              color={currentActiveIndex === index ? "Purple" : ""}
+              buttonHandler={() => setCurrentActiveIndex(index)}
             >
               {operation.buttonTitle}
             </Button>
           ))}
         </div>
-        <div className="flex overflow-hidden border px-8">
-          {operations.map(
-            (operation) =>
-              operation.isActive && (
-                <Operation
-                  key={operation.id}
-                  title={operation.title}
-                  icon={operation.icon}
-                  text={operation.text}
-                />
-              )
-          )}
-        </div>
+        {
+          <Operation
+            title={operations[currentActiveIndex].title}
+            text={operations[currentActiveIndex].text}
+            icon={operations[currentActiveIndex].icon}
+          />
+        }
       </div>
     </section>
   );
