@@ -3,7 +3,7 @@ import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaWindowClose } from "react-icons/fa";
 import ListItem from "./ListItem";
-const Header = () => {
+const SharedLayout = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggleIsOpen = () => {
     setIsOpen(!isOpen);
@@ -57,4 +57,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default SharedLayout;
