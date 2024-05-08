@@ -36,3 +36,9 @@ export type InfoProps = {
   title: string;
   children: ReactNode;
 };
+
+
+export type OutletContext = {
+  isNavFixed: boolean;
+  setIsNavFixed: React.Dispatch<React.SetStateAction<boolean>>;
+};

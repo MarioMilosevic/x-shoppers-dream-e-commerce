@@ -3,14 +3,23 @@ import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaWindowClose } from "react-icons/fa";
 import ListItem from "./ListItem";
+import { Outlet } from "react-router";
 const SharedLayout = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isNavFixed, setIsNavFixed] = useState(false);
   const toggleIsOpen = () => {
     setIsOpen(!isOpen);
   };
+
+  const fixed = isNavFixed
+    ? "fixed bg-neutral-50 right-[50%] translate-x-[50%]"
+    : "";
+
   return (
     <>
-      <header className="flex justify-between pr-3 py-8 lg:w-[1200px] mx-auto">
+      <header
+        className={`flex justify-between pr-3 py-8 lg:w-[1200px] mx-auto ${fixed}`}
+      >
         <div className="hidden lg:flex items-center font-medium gap-[0.37rem] text-sm lg:text-base cursor-pointer">
           <BsBag className="text-[1.25rem]" />
           <span className=" text-slate-700">X Shoppers Dream</span>
@@ -53,6 +62,7 @@ const SharedLayout = () => {
           </div>
         </div>
       </header>
+      <Outlet context={{ isNavFixed, setIsNavFixed }} />
     </>
   );
 };

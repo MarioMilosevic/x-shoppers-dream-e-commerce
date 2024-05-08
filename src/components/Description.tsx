@@ -2,20 +2,22 @@ import { HiOutlineSparkles } from "react-icons/hi";
 import { FiEye } from "react-icons/fi";
 import { GiSofa } from "react-icons/gi";
 import Info from "./Info";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
+import { useOutletContext } from "react-router";
+import { OutletContext } from "../types/types";
 const Description = () => {
-  const [isSectionVisible, setIsSectionVisible] = useState<boolean>(false);
-  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const { setIsNavFixed } = useOutletContext() as OutletContext;
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     if (sectionRef.current) {
       const observer = new IntersectionObserver((entries) => {
         const entry = entries[0];
-        setIsSectionVisible(entry.isIntersecting);
+        setIsNavFixed(entry.isIntersecting);
       });
       observer.observe(sectionRef.current);
     }
-  }, []);
+  }, [setIsNavFixed]);
 
   return (
     <section
