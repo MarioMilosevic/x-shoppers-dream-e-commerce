@@ -38,7 +38,7 @@ const Operations = () => {
           Where simplicity meets efficiency to bring your home to life.
         </h1>
 
-        <div className="flex justify-between pt-24 pb-12">
+        <div className="flex justify-between overflow-hidden pt-24 pb-12">
           {operations.map((operation, index) => (
             <Button
               key={index}

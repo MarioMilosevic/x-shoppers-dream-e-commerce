@@ -18,7 +18,7 @@ const SharedLayout = () => {
   return (
     <>
       <nav
-        className={`flex justify-between pr-3 py-8 lg:w-[1200px] mx-auto ${fixed}`}
+        className={`flex relative justify-between pr-3 py-8 lg:w-[1200px] mx-auto ${fixed}`}
       >
         <div className="hidden lg:flex items-center font-medium gap-[0.37rem] text-sm lg:text-base cursor-pointer">
           <BsBag className="text-[1.25rem]" />
