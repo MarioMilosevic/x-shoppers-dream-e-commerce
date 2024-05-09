@@ -5,39 +5,20 @@ import Info from "./Info";
 import { useOutletContext } from "react-router";
 import { OutletContext } from "../types/types";
 import { useState, useEffect } from "react";
+import { isVisible, isIntersectingFn } from "../utils/constants";
 const Description = () => {
   const { descriptionRef } = useOutletContext() as OutletContext;
   const [isIntersecting, setIsIntersecting] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!descriptionRef?.current) return;
-
-    const observer = new IntersectionObserver(
-      ([entry], observer) => {
-        if (entry.isIntersecting) {
-          setIsIntersecting(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        rootMargin: "-100px",
-      }
-    );
-    observer.observe(descriptionRef?.current);
-    // return () => {
-    //   if (descriptionRef?.current) {
-    //     observer.unobserve(descriptionRef.current);
-    //   }
-    // };
+    isIntersectingFn(descriptionRef, setIsIntersecting);
   }, [descriptionRef]);
-
-  const isVisible = isIntersecting
-    ? "opacity-1"
-    : "opacity-0 translate-y-[15rem]";
 
   return (
     <section
-      className={`py-custom-py w-[1000px] mx-auto flex flex-col gap-24 transition-all duration-1000 ${isVisible}`}
+      className={`py-custom-py w-[1000px] mx-auto flex flex-col gap-24 transition-all duration-1000 ${isVisible(
+        isIntersecting
+      )}`}
       ref={descriptionRef}
     >
       <div className="flex flex-col gap-2">

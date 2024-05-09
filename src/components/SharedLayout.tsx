@@ -10,6 +10,10 @@ const SharedLayout = () => {
   const [isNavFixed, setIsNavFixed] = useState(false);
    const descriptionRef: RefObject<HTMLDivElement> =
      useRef<HTMLDivElement | null>(null);
+   const operationsRef: RefObject<HTMLDivElement> =
+     useRef<HTMLDivElement | null>(null);
+   const testimonialsRef: RefObject<HTMLDivElement> =
+     useRef<HTMLDivElement | null>(null);
   
   const toggleIsOpen = () => {
     setIsOpen(!isOpen);
@@ -73,7 +77,7 @@ const SharedLayout = () => {
         </div>
       </nav>
       <main>
-        <Outlet context={{ isNavFixed, setIsNavFixed, descriptionRef, focusDescription }} />
+        <Outlet context={{ isNavFixed, setIsNavFixed, descriptionRef, focusDescription, operationsRef, testimonialsRef }} />
       </main>
     </>
   );

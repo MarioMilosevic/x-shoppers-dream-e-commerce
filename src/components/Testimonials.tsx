@@ -1,6 +1,21 @@
+import { useOutletContext } from "react-router";
+import { OutletContext } from "../types/types";
+import { useEffect, useState } from "react";
+import { isIntersectingFn, isVisible } from "../utils/constants";
 const Testimonials = () => {
+  const { testimonialsRef } = useOutletContext() as OutletContext;
+  const [isIntersecting, setIsIntersecting] = useState<boolean>(false);
+
+  useEffect(() => {
+    isIntersectingFn(testimonialsRef, setIsIntersecting);
+  }, [testimonialsRef]);
   return (
-    <section className="py-custom-py border-t border-t-neutral-300">
+    <section
+      className={`py-custom-py border-t border-t-neutral-300 transition-all duration-1000 ${isVisible(
+        isIntersecting
+      )}`}
+      ref={testimonialsRef}
+    >
       <div className="w-[800px] mx-auto flex flex-col gap-2 border border-black">
         <h2 className="text-fuchsia-600 tracking-wider font-medium">
           TESTIMONIALS

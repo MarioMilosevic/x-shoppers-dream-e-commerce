@@ -1,34 +1,26 @@
 import { operations } from "../utils/constants";
 import Operation from "./Operation";
 import Button from "./Button";
-import { useState } from "react";
-// import { useRef, useEffect } from "react";
-// import { useOutletContext } from "react-router";
-// import { OutletContext } from "../types/types";
+import { useOutletContext } from "react-router";
+import { OutletContext } from "../types/types";
+import { useState, useEffect } from "react";
+import { isVisible, isIntersectingFn } from "../utils/constants";
 
 const Operations = () => {
   const [currentActiveIndex, setCurrentActiveIndex] = useState<number>(0);
+  const { operationsRef } = useOutletContext() as OutletContext;
+  const [isIntersecting, setIsIntersecting] = useState<boolean>(false);
 
-  // const { setIsNavFixed } = useOutletContext() as OutletContext;
-  // const sectionRef = useRef(null);
-
-  // useEffect(() => {
-  //   if (sectionRef.current) {
-  //     const observer = new IntersectionObserver((entries) => {
-  //       const entry = entries[0];
-  //       setIsNavFixed(entry.isIntersecting);
-  //     });
-  //     observer.observe(sectionRef.current);
-  //   }
-  // }, [setIsNavFixed]);
-
-
-
+  useEffect(() => {
+    isIntersectingFn(operationsRef, setIsIntersecting);
+  }, [operationsRef]);
 
   return (
     <section
-      className="w-full py-custom-py border-t border-t-neutral-300"
-      // ref={sectionRef}
+      className={`w-full py-custom-py border-t border-t-neutral-300 transition-all duration-1000 ${isVisible(
+        isIntersecting
+      )}`}
+      ref={operationsRef}
     >
       <div className="w-[800px] mx-auto flex flex-col gap-2 ">
         <h2 className="text-fuchsia-600 tracking-wider font-medium">
@@ -51,9 +43,9 @@ const Operations = () => {
         </div>
         {
           <Operation
-          title={operations[currentActiveIndex].title}
-          text={operations[currentActiveIndex].text}
-          icon={operations[currentActiveIndex].icon}
+            title={operations[currentActiveIndex].title}
+            text={operations[currentActiveIndex].text}
+            icon={operations[currentActiveIndex].icon}
           />
         }
       </div>
