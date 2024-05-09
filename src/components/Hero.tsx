@@ -4,7 +4,7 @@ import { IoIosArrowRoundDown } from "react-icons/io";
 import { OutletContext } from "../types/types"
 import { useOutletContext } from "react-router";
 const Hero = () => {
-  const { isNavFixed } = useOutletContext() as OutletContext;
+  const { isNavFixed, focusDescription } = useOutletContext() as OutletContext;
 
   const padding = isNavFixed ? "pt-[136px] pb-12" : "py-12"
 
@@ -19,7 +19,7 @@ const Hero = () => {
         </h2>
         <div className="flex gap-4">
           <Button buttonHandler={() => console.log("kasnije")} color="Purple">Explore products</Button>
-          <Button buttonHandler={() => console.log("kasnije")} color="Transparent">
+          <Button buttonHandler={() => focusDescription()} color="">
             <span>Learn more</span>
             <IoIosArrowRoundDown />
           </Button>

@@ -2,25 +2,25 @@ import { operations } from "../utils/constants";
 import Operation from "./Operation";
 import Button from "./Button";
 import { useState } from "react";
-import { useRef, useEffect } from "react";
-import { useOutletContext } from "react-router";
-import { OutletContext } from "../types/types";
+// import { useRef, useEffect } from "react";
+// import { useOutletContext } from "react-router";
+// import { OutletContext } from "../types/types";
 
 const Operations = () => {
   const [currentActiveIndex, setCurrentActiveIndex] = useState<number>(0);
 
-  const { setIsNavFixed } = useOutletContext() as OutletContext;
-  const sectionRef = useRef(null);
+  // const { setIsNavFixed } = useOutletContext() as OutletContext;
+  // const sectionRef = useRef(null);
 
-  useEffect(() => {
-    if (sectionRef.current) {
-      const observer = new IntersectionObserver((entries) => {
-        const entry = entries[0];
-        setIsNavFixed(entry.isIntersecting);
-      });
-      observer.observe(sectionRef.current);
-    }
-  }, [setIsNavFixed]);
+  // useEffect(() => {
+  //   if (sectionRef.current) {
+  //     const observer = new IntersectionObserver((entries) => {
+  //       const entry = entries[0];
+  //       setIsNavFixed(entry.isIntersecting);
+  //     });
+  //     observer.observe(sectionRef.current);
+  //   }
+  // }, [setIsNavFixed]);
 
 
 
@@ -28,7 +28,7 @@ const Operations = () => {
   return (
     <section
       className="w-full py-custom-py border-t border-t-neutral-300"
-      ref={sectionRef}
+      // ref={sectionRef}
     >
       <div className="w-[800px] mx-auto flex flex-col gap-2 ">
         <h2 className="text-fuchsia-600 tracking-wider font-medium">

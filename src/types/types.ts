@@ -48,4 +48,6 @@ export type OperationProps = {
 export type OutletContext = {
   isNavFixed: boolean;
   setIsNavFixed: React.Dispatch<React.SetStateAction<boolean>>;
+  descriptionRef: React.Ref<HTMLDivElement>;
+  focusDescription: () => void;
 };

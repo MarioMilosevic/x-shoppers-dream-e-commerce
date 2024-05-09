@@ -1,5 +1,5 @@
 import { BsBag } from "react-icons/bs";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaWindowClose } from "react-icons/fa";
 import ListItem from "./ListItem";
@@ -7,12 +7,20 @@ import { Outlet } from "react-router";
 const SharedLayout = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isNavFixed, setIsNavFixed] = useState(false);
+  const descriptionRef = useRef<HTMLDivElement | null>(null)
   const toggleIsOpen = () => {
     setIsOpen(!isOpen);
   };
 
+  const focusDescription = () => {
+    descriptionRef.current?.scrollIntoView({
+      behavior:'smooth'
+    })
+    console.log("radi")
+  }
+
   const fixed = isNavFixed
-    ? "lg:fixed z-10 lg:bg-neutral-50 lg:right-[50%] lg:translate-x-[50%]"
+    ? "lg:fixed lg:w-[1300px] lg:px-12 z-10 lg:bg-neutral-50 lg:right-[50%] lg:translate-x-[50%]"
     : "";
 
   return (
@@ -63,7 +71,7 @@ const SharedLayout = () => {
         </div>
       </nav>
       <main>
-      <Outlet context={{ isNavFixed, setIsNavFixed }} />
+        <Outlet context={{ isNavFixed, setIsNavFixed, descriptionRef, focusDescription }} />
       </main>
     </>
   );
