@@ -4,7 +4,7 @@ import Button from "./Button";
 import { IoIosArrowRoundDown } from "react-icons/io";
 const Hero = () => {
   return (
-    <section className="flex flex-col lg:flex-row justify-between py-12 lg:w-[1200px] mx-auto">
+    <header className="flex flex-col lg:flex-row justify-between py-12 lg:w-[1200px] mx-auto">
       <div className="mx-auto py-16 lg:w-[50%] lg:mx-0 flex flex-col gap-7">
         <h1 className="text-3xl lg:text-5xl font-bold lg:leading-[4.2rem]">
           Furniture design to <br /> make you feel at home
@@ -23,7 +23,7 @@ const Hero = () => {
       <div className="mx-auto w-[65%] lg:mx-0 flex flex-col lg:w-[41%]">
         <img src={heroImg} alt="Hero img" />
       </div>
-    </section>
+    </header>
   );
 };
 

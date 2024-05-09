@@ -17,20 +17,20 @@ const SharedLayout = () => {
 
   return (
     <>
-      <header
+      <nav
         className={`flex justify-between pr-3 py-8 lg:w-[1200px] mx-auto ${fixed}`}
       >
         <div className="hidden lg:flex items-center font-medium gap-[0.37rem] text-sm lg:text-base cursor-pointer">
           <BsBag className="text-[1.25rem]" />
           <span className=" text-slate-700">X Shoppers Dream</span>
         </div>
-        <nav className="hidden lg:flex">
+        <div className="hidden lg:flex">
           <ul className="flex gap-10 text-base font-medium text-slate-700">
             <ListItem isUnderlined={true}>Home</ListItem>
             <ListItem isUnderlined={false}>About</ListItem>
             <ListItem isUnderlined={false}>Products</ListItem>
           </ul>
-        </nav>
+        </div>
 
         <div className="hidden lg:flex items-center gap-2 text-base relative cursor-pointer">
           <span>Cart</span>
@@ -61,7 +61,7 @@ const SharedLayout = () => {
             </ul>
           </div>
         </div>
-      </header>
+      </nav>
       <main>
       <Outlet context={{ isNavFixed, setIsNavFixed }} />
       </main>
