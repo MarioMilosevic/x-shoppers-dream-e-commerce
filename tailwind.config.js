@@ -4,11 +4,10 @@ export default {
   theme: {
     extend: {
       padding: {
-        "custom-py": "6.25rem",
+        "custom-py": "10rem",
       },
     },
     screens: {
-      sm: "500px",
       lg: "1240px",
     },
   },
