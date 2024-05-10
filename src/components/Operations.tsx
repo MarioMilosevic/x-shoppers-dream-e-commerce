@@ -1,24 +1,20 @@
 import { operations } from "../utils/constants";
 import Operation from "./Operation";
 import Button from "./Button";
-import { useState, useEffect, useRef } from "react";
-import { isVisible, isIntersectingFn } from "../utils/constants";
+import { useState } from "react";
+import { isVisible } from "../utils/helperFunctions";
+import { useIntersecting } from "../hooks/useIntersecting";
 
 const Operations = () => {
   const [currentActiveIndex, setCurrentActiveIndex] = useState<number>(0);
-  const [isIntersecting, setIsIntersecting] = useState<boolean>(false);
-  const operationsRef = useRef(null)
-
-  useEffect(() => {
-    isIntersectingFn(operationsRef, setIsIntersecting);
-  }, [operationsRef]);
+  const {isIntersecting, ref} = useIntersecting()
 
   return (
     <section
       className={`w-full py-custom-py border-t border-t-neutral-300 transition-all duration-1000 ${isVisible(
         isIntersecting
       )}`}
-      ref={operationsRef}
+      ref={ref}
     >
       <div className="w-[800px] mx-auto flex flex-col gap-2 ">
         <h2 className="text-fuchsia-600 tracking-wider font-medium">

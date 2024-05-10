@@ -5,16 +5,17 @@ import { useEffect, useRef } from "react";
 import { handleStickyNav } from "../utils/helperFunctions";
 const Hero = () => {
   const heroRef = useRef(null);
-  useEffect(() => {
-    window.addEventListener("scroll", function () {
-      handleStickyNav(heroRef, "descriptionPadding");
-    });
-    return () => {
-      window.removeEventListener("scroll", function () {
-        handleStickyNav(heroRef, "descriptionPadding");
-      });
-    };
-  }, []);
+   useEffect(() => {
+     const scrollHandler = () => {
+       handleStickyNav(heroRef, "descriptionPadding");
+     };
+
+     window.addEventListener("scroll", scrollHandler);
+
+     return () => {
+       window.removeEventListener("scroll", scrollHandler);
+     };
+   }, []);
   // const padding = isNavFixed ? "pt-[136px] pb-12" : "py-12"
 
   return (

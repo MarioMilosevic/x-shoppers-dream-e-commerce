@@ -2,7 +2,6 @@ import { GiWhirlwind } from "react-icons/gi";
 import { TbHeartHandshake } from "react-icons/tb";
 import { IoMdCheckmark } from "react-icons/io";
 import { RiExchangeDollarLine } from "react-icons/ri";
-import { RefObject, Dispatch, SetStateAction } from "react";
 export const url =
   "https://strapi-store-server.onrender.com/api/products?search=&category=all&company=all&order=a-z&price=100000&page=1";
 
@@ -41,26 +40,4 @@ export const operations = [
   },
 ];
 // ovo treba maci
-export const isVisible = (state: boolean) => {
-  const visibility = state ? "opacity-1" : "opacity-0 translate-y-[15rem]";
-  return visibility;
-};
 
-export const isIntersectingFn = <T extends HTMLElement>(
-  ref: RefObject<T>,
-  setStateFn: Dispatch<SetStateAction<boolean>>
-) => {
-  if (!ref?.current) return;
-  const observer = new IntersectionObserver(
-    ([entry], observer) => {
-      if (entry.isIntersecting) {
-        setStateFn(true);
-        observer.unobserve(entry.target);
-      }
-    },
-    {
-      rootMargin: "-100px",
-    }
-  );
-  observer.observe(ref?.current);
-};

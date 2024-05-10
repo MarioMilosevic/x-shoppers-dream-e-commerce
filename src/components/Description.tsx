@@ -2,22 +2,17 @@ import { HiOutlineSparkles } from "react-icons/hi";
 import { FiEye } from "react-icons/fi";
 import { GiSofa } from "react-icons/gi";
 import Info from "./Info";
-import { useState, useEffect, useRef } from "react";
-import { isVisible, isIntersectingFn } from "../utils/constants";
+import { isVisible } from "../utils/helperFunctions";
+import { useIntersecting } from "../hooks/useIntersecting";
 const Description = () => {
-  const descriptionRef = useRef(null)
-  const [isIntersecting, setIsIntersecting] = useState<boolean>(false);
-
-  useEffect(() => {
-    isIntersectingFn(descriptionRef, setIsIntersecting);
-  }, [descriptionRef]);
+  const { isIntersecting, ref } = useIntersecting();
 
   return (
     <section
       className={`py-custom-py w-[1000px] mx-auto flex flex-col gap-24 transition-all duration-1000 ${isVisible(
         isIntersecting
       )}`}
-      ref={descriptionRef}
+      ref={ref}
     >
       <div className="flex flex-col gap-2">
         <h3 className="text-fuchsia-600 text-[1.1rem]">CREEDS WE LIVE BY</h3>
