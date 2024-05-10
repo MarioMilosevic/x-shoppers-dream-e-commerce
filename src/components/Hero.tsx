@@ -1,15 +1,27 @@
 import heroImg from "../assets/heroImg.a885da91476b940bf532.png";
 import Button from "./Button";
 import { IoIosArrowRoundDown } from "react-icons/io";
-import { OutletContext } from "../types/types"
-import { useOutletContext } from "react-router";
+import { useEffect, useRef } from "react";
+import { handleStickyNav } from "../utils/helperFunctions";
 const Hero = () => {
-  const { isNavFixed, focusDescription } = useOutletContext() as OutletContext;
-
-  const padding = isNavFixed ? "pt-[136px] pb-12" : "py-12"
+  const heroRef = useRef(null);
+  useEffect(() => {
+    window.addEventListener("scroll", function () {
+      handleStickyNav(heroRef, "descriptionPadding");
+    });
+    return () => {
+      window.removeEventListener("scroll", function () {
+        handleStickyNav(heroRef, "descriptionPadding");
+      });
+    };
+  }, []);
+  // const padding = isNavFixed ? "pt-[136px] pb-12" : "py-12"
 
   return (
-    <header className={`flex flex-col lg:flex-row justify-between lg:w-[1200px] mx-auto ${padding}`}>
+    <header
+      className="flex flex-col lg:flex-row justify-between lg:w-[1200px] mx-auto py-12"
+      ref={heroRef}
+    >
       <div className="mx-auto py-16 lg:w-[50%] lg:mx-0 flex flex-col gap-7">
         <h1 className="text-3xl lg:text-5xl font-bold lg:leading-[4.2rem]">
           Furniture design to <br /> make you feel at home
@@ -18,8 +30,10 @@ const Hero = () => {
           Create your perfect space with our designs.
         </h2>
         <div className="flex gap-4">
-          <Button buttonHandler={() => console.log("kasnije")} color="Purple">Explore products</Button>
-          <Button buttonHandler={() => focusDescription()} color="">
+          <Button buttonHandler={() => console.log("kasnije")} color="Purple">
+            Explore products
+          </Button>
+          <Button buttonHandler={() => console.log("kasnije")} color="">
             <span>Learn more</span>
             <IoIosArrowRoundDown />
           </Button>

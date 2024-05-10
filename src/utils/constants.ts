@@ -40,7 +40,7 @@ export const operations = [
     isActive: false,
   },
 ];
-
+// ovo treba maci
 export const isVisible = (state: boolean) => {
   const visibility = state ? "opacity-1" : "opacity-0 translate-y-[15rem]";
   return visibility;

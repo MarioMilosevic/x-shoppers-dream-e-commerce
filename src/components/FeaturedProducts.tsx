@@ -18,14 +18,13 @@ const FeaturedProducts = () => {
         console.error("Error fetching data", error);
       }
     };
-
     fetchData();
   }, []);
 
   return (
     <>
       <section className="w-full border-b border-b-neutral-300 py-custom-py">
-        <div className="flex flex-col lg:flex-row justify-between lg:w-[1250px] mx-auto">
+        <div className="flex flex-col lg:flex-row justify-between lg:w-[1200px] mx-auto">
           {products.map((product) => (
             <Product key={product.id} attributes={product.attributes} />
           ))}

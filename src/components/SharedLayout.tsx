@@ -1,38 +1,44 @@
 import { BsBag } from "react-icons/bs";
-import { useState, useRef, RefObject } from "react";
+import { useState, useRef, useEffect } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaWindowClose } from "react-icons/fa";
 import ListItem from "./ListItem";
 import { Outlet } from "react-router";
+import { handleStickyNav } from "../utils/helperFunctions";
 
 const SharedLayout = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [isNavFixed, setIsNavFixed] = useState(false);
-   const descriptionRef: RefObject<HTMLDivElement> =
-     useRef<HTMLDivElement | null>(null);
-   const operationsRef: RefObject<HTMLDivElement> =
-     useRef<HTMLDivElement | null>(null);
-   const testimonialsRef: RefObject<HTMLDivElement> =
-     useRef<HTMLDivElement | null>(null);
-  
+
+  const navRef = useRef<HTMLDivElement | null>(
+    null
+  ) as React.RefObject<HTMLElement>;
+
+  useEffect(() => {
+    window.addEventListener("scroll", function () {
+      handleStickyNav(navRef, "sticky");
+    });
+    return () => {
+      window.removeEventListener("scroll", function () {
+        handleStickyNav(navRef, "sticky");
+      });
+    };
+  }, []);
+
   const toggleIsOpen = () => {
     setIsOpen(!isOpen);
   };
 
-  const focusDescription = () => {
-    descriptionRef.current?.scrollIntoView({
-      behavior:'smooth'
-    })
-  }
-
-  const fixed = isNavFixed
-    ? "lg:fixed lg:w-[1300px] lg:px-12 z-10 lg:bg-neutral-50 lg:right-[50%] lg:translate-x-[50%]"
-    : "";
+  // const focusDescription = () => {
+  //   descriptionRef.current?.scrollIntoView({
+  //     behavior: "smooth",
+  //   });
+  // };
 
   return (
     <>
       <nav
-        className={`flex relative justify-between pr-3 py-8 lg:w-[1200px] mx-auto ${fixed}`}
+        className="flex relative justify-between pr-3 py-8 lg:w-[1200px] mx-auto"
+        ref={navRef}
       >
         <div className="hidden lg:flex items-center font-medium gap-[0.37rem] text-sm lg:text-base cursor-pointer">
           <BsBag className="text-[1.25rem]" />
@@ -77,7 +83,7 @@ const SharedLayout = () => {
         </div>
       </nav>
       <main>
-        <Outlet context={{ isNavFixed, setIsNavFixed, descriptionRef, focusDescription, operationsRef, testimonialsRef }} />
+        <Outlet />
       </main>
     </>
   );

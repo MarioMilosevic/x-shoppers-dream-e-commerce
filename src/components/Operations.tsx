@@ -1,15 +1,13 @@
 import { operations } from "../utils/constants";
 import Operation from "./Operation";
 import Button from "./Button";
-import { useOutletContext } from "react-router";
-import { OutletContext } from "../types/types";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { isVisible, isIntersectingFn } from "../utils/constants";
 
 const Operations = () => {
   const [currentActiveIndex, setCurrentActiveIndex] = useState<number>(0);
-  const { operationsRef } = useOutletContext() as OutletContext;
   const [isIntersecting, setIsIntersecting] = useState<boolean>(false);
+  const operationsRef = useRef(null)
 
   useEffect(() => {
     isIntersectingFn(operationsRef, setIsIntersecting);

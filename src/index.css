@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@media (min-width: 1240px) {
+    .sticky {
+        position: fixed;
+        padding-left: 3rem;
+        z-index: 10;
+        background-color: #fafafa;
+        right: 50%;
+        transform:translateX(50%);
+    }
+    .descriptionPadding {
+        padding-top: 136px;
+        padding-bottom: 48px;
+    }
+}
+

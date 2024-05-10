@@ -3,7 +3,7 @@ const Button = ({ children, color, buttonHandler }: ButtonProps) => {
   const description =
     color === "Purple"
       ? "bg-fuchsia-600 text-fuchsia-50 hover:bg-fuchsia-700"
-      : "bg-white hover:bg-neutral-300";
+      : "bg-white hover:bg-neutral-200";
   
   return (
     <button

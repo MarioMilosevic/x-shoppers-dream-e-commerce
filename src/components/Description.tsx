@@ -2,12 +2,10 @@ import { HiOutlineSparkles } from "react-icons/hi";
 import { FiEye } from "react-icons/fi";
 import { GiSofa } from "react-icons/gi";
 import Info from "./Info";
-import { useOutletContext } from "react-router";
-import { OutletContext } from "../types/types";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { isVisible, isIntersectingFn } from "../utils/constants";
 const Description = () => {
-  const { descriptionRef } = useOutletContext() as OutletContext;
+  const descriptionRef = useRef(null)
   const [isIntersecting, setIsIntersecting] = useState<boolean>(false);
 
   useEffect(() => {

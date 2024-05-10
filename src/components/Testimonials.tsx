@@ -1,10 +1,8 @@
-import { useOutletContext } from "react-router";
-import { OutletContext } from "../types/types";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { isIntersectingFn, isVisible } from "../utils/constants";
 const Testimonials = () => {
-  const { testimonialsRef } = useOutletContext() as OutletContext;
   const [isIntersecting, setIsIntersecting] = useState<boolean>(false);
+  const testimonialsRef = useRef(null);
 
   useEffect(() => {
     isIntersectingFn(testimonialsRef, setIsIntersecting);
