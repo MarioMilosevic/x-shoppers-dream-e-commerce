@@ -4,11 +4,11 @@ import { SectionProps } from "../types/types";
 const Section = forwardRef(
   (
     { width, subtitle, title, children }: SectionProps,
-    ref: ForwardedRef<HTMLElement>
-  ) => {
+        ref: ForwardedRef<HTMLElement>
+    ) => {
     return (
       <section
-        className={`w-[50%] py-custom-py lg:w-[${width}px] opacity-0 translate-y-[10rem] mx-auto flex flex-col gap-24 transition-all duration-1000`}
+        className={`w-[50%] py-custom-py lg:w-[${width}px] opacity-0 translate-y-[10rem] mx-auto flex flex-col gap-20 transition-all duration-1000`}
         ref={ref}
       >
         <div className="w-full flex flex-col gap-2 mx-auto">

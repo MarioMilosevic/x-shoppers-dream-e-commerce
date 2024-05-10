@@ -58,5 +58,5 @@ export type SectionProps = {
   width: string;
   title: string;
   subtitle: string;
-  children:ReactNode
+  children: ReactNode;
 }

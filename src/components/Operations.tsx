@@ -3,24 +3,21 @@ import Operation from "./Operation";
 import Button from "./Button";
 import { useRef, useState } from "react";
 import { useIntersecting } from "../hooks/useIntersecting";
+import Section from "./Section";
 const Operations = () => {
   const [currentActiveIndex, setCurrentActiveIndex] = useState<number>(0);
   const sectionRef = useRef(null);
   useIntersecting(sectionRef);
   return (
-    <section
-      className="w-[75%] mx-auto lg:w-full py-custom-py border-t opacity-0 translate-y-[10rem] border-t-neutral-300 transition-all duration-1000"
-      ref={sectionRef}
-    >
-      <div className="lg:w-[800px] mx-auto flex flex-col gap-2 ">
-        <h2 className="text-fuchsia-600 tracking-wider text-base lg:text-[1.1rem] font-medium">
-          OPERATIONS
-        </h2>
-        <h1 className="text-2xl leading-8 lg:text-[37px] font-medium lg:leading-[3.2rem]">
-          Where simplicity meets efficiency to bring your home to life.
-        </h1>
-
-        <div className="flex gap-4 lg:justify-between overflow-hidden py-12 lg:pt-24 lg:pb-16">
+    <>
+      <span className="w-full border-t border-t-neutral-300"></span>
+      <Section
+        width="800"
+        title="Where simplicity meets efficiency to bring your home to life."
+        subtitle="OPERATIONS"
+        ref={sectionRef}
+      >
+        <div className="flex lg:justify-between overflow-hidden ">
           {operations.map((operation, index) => (
             <Button
               key={index}
@@ -38,8 +35,8 @@ const Operations = () => {
             icon={operations[currentActiveIndex].icon}
           />
         }
-      </div>
-    </section>
+      </Section>
+    </>
   );
 };
 

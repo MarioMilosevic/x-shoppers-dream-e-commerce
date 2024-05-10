@@ -8,7 +8,6 @@ import { useRef } from "react";
 const Description = () => {
   const sectionRef = useRef(null);
   useIntersecting(sectionRef);
-  // w-[50%] py-custom-py lg:w-[1000px] opacity-0 translate-y-[10rem] mx-auto flex flex-col gap-24 transition-all duration-1000
   return (
     <Section
       width={"1000"}
