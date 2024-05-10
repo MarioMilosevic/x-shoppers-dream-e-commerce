@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { url } from "../utils/constants";
 import { ProductState } from "../types/types";
 import Product from "./Product";
+import { handleStickyNav } from "../utils/helperFunctions";
 const FeaturedProducts = () => {
   const [products, setProducts] = useState<ProductState[]>([]);
   useEffect(() => {
@@ -20,10 +21,22 @@ const FeaturedProducts = () => {
     };
     fetchData();
   }, []);
+  const productsRef = useRef(null)
+
+  useEffect(() => {
+    const scrollHandler = () => {
+      handleStickyNav(productsRef, "productsPadding");
+    };
+    window.addEventListener("scroll", scrollHandler);
+
+    return () => {
+      window.removeEventListener("scroll", scrollHandler);
+    };
+  }, []);
 
   return (
     <>
-      <section className="w-full border-b border-b-neutral-300 py-custom-py">
+      <section className="w-full border-b border-b-neutral-300 py-custom-py" ref={ productsRef}>
         <div className="flex flex-col lg:flex-row justify-between lg:w-[1200px] mx-auto">
           {products.map((product) => (
             <Product key={product.id} attributes={product.attributes} />

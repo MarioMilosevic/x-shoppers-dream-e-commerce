@@ -1,7 +1,7 @@
 import {  isVisible } from "../utils/helperFunctions";
 import { useIntersecting } from "../hooks/useIntersecting";
 const Testimonials = () => {
-  const {isIntersecting, ref} = useIntersecting()
+  const { isIntersecting, ref } = useIntersecting()
   return (
     <section
       className={`py-custom-py border-t border-t-neutral-300 transition-all duration-1000 ${isVisible(

@@ -8,7 +8,7 @@ const Description = () => {
   const { isIntersecting, ref } = useIntersecting();
 
   return (
-    <section
+    <section 
       className={`py-custom-py w-[1000px] mx-auto flex flex-col gap-24 transition-all duration-1000 ${isVisible(
         isIntersecting
       )}`}

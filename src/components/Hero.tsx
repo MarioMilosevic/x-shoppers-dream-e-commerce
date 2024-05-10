@@ -1,25 +1,13 @@
 import heroImg from "../assets/heroImg.a885da91476b940bf532.png";
 import Button from "./Button";
 import { IoIosArrowRoundDown } from "react-icons/io";
-import { useEffect, useRef } from "react";
-import { handleStickyNav } from "../utils/helperFunctions";
+import { useRef } from "react";
 const Hero = () => {
   const heroRef = useRef(null);
-   useEffect(() => {
-     const scrollHandler = () => {
-       handleStickyNav(heroRef, "descriptionPadding");
-     };
 
-     window.addEventListener("scroll", scrollHandler);
-
-     return () => {
-       window.removeEventListener("scroll", scrollHandler);
-     };
-   }, []);
-  // const padding = isNavFixed ? "pt-[136px] pb-12" : "py-12"
 
   return (
-    <header
+    <section
       className="flex flex-col lg:flex-row justify-between lg:w-[1200px] mx-auto py-12"
       ref={heroRef}
     >
@@ -43,7 +31,7 @@ const Hero = () => {
       <div className="mx-auto w-[65%] lg:mx-0 flex flex-col lg:w-[41%]">
         <img src={heroImg} alt="Hero img" />
       </div>
-    </header>
+    </section>
   );
 };
 

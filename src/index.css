@@ -12,9 +12,9 @@
         right: 50%;
         transform:translateX(50%);
     }
-    .descriptionPadding {
-        padding-top: 136px;
-        padding-bottom: 48px;
+    .productsPadding {
+        padding-top: 15.5rem;
+        padding-bottom: 10rem;
     }
 }
 

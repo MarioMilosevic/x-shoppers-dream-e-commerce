@@ -14,15 +14,17 @@ const SharedLayout = () => {
   ) as React.RefObject<HTMLElement>;
 
   useEffect(() => {
-    window.addEventListener("scroll", function () {
+    const handleScroll = () => {
       handleStickyNav(navRef, "sticky");
-    });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
     return () => {
-      window.removeEventListener("scroll", function () {
-        handleStickyNav(navRef, "sticky");
-      });
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
 
   const toggleIsOpen = () => {
     setIsOpen(!isOpen);
