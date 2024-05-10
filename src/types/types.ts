@@ -53,3 +53,10 @@ export type OutletContext = {
   testimonialsRef: React.Ref<HTMLDivElement>;
   focusDescription: () => void;
 };
+
+export type SectionProps = {
+  width: string;
+  title: string;
+  subtitle: string;
+  children:ReactNode
+}
