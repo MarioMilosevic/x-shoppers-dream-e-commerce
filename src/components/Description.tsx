@@ -22,6 +22,7 @@ const Description = () => {
           Elevate your home with our attitude of excellence and timeless style.
         </h2>
       </div>
+      {/*  */}
       <div className="flex flex-col lg:flex-row gap-10 justify-between">
         <Info icon={HiOutlineSparkles} title={"Radiance"}>
           Our commitment to providing sparkling solutions ensures every customer
@@ -36,6 +37,7 @@ const Description = () => {
           wisdom and wealth of experience to ensure satisfaction and success.
         </Info>
       </div>
+      {/* children */}
     </section>
   );
 };

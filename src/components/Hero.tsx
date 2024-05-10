@@ -5,7 +5,13 @@ import { useRef } from "react";
 const Hero = () => {
   const heroRef = useRef(null);
 
-
+  const scrollToOperations = () => {
+    console.log('radi')
+    window.scrollTo({
+      top: 1900,
+      behavior:"smooth"
+    })
+  }
   return (
     <section
       className="flex flex-col lg:flex-row justify-between lg:w-[1200px] mx-auto py-12"
@@ -22,7 +28,7 @@ const Hero = () => {
           <Button buttonHandler={() => console.log("kasnije")} color="Purple">
             Explore products
           </Button>
-          <Button buttonHandler={() => console.log("kasnije")} color="">
+          <Button buttonHandler={scrollToOperations} color="">
             <span>Learn more</span>
             <IoIosArrowRoundDown />
           </Button>

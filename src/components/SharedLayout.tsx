@@ -30,11 +30,6 @@ const SharedLayout = () => {
     setIsOpen(!isOpen);
   };
 
-  // const focusDescription = () => {
-  //   descriptionRef.current?.scrollIntoView({
-  //     behavior: "smooth",
-  //   });
-  // };
 
   return (
     <>

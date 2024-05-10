@@ -7,7 +7,7 @@ import { useIntersecting } from "../hooks/useIntersecting";
 
 const Operations = () => {
   const [currentActiveIndex, setCurrentActiveIndex] = useState<number>(0);
-  const {isIntersecting, ref} = useIntersecting()
+  const { isIntersecting, ref } = useIntersecting();
 
   return (
     <section
