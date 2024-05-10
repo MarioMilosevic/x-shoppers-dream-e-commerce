@@ -37,7 +37,7 @@ const FeaturedProducts = () => {
   return (
     <>
       <section className="w-full border-b border-b-neutral-300 py-custom-py" ref={ productsRef}>
-        <div className="flex flex-col lg:flex-row justify-between lg:w-[1200px] mx-auto">
+        <div className="flex flex-col w-[90%] lg:items-center gap-4 lg:flex-row lg:justify-between lg:w-[1200px] mx-auto">
           {products.map((product) => (
             <Product key={product.id} attributes={product.attributes} />
           ))}
