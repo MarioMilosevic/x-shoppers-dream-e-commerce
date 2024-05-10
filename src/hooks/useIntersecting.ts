@@ -1,16 +1,16 @@
-import { useRef, useEffect, useState } from "react";
+import { useEffect } from "react";
+import { RefObject } from "react";
 
-export const useIntersecting = () => {
-  const [isIntersecting, setIsIntersecting] = useState<boolean>(false);
-  const ref = useRef(null);
-// da maknem stejt pa na osnovu refa koji proslijedim, ukoliko intersektuje da doda onu klasu a ako ne nista 
+export const useIntersecting = (ref: RefObject<HTMLDivElement>) => {
   useEffect(() => {
     if (ref?.current) {
       const observer = new IntersectionObserver(
         ([entry], observer) => {
           if (entry.isIntersecting) {
-            setIsIntersecting(true);
-            observer.unobserve(entry.target);
+            if (ref.current) {
+              ref.current.classList.add("intersecting");
+              observer.unobserve(entry.target);
+            }
           }
         },
         {
@@ -19,7 +19,5 @@ export const useIntersecting = () => {
       );
       observer.observe(ref.current);
     }
-  }, []);
-
-  return { isIntersecting, ref };
+  }, [ref]);
 };

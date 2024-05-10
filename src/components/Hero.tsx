@@ -5,7 +5,7 @@ import { useRef } from "react";
 const Hero = () => {
   const heroRef = useRef(null);
 
-  const scrollToOperations = () => {
+  const scrollToDescription = () => {
     console.log('radi')
     window.scrollTo({
       top: 1900,
@@ -28,7 +28,7 @@ const Hero = () => {
           <Button buttonHandler={() => console.log("kasnije")} color="Purple">
             Explore products
           </Button>
-          <Button buttonHandler={scrollToOperations} color="">
+          <Button buttonHandler={scrollToDescription} color="">
             <span>Learn more</span>
             <IoIosArrowRoundDown />
           </Button>

@@ -2,17 +2,16 @@ import { HiOutlineSparkles } from "react-icons/hi";
 import { FiEye } from "react-icons/fi";
 import { GiSofa } from "react-icons/gi";
 import Info from "./Info";
-import { isVisible } from "../utils/helperFunctions";
 import { useIntersecting } from "../hooks/useIntersecting";
+import { useRef } from "react";
 const Description = () => {
-  const { isIntersecting, ref } = useIntersecting();
+  const sectionRef = useRef(null)
+  useIntersecting(sectionRef)
 
   return (
     <section
-      className={`w-[50%] py-custom-py lg:w-[1000px] mx-auto flex flex-col gap-24 transition-all duration-1000 ${isVisible(
-        isIntersecting
-      )}`}
-      ref={ref}
+      className="w-[50%] py-custom-py lg:w-[1000px] opacity-0 translate-y-[10rem] mx-auto flex flex-col gap-24 transition-all duration-1000" 
+      ref={sectionRef}
     >
       <div className="w-full flex flex-col gap-2 mx-auto">
         <h3 className="text-fuchsia-600 text-base lg:text-[1.1rem]">
