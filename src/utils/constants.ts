@@ -57,20 +57,20 @@ export const testimonials = [
     text: "The beautiful furniture pieces I purchased fit perfectly in my home and bring me so much joy every day. The quality and modern design exceeded my expectations, and the entire experience with your company was seamless.",
     img: anna,
     name: "Anna Capron",
-    place: "Paris, France",
+    city: "Paris, France",
   },
   {
     title: "You guys brought vision back to my life.",
     text: "I cannot speak highly enough of the quality of the products I received from this company. The attention to detail and craftsmanship is unparalleled. I am so grateful to have found such a reliable and professional source for my furniture needs.",
     img: tyron,
     name: "Tyron Mayers",
-    place: "San Francisco, USA",
+    city: "San Francisco, USA",
   },
   {
     title: "Can't believe I have been missing on this!",
     text: "The furniture I found on this e-commerce store was exactly what I was looking for. The pieces have truly transformed my home and brought my vision to life, adding a touch of sophistication and elegance to every corner.",
     img: vinney,
     name: "Vinney Malesh",
-    place: "Los Angeles, USA",
+    city: "Los Angeles, USA",
   },
 ];

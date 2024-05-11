@@ -17,7 +17,9 @@ const Testimonials = () => {
         subtitle="TESTIMONIALS"
         ref={sectionRef}
       >
+        <div className="border border-black flex">
         {testimonials.map((el, index) => <Slide key={index} {...el} />)}
+        </div>
       </Section>
     </>
   );

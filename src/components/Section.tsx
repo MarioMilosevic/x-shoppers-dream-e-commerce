@@ -14,7 +14,7 @@ const Section = forwardRef(
         : null;
     return (
       <section
-        className={`w-[65%] py-12 lg:py-custom-py ${realWidth} opacity-0 translate-y-[10rem] mx-auto flex flex-col gap-20 transition-all duration-1000`}
+        className={`w-[65%] py-28 lg:py-custom-py ${realWidth} opacity-0 translate-y-[10rem] mx-auto flex flex-col gap-20 transition-all duration-1000`}
         ref={ref}
       >
         <div className="w-full flex flex-col gap-2 mx-auto">

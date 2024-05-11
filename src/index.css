@@ -16,9 +16,9 @@
         padding-top: 15.5rem;
         padding-bottom: 10rem;
     }
-    .intersecting {
+   
+}
+ .intersecting {
         opacity: 1;
         transform:translateY(0rem);
     }
-}
-
