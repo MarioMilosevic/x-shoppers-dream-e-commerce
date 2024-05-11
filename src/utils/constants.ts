@@ -2,6 +2,10 @@ import { GiWhirlwind } from "react-icons/gi";
 import { TbHeartHandshake } from "react-icons/tb";
 import { IoMdCheckmark } from "react-icons/io";
 import { RiExchangeDollarLine } from "react-icons/ri";
+import anastasiya from "../assets/anastasiya petrova.jpeg"
+import vinney from "../assets/vinney malesh.webp"
+import tyron from "../assets/tyron mayers.jpg"
+import anna from "../assets/anna capron.avif"
 export const url =
   "https://strapi-store-server.onrender.com/api/products?search=&category=all&company=all&order=a-z&price=100000&page=1";
 
@@ -39,5 +43,34 @@ export const operations = [
     isActive: false,
   },
 ];
-// ovo treba maci
 
+export const testimonials = [
+  {
+    title: "These pieces transformed my home!",
+    text: "The level of hospitality and professionalism shown by the company made my shopping experience a breeze. The modern designs and top-quality materials of these products exceeded my expectations, and I couldn't be happier with my purchase!",
+    img: anastasiya,
+    userName: "Anastasiya Petrova",
+    place: "Kyiv, Ukraine",
+  },
+  {
+    title: "My space now finally feels complete.",
+    text: "The beautiful furniture pieces I purchased fit perfectly in my home and bring me so much joy every day. The quality and modern design exceeded my expectations, and the entire experience with your company was seamless.",
+    img: anna,
+    userName: "Anna Capron",
+    place: "Paris, France",
+  },
+  {
+    title: "You guys brought vision back to my life.",
+    text: "I cannot speak highly enough of the quality of the products I received from this company. The attention to detail and craftsmanship is unparalleled. I am so grateful to have found such a reliable and professional source for my furniture needs.",
+    img: tyron,
+    userName: "Tyron Mayers",
+    place: "San Francisco, USA",
+  },
+  {
+    title: "Can't believe I have been missing on this!",
+    text: "The furniture I found on this e-commerce store was exactly what I was looking for. The pieces have truly transformed my home and brought my vision to life, adding a touch of sophistication and elegance to every corner.",
+    img: vinney,
+    userName: "Vinney Malesh",
+    place: "Los Angeles, USA",
+  },
+];
