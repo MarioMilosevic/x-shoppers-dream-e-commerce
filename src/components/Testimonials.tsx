@@ -1,7 +1,8 @@
 import { useRef } from "react";
 import { useIntersecting } from "../hooks/useIntersecting";
 import Section from "./Section";
-import { testimonials } from "../utils/constants";
+// import { testimonials } from "../utils/constants";
+import Slide from "./Slide";
 
 const Testimonials = () => {
   const sectionRef = useRef(null);
@@ -17,7 +18,7 @@ const Testimonials = () => {
         subtitle="TESTIMONIALS"
         ref={sectionRef}
       >
-        <div>marop</div>
+        <Slide/>
       </Section>
     </>
   );

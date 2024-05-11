@@ -4,11 +4,17 @@ import { SectionProps } from "../types/types";
 const Section = forwardRef(
   (
     { width, subtitle, title, children }: SectionProps,
-        ref: ForwardedRef<HTMLElement>
-    ) => {
+    ref: ForwardedRef<HTMLElement>
+  ) => {
+    const realWidth =
+      width === "1000"
+        ? "lg:w-[1000px]"
+        : width === "800"
+        ? "lg:w-[800px]"
+        : null;
     return (
       <section
-        className={`w-[50%] py-custom-py lg:w-[${width}px] opacity-0 translate-y-[10rem] mx-auto flex flex-col gap-20 transition-all duration-1000`}
+        className={`w-[65%] py-12 lg:py-custom-py ${realWidth} opacity-0 translate-y-[10rem] mx-auto flex flex-col gap-20 transition-all duration-1000`}
         ref={ref}
       >
         <div className="w-full flex flex-col gap-2 mx-auto">
