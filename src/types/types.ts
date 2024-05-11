@@ -60,3 +60,11 @@ export type SectionProps = {
   subtitle: string;
   children: ReactNode;
 }
+
+export type SlideProps = {
+  title:string;
+  text: string;
+  img: string;
+  name: string;
+  city: string;
+};
