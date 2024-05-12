@@ -1,21 +1,31 @@
 import { SlideProps } from "../types/types";
 const Slide = ({ title, text, img, name, city, translate }: SlideProps) => {
-  console.log("translajt vrijednost", translate);
+  // const translateBy =
+  //   translate > 0
+  //     ? `translate-x-[${translate}%]`
+  //     : `-translate-x-[${Math.abs(translate)}%]`;
+  // console.log(translateBy)
 
   const translateBy =
     translate === 0
-      ? "translate-x-[50%]"
+      ? "translate-x-[0%]"
       : translate === 100
-      ? "translate-x-[150%]"
+      ? "translate-x-[100%]"
       : translate === 200
-      ? "translate-x-[250%]"
+      ? "translate-x-[200%]"
       : translate === 300
-      ? "translate-x-[350%]"
-      : null;
+      ? "translate-x-[300%]"
+      : translate === -100
+      ? "-translate-x-[100%]"
+      : translate === -200
+      ? "-translate-x-[200%]"
+      : translate === -300
+      ? "-translate-x-[300%]"
+      : "";
 
   return (
     <div
-      className={`absolute flex flex-col gap-4 px-24 top-0 right-[50%] py-2 w-[800px] border border-black transition-all duration-500 mx-auto ${translateBy}`}
+      className={`absolute flex flex-col gap-4 px-24 top-0 py-2 w-[800px] transition-all duration-500 mx-auto ${translateBy}`}
     >
       <h2 className="font-medium text-2xl">{title}</h2>
       <div className="w-full bg-fuchsia-600 h-[2px]"></div>
