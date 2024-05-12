@@ -2,10 +2,10 @@ import { GiWhirlwind } from "react-icons/gi";
 import { TbHeartHandshake } from "react-icons/tb";
 import { IoMdCheckmark } from "react-icons/io";
 import { RiExchangeDollarLine } from "react-icons/ri";
-import anastasiya from "../assets/anastasiya petrova.jpeg"
-import vinney from "../assets/vinney malesh.webp"
-import tyron from "../assets/tyron mayers.jpg"
-import anna from "../assets/anna capron.avif"
+import anastasiya from "../assets/anastasiya petrova.jpeg";
+import vinney from "../assets/vinney malesh.webp";
+import tyron from "../assets/tyron mayers.jpg";
+import anna from "../assets/anna capron.avif";
 export const url =
   "https://strapi-store-server.onrender.com/api/products?search=&category=all&company=all&order=a-z&price=100000&page=1";
 
