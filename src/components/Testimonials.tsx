@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useIntersecting } from "../hooks/useIntersecting";
 import Section from "./Section";
 import { testimonials } from "../utils/constants";
@@ -26,16 +26,18 @@ const Testimonials = () => {
     }
   };
 
-  setInterval(() => {
-    if (currentSlideIndex > 0) {
-      setCurrentSlideIndex((prev) => prev + 1);
-    } else if (currentSlideIndex === testimonials.length - 1) {
-      setCurrentSlideIndex(0);
-    }
-    console.log("proslo 5 sekundi")
-  }, 5000);
+ useEffect(() => {
+   const interval = setInterval(() => {
+     if (currentSlideIndex < testimonials.length - 1) {
+       setCurrentSlideIndex((prev) => prev + 1);
+     } else {
+       setCurrentSlideIndex(0);
+     }
+   }, 5000);
 
-  console.log("trenutni slajd", currentSlideIndex);
+   return () => clearInterval(interval);
+ }, [currentSlideIndex]);
+
   return (
     <>
       <div className="w-full border-t border-t-neutral-300"></div>

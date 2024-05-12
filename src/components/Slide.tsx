@@ -25,7 +25,7 @@ const Slide = ({ title, text, img, name, city, translate }: SlideProps) => {
 
   return (
     <div
-      className={`absolute flex flex-col gap-4 px-24 top-0 py-2 w-[800px] transition-all duration-500 mx-auto ${translateBy}`}
+      className={`absolute flex flex-col gap-4 px-24 top-0 py-2 w-[800px] transition-all duration-700 mx-auto ${translateBy}`}
     >
       <h2 className="font-medium text-2xl">{title}</h2>
       <div className="w-full bg-fuchsia-600 h-[2px]"></div>
