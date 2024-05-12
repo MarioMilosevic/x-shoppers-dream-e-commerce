@@ -17,8 +17,12 @@ const Testimonials = () => {
         subtitle="TESTIMONIALS"
         ref={sectionRef}
       >
-        <div className="border border-black flex">
-        {testimonials.map((el, index) => <Slide key={index} {...el} />)}
+        <div className="w-[700px] relative border border-black flex items-center overflow-hidden">
+          <div className="flex justify-center pl-24">
+            {testimonials.map((el, index) => (
+                <Slide {...el} translate={index * 100} />
+            ))}
+          </div>
         </div>
       </Section>
     </>
