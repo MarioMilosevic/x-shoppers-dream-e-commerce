@@ -20,7 +20,7 @@ const Testimonials = () => {
 
   const previousSlide = () => {
     if (currentSlideIndex === 0) {
-      setCurrentSlideIndex(testimonials.length);
+      setCurrentSlideIndex(testimonials.length - 1);
     } else {
       setCurrentSlideIndex((prev) => prev - 1);
     }
