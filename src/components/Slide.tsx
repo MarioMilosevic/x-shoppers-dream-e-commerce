@@ -1,34 +1,37 @@
 import { SlideProps } from "../types/types";
+import { useEffect, useState } from "react";
 const Slide = ({ title, text, img, name, city, translate }: SlideProps) => {
-  // const translateBy =
-  //   translate > 0
-  //     ? `translate-x-[${translate}%]`
-  //     : `-translate-x-[${Math.abs(translate)}%]`;
-  // console.log(translateBy)
-
+  const [lineWidth, setLineWidth] = useState<number>(0);
   const translateBy =
-    translate === 0
-      ? "translate-x-[0%]"
-      : translate === 100
-      ? "translate-x-[100%]"
-      : translate === 200
-      ? "translate-x-[200%]"
-      : translate === 300
-      ? "translate-x-[300%]"
-      : translate === -100
-      ? "-translate-x-[100%]"
-      : translate === -200
-      ? "-translate-x-[200%]"
+    translate > 0
+      ? `translate-x-[${translate}%]`
+      : translate < 0
+      ? `-translate-x-[${Math.abs(translate)}%]`
       : translate === -300
       ? "-translate-x-[300%]"
-      : "";
+      : null;
+  console.log(lineWidth);
+
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     if (lineWidth < 100) {
+  //       setLineWidth((prev) => prev + 20);
+  //     } else {
+  //       setLineWidth(0);
+  //     }
+  //   }, 1000);
+
+  //   return () => clearInterval(interval);
+  // }, [lineWidth]);
 
   return (
     <div
       className={`absolute flex flex-col gap-4 px-24 top-0 py-2 w-[800px] transition-all duration-700 mx-auto ${translateBy}`}
     >
       <h2 className="font-medium text-2xl">{title}</h2>
-      <div className="w-full bg-fuchsia-600 h-[2px]"></div>
+      <hr
+        className={`bg-fuchsia-600 h-[2px] w-[${lineWidth}%] `}
+      />
 
       <div className="flex flex-col">
         <p className="leading-6">{text}</p>

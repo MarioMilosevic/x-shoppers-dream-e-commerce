@@ -1,13 +1,14 @@
 import { ListItemProps } from "../types/types";
+import { Link } from "react-router-dom";
 
-const ListItem = ({ children, isUnderlined }: ListItemProps) => {
+const ListItem = ({ children, isActive, path }: ListItemProps) => {
   const underline =
-    isUnderlined === true
+    isActive === true
       ? "underline underline-offset-[6px] decoration-fuchsia-600"
       : "";
   return (
     <li className={`${underline} font-normal`}>
-      <a href="#">{children}</a>
+      <Link to={`${path}`}>{children}</Link>
     </li>
   );
 };

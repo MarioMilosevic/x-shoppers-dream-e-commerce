@@ -5,6 +5,7 @@ import { FaWindowClose } from "react-icons/fa";
 import ListItem from "./ListItem";
 import { Outlet } from "react-router";
 import { handleStickyNav } from "../utils/helperFunctions";
+import { pages } from "../utils/constants";
 
 const SharedLayout = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -39,9 +40,9 @@ const SharedLayout = () => {
           </div>
           <div className="hidden lg:flex">
             <ul className="flex gap-10 text-base font-medium text-slate-700">
-              <ListItem isUnderlined={true}>Home</ListItem>
-              <ListItem isUnderlined={false}>About</ListItem>
-              <ListItem isUnderlined={false}>Products</ListItem>
+              {pages.map((page) => (
+                <ListItem key={page.id} {...page}>{page.name}</ListItem>
+              ))}
             </ul>
           </div>
 
@@ -68,9 +69,9 @@ const SharedLayout = () => {
                 onClick={toggleIsOpen}
               />
               <ul className="flex flex-col gap-16 text-lg font-medium text-slate-700">
-                <ListItem isUnderlined={true}>Home</ListItem>
-                <ListItem isUnderlined={false}>About</ListItem>
-                <ListItem isUnderlined={false}>Products</ListItem>
+                {pages.map((page) => (
+                  <ListItem key={page.id} {...page}>{page.name}</ListItem>
+                ))}
               </ul>
             </div>
           </div>

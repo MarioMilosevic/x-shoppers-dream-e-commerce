@@ -9,6 +9,27 @@ import anna from "../assets/anna capron.avif";
 export const url =
   "https://strapi-store-server.onrender.com/api/products?search=&category=all&company=all&order=a-z&price=100000&page=1";
 
+export const pages = [
+  {
+    id: crypto.randomUUID(),
+    name: "Home",
+    isActive: true,
+    path:"/"
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "Products",
+    isActive: false,
+    path:"/Products"
+  },
+  {
+    id: crypto.randomUUID(),
+    name: "About",
+    isActive: false,
+    path:"/About"
+  },
+];
+
 export const operations = [
   {
     id: crypto.randomUUID(),

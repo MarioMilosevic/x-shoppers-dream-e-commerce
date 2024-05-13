@@ -9,7 +9,9 @@ export type ButtonProps = {
 
 export type ListItemProps = {
   children: ReactNode;
-  isUnderlined: boolean;
+  isActive: boolean;
+  name: string;
+  path:string
 };
 
 export type ProductState = {
