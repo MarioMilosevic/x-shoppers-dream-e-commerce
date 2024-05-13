@@ -6,6 +6,7 @@ import ListItem from "./ListItem";
 import { Outlet } from "react-router";
 import { handleStickyNav } from "../utils/helperFunctions";
 import { pages } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const SharedLayout = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -46,13 +47,13 @@ const SharedLayout = () => {
             </ul>
           </div>
 
-          <div className="hidden lg:flex items-center gap-2 text-base relative cursor-pointer">
+          <Link to={"/Cart"} className="hidden lg:flex items-center gap-2 text-base relative cursor-pointer">
             <span>Cart</span>
             <BsBag className="text-[1.25rem] self-start" />
             <span className="bg-fuchsia-600 text-fuchsia-50 text-sm w-[1.1rem] h-[1.1rem] flex items-center justify-center rounded-full absolute top-1 -right-3">
               0
             </span>
-          </div>
+          </Link>
 
           <div className="lg:hidden flex px-8 w-full relative">
             <GiHamburgerMenu
