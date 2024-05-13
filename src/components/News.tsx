@@ -5,21 +5,10 @@ import forbesImg from "../assets/forbes.c9d98237f5d5f000eaad.png";
 import usaTodayImg from "../assets/usaToday.56382ee08e942ad7c93c.png";
 import NewsImg from "./NewsImg";
 import { useRef } from "react";
-// import { useOutletContext } from "react-router";
-// import { OutletContext } from "../types/types";
 const News = () => {
-  // const { setIsNavFixed } = useOutletContext() as OutletContext;
   const sectionRef = useRef(null);
 
-  // useEffect(() => {
-  //   if (sectionRef.current) {
-  //     const observer = new IntersectionObserver((entries) => {
-  //       const entry = entries[0];
-  //       setIsNavFixed(!entry.isIntersecting);
-  //     });
-  //     observer.observe(sectionRef.current);
-  //   }
-  // }, [setIsNavFixed]);
+
   return (
     <section className="flex flex-col gap-6 py-custom-py lg:w-[1300px] mx-auto" ref={sectionRef }>
       <h2 className="text-center text-sm tracking-wider contrast-0 font-semibold">
