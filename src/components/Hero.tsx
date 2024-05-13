@@ -6,7 +6,6 @@ const Hero = () => {
   const heroRef = useRef(null);
 
   const scrollToDescription = () => {
-    console.log('radi')
     window.scrollTo({
       top: 1900,
       behavior:"smooth"

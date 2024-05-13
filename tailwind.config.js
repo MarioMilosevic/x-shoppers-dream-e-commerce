@@ -13,7 +13,6 @@ const tailwindConfig = {
           "100%": { width: "100%" },
         },
       },
-    
     },
     screens: {
       lg: "1240px",
