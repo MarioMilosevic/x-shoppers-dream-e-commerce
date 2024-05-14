@@ -1,29 +1,38 @@
 import { SlideProps } from "../types/types";
-const Slide = ({ title, text, img, name, city, translate }: SlideProps) => {
+const Slide = ({
+  title,
+  text,
+  img,
+  name,
+  city,
+  currentSlideIndex,
+  index,
+}: SlideProps) => {
+  
+  const translate = `translate-x-[${100 * (index - currentSlideIndex)}%]`;
 
-  const translateBy =
-    translate === 0
-      ? "translate-x-[0%]"
-      : translate === 100
-      ? "translate-x-[100%]"
-      : translate === 200
-      ? "translate-x-[200%]"
-      : translate === 300
-      ? "translate-x-[300%]"
-      : translate === -100
-      ? "-translate-x-[100%]"
-      : translate === -200
-      ? "-translate-x-[200%]"
-      : translate === -300
-      ? "-translate-x-[300%]"
-      : "";
+  // const translateBy =
+  //   translate === 0
+  //     ? "translate-x-[0%]"
+  //     : translate === 100
+  //     ? "translate-x-[100%]"
+  //     : translate === 200
+  //     ? "translate-x-[200%]"
+  //     : translate === 300
+  //     ? "translate-x-[300%]"
+  //     : translate === -100
+  //     ? "-translate-x-[100%]"
+  //     : translate === -200
+  //     ? "-translate-x-[200%]"
+  //     : translate === -300
+  //     ? "-translate-x-[300%]"
+  //      : "";
 
   return (
     <div
-      className={`absolute flex flex-col gap-4 px-24 top-0 py-2 w-[800px] transition-all duration-700 mx-auto ${translateBy}`}
+      className={`absolute flex flex-col gap-4 px-24 top-0 py-2 w-[800px] transition-all duration-700 mx-auto ${translate}`}
     >
       <h2 className="font-medium text-2xl">{title}</h2>
-      <hr className="animate-[expand_5s_linear_infinite]  bg-fuchsia-600 h-[2px]" />
       <div className="flex flex-col">
         <p className="leading-6">{text}</p>
         <div className="flex flex-col pt-12">

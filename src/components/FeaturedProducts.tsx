@@ -2,9 +2,15 @@ import { useEffect, useState, useRef } from "react";
 import { url } from "../utils/constants";
 import { ProductState } from "../types/types";
 import Product from "./Product";
+import Section from "./Section";
 import { handleStickyNav } from "../utils/helperFunctions";
+import Button from "./Button";
+import { useIntersecting } from "../hooks/useIntersecting";
 const FeaturedProducts = () => {
   const [products, setProducts] = useState<ProductState[]>([]);
+  const sectionRef = useRef(null);
+  useIntersecting(sectionRef);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -21,7 +27,7 @@ const FeaturedProducts = () => {
     };
     fetchData();
   }, []);
-  const productsRef = useRef(null)
+  const productsRef = useRef(null);
 
   useEffect(() => {
     const scrollHandler = () => {
@@ -36,13 +42,23 @@ const FeaturedProducts = () => {
 
   return (
     <>
-      <section className="w-full border-b border-b-neutral-300 py-custom-py" ref={ productsRef}>
-        <div className="flex flex-col w-[90%] lg:items-center gap-4 lg:flex-row lg:justify-between lg:w-[1200px] mx-auto">
-          {products.map((product) => (
-            <Product key={product.id} attributes={product.attributes} />
-          ))}
+      <Section
+        width="1200"
+        subtitle="Featured products"
+        title="The art of modern living unlocked."
+        ref={sectionRef}
+      >
+        <div className="flex flex-col w-[90%] lg:items-center gap-8 lg:flex:row lg:justify-between lg:w-[1200px] mx-auto">
+          <div className="flex flex-col w-[90%] lg:items-center gap-4 lg:flex-row lg:justify-between lg:w-[1200px] mx-auto">
+            {products.map((product) => (
+              <Product key={product.id} attributes={product.attributes} />
+            ))}
+          </div>
+            <Button color="Purple" buttonHandler={() => console.log("radi")}>
+              All Products
+            </Button>
         </div>
-      </section>
+      </Section>
     </>
   );
 };

@@ -18,12 +18,6 @@ export const pages = [
   },
   {
     id: crypto.randomUUID(),
-    name: "About",
-    isActive: false,
-    path:"/About"
-  },
-  {
-    id: crypto.randomUUID(),
     name: "Products",
     isActive: false,
     path:"/Products"

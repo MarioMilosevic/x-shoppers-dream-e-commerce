@@ -40,12 +40,12 @@ const Testimonials = () => {
 
   return (
     <>
-      <div className="w-full border-t border-t-neutral-300"></div>
+      {/* <div className="w-full border-t border-t-neutral-300"></div> */}
       <Section
         width="800"
         title=" Discover the stories of our delighted customers - thousands and
       counting!"
-        subtitle="TESTIMONIALS"
+        subtitle="Testimonials"
         ref={sectionRef}
       >
         <div className="w-[800px] relative flex items-center justify-center overflow-hidden">
@@ -56,12 +56,15 @@ const Testimonials = () => {
             >
               <BsArrowLeft className="w-6 h-6" />
             </div>
+
             <div className="relative w-[800px] h-[25rem]">
               {testimonials.map((el, index) => (
                 <Slide
                   {...el}
                   key={index}
                   translate={100 * (index - currentSlideIndex)}
+                  currentSlideIndex={currentSlideIndex}
+                  index={ index}
                 />
               ))}
             </div>
@@ -73,6 +76,7 @@ const Testimonials = () => {
             </div>
           </div>
         </div>
+        <hr className="animate-[expand_5s_linear_infinite]  bg-fuchsia-600 h-[2px]" />
       </Section>
     </>
   );
