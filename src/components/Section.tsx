@@ -36,20 +36,6 @@ const Section = forwardRef(
           {children}
         </div>
       </section>
-      // <section
-      //   className={`w-[65%] py-28 lg:py-custom-py ${realWidth} opacity-0 translate-y-[10rem] mx-auto flex flex-col gap-20 transition-all duration-1000`}
-      //   ref={ref}
-      // >
-      //   <div className="w-full flex flex-col gap-2 mx-auto">
-      //     <h3 className="text-fuchsia-600 text-base uppercase lg:text-[1.1rem]">
-      //       {subtitle}
-      //     </h3>
-      //     <h2 className="text-2xl lg:text-4xl font-medium leading-8 lg:leading-[3.2rem]">
-      //       {title}
-      //     </h2>
-      //   </div>
-      //   {children}
-      // </section>
     );
   }
 );

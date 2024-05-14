@@ -3,10 +3,21 @@ import bussinessInsiderImg from "../assets/businessInsider.a50839ce9f675fc574e6.
 import newYorkTImesImg from "../assets/newYorkTimes.1279b92266cf081e20a6.png";
 import forbesImg from "../assets/forbes.c9d98237f5d5f000eaad.png";
 import usaTodayImg from "../assets/usaToday.56382ee08e942ad7c93c.png";
+import { handleStickyNav } from "../utils/helperFunctions";
 import NewsImg from "./NewsImg";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 const News = () => {
   const sectionRef = useRef(null);
+   useEffect(() => {
+     const scrollHandler = () => {
+       handleStickyNav(sectionRef, "productsPadding");
+     };
+     window.addEventListener("scroll", scrollHandler);
+
+     return () => {
+       window.removeEventListener("scroll", scrollHandler);
+     };
+   }, []);
 
 
   return (

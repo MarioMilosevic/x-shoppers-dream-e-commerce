@@ -3,7 +3,6 @@ import { url } from "../utils/constants";
 import { ProductState } from "../types/types";
 import Product from "./Product";
 import Section from "./Section";
-import { handleStickyNav } from "../utils/helperFunctions";
 import Button from "./Button";
 import { useIntersecting } from "../hooks/useIntersecting";
 import { useNavigate } from "react-router";
@@ -29,18 +28,6 @@ const FeaturedProducts = () => {
       }
     };
     fetchData();
-  }, []);
-  const productsRef = useRef(null);
-
-  useEffect(() => {
-    const scrollHandler = () => {
-      handleStickyNav(productsRef, "productsPadding");
-    };
-    window.addEventListener("scroll", scrollHandler);
-
-    return () => {
-      window.removeEventListener("scroll", scrollHandler);
-    };
   }, []);
 
   return (
