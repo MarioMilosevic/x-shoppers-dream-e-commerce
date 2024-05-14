@@ -73,7 +73,7 @@ export type SlideProps = {
 };
 
 export type ArrowContainerProps = {
-  direction: string;
+  direction: keyof ArrowContainerOptions;
   clickHandler: () => void;
   children: ReactNode;
 };
@@ -83,3 +83,8 @@ export type widthOptions = {
   medium: string;
   small: string;
 };
+
+export type ArrowContainerOptions = {
+  right: string;
+  left: string;
+}
