@@ -6,11 +6,13 @@ import Section from "./Section";
 import { handleStickyNav } from "../utils/helperFunctions";
 import Button from "./Button";
 import { useIntersecting } from "../hooks/useIntersecting";
+import { useNavigate } from "react-router";
 
 const FeaturedProducts = () => {
   const [products, setProducts] = useState<ProductState[]>([]);
   const sectionRef = useRef(null);
   useIntersecting(sectionRef);
+  const navigate= useNavigate()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,7 +44,6 @@ const FeaturedProducts = () => {
   }, []);
 
   return (
-    <>
       <Section
         width="1200"
         subtitle="Featured products"
@@ -55,12 +56,11 @@ const FeaturedProducts = () => {
               <Product key={product.id} attributes={product.attributes} />
             ))}
           </div>
-            <Button color="Purple" buttonHandler={() => console.log("radi")}>
+            <Button color="Purple" buttonHandler={() => navigate("/Products")}>
               All Products
             </Button>
         </div>
       </Section>
-    </>
   );
 };
 

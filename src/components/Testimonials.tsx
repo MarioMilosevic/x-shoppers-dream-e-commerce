@@ -39,8 +39,6 @@ const Testimonials = () => {
   }, [currentSlideIndex]);
 
   return (
-    <>
-      {/* <div className="w-full border-t border-t-neutral-300"></div> */}
       <Section
         width="800"
         title=" Discover the stories of our delighted customers - thousands and
@@ -78,7 +76,6 @@ const Testimonials = () => {
         </div>
         <hr className="animate-[expand_5s_linear_infinite]  bg-fuchsia-600 h-[2px]" />
       </Section>
-    </>
   );
 };
 

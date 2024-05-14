@@ -10,7 +10,6 @@ const Operations = () => {
   useIntersecting(sectionRef);
   return (
     <>
-      <div className="w-full border-t border-t-neutral-300"></div>
       <Section
         width="800"
         title="Where simplicity meets efficiency to bring your home to life."
