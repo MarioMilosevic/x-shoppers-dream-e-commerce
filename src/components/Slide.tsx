@@ -8,32 +8,17 @@ const Slide = ({
   currentSlideIndex,
   index,
 }: SlideProps) => {
+  const calculation = 100 * (index - currentSlideIndex);
 
-  const calculation = 100 * (index - currentSlideIndex)
-  const translate = calculation > 0 ? `translate-x-[${calculation}%]` : `-translate-x-[${Math.abs(calculation)}%]`
-
-  console.log(translate)
-
-  // const translateBy =
-  //   translate === 0
-  //     ? "translate-x-[0%]"
-  //     : translate === 100
-  //     ? "translate-x-[100%]"
-  //     : translate === 200
-  //     ? "translate-x-[200%]"
-  //     : translate === 300
-  //     ? "translate-x-[300%]"
-  //     : translate === -100
-  //     ? "-translate-x-[100%]"
-  //     : translate === -200
-  //     ? "-translate-x-[200%]"
-  //     : translate === -300
-  //     ? "-translate-x-[300%]"
-  //      : "";
+  const translate =
+    calculation > 0
+      ? `translateX(${calculation}%)`
+      : `translateX(-${Math.abs(calculation)}%)`;
 
   return (
     <div
-      className={`absolute flex flex-col gap-4 px-24 top-0 py-2 w-[800px] transition-all duration-700 mx-auto ${translate}`}
+      className={`absolute flex flex-col gap-4 px-24 top-0 py-2 w-[800px] transition-all duration-700 mx-auto`}
+      style={{ transform: translate }}
     >
       <h2 className="font-medium text-2xl">{title}</h2>
       <div className="flex flex-col">

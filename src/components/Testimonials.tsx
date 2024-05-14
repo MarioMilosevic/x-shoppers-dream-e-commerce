@@ -2,7 +2,10 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import { useIntersecting } from "../hooks/useIntersecting";
 import Section from "./Section";
 import { testimonials } from "../utils/constants";
-import { HiOutlineArrowLongLeft, HiOutlineArrowLongRight } from "react-icons/hi2";
+import {
+  HiOutlineArrowLongLeft,
+  HiOutlineArrowLongRight,
+} from "react-icons/hi2";
 import Slide from "./Slide";
 import ArrowContainer from "./ArrowContainer";
 
@@ -57,7 +60,7 @@ const Testimonials = () => {
       <div className="w-[800px] relative flex items-center justify-center overflow-hidden">
         <div className="flex justify-center">
           <ArrowContainer direction={"left"} clickHandler={previousSlide}>
-          <HiOutlineArrowLongLeft className="w-10 h-10"/>
+            <HiOutlineArrowLongLeft className="w-10 h-10" />
           </ArrowContainer>
           <div className="relative w-[800px] h-[25rem]">
             {testimonials.map((el, index) => (
@@ -73,7 +76,7 @@ const Testimonials = () => {
             </div>
           </div>
           <ArrowContainer direction={"right"} clickHandler={nextSlide}>
-            <HiOutlineArrowLongRight className="w-10 h-10"/>
+            <HiOutlineArrowLongRight className="w-10 h-10" />
           </ArrowContainer>
         </div>
       </div>

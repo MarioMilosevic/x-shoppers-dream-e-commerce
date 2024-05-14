@@ -30,6 +30,7 @@ const FeaturedProducts = () => {
     fetchData();
   }, []);
 
+
   return (
       <Section
         width="1200"
