@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { useIntersecting } from "../hooks/useIntersecting";
 import Section from "./Section";
 import { testimonials } from "../utils/constants";
@@ -7,18 +7,32 @@ import Slide from "./Slide";
 
 const Testimonials = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
+  const displayRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef(null);
   useIntersecting(sectionRef);
 
-  const nextSlide = () => {
+  const resetDisplay = () => {
+    displayRef.current
+      ? ((displayRef.current.style.display = "none"),
+        setTimeout(
+          () =>
+            displayRef.current && (displayRef.current.style.display = "block"),
+          0
+        ))
+      : null;
+  };
+
+  const nextSlide = useCallback(() => {
+    resetDisplay();
     if (currentSlideIndex === testimonials.length - 1) {
       setCurrentSlideIndex(0);
     } else {
       setCurrentSlideIndex((prev) => prev + 1);
     }
-  };
+  }, [currentSlideIndex]);
 
   const previousSlide = () => {
+    resetDisplay();
     if (currentSlideIndex === 0) {
       setCurrentSlideIndex(testimonials.length - 1);
     } else {
@@ -27,16 +41,9 @@ const Testimonials = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (currentSlideIndex < testimonials.length - 1) {
-        setCurrentSlideIndex((prev) => prev + 1);
-      } else {
-        setCurrentSlideIndex(0);
-      }
-    }, 5000);
-
+    const interval = setInterval(() => nextSlide(), 5000);
     return () => clearInterval(interval);
-  }, [currentSlideIndex]);
+  }, [nextSlide]);
 
   return (
     <Section
@@ -60,12 +67,11 @@ const Testimonials = () => {
               <Slide
                 {...el}
                 key={index}
-                translate={100 * (index - currentSlideIndex)}
                 currentSlideIndex={currentSlideIndex}
                 index={index}
               />
             ))}
-            <div className="w-[608px] absolute top-12 left-24">
+            <div className="w-[608px] absolute top-12 left-24" ref={displayRef}>
               <hr className="animate-[expand_5s_linear_infinite]  bg-fuchsia-600 h-[3px]" />
             </div>
           </div>

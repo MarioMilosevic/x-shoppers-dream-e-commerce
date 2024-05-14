@@ -69,5 +69,6 @@ export type SlideProps = {
   img: string;
   name: string;
   city: string;
-  translate: number;
+  currentSlideIndex: number;
+  index: number;
 };

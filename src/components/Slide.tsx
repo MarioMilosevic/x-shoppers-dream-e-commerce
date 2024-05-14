@@ -8,8 +8,11 @@ const Slide = ({
   currentSlideIndex,
   index,
 }: SlideProps) => {
-  
-  const translate = `translate-x-[${100 * (index - currentSlideIndex)}%]`;
+
+  const calculation = 100 * (index - currentSlideIndex)
+  const translate = calculation > 0 ? `translate-x-[${calculation}%]` : `-translate-x-[${Math.abs(calculation)}%]`
+
+  console.log(translate)
 
   // const translateBy =
   //   translate === 0
@@ -39,7 +42,7 @@ const Slide = ({
           <img
             src={img}
             alt={img}
-            className="rounded-full h-20 w-20 object-cover"
+            className="rounded-full h-[50px] w-[50px] object-cover"
           />
           <h3 className="text-lg font-medium pt-4">{name}</h3>
           <span className="text-sm">{city}</span>
