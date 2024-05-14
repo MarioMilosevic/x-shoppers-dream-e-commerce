@@ -2,11 +2,11 @@ import { ProductAttributes } from "../types/types";
 const Product = ({ attributes }: { attributes: ProductAttributes }) => {
   const { image, title, price } = attributes;
   return (
-    <article className="flex flex-col gap-4 lg:gap-12 lg:w-[30%] transition-all duration-700 hover:-translate-y-8">
+    <article className="flex flex-col gap-4 lg:gap-4 lg:w-full transition-all duration-700 hover:-translate-y-8">
       <img
         src={image}
         alt={title}
-        className=" w-[50%]  mx-auto lg:w-full lg:h-[300px] object-cover rounded-lg cursor-pointer"
+        className="w-[75%] mx-auto lg:w-full lg:h-[250px] object-cover rounded-md cursor-pointer"
       />
       <div className="w-[50%] mx-auto lg:w-full flex flex-col gap-4">
         <h2 className="capitalize text-medium font-medium lg:text-xl">

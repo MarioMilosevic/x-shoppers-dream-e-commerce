@@ -6,6 +6,7 @@ import Section from "./Section";
 import { handleStickyNav } from "../utils/helperFunctions";
 import Button from "./Button";
 import { useIntersecting } from "../hooks/useIntersecting";
+
 const FeaturedProducts = () => {
   const [products, setProducts] = useState<ProductState[]>([]);
   const sectionRef = useRef(null);
@@ -20,7 +21,7 @@ const FeaturedProducts = () => {
         }
         const dataResponse = await response.json();
         const { data } = dataResponse;
-        setProducts(data.slice(0, 3));
+        setProducts(data.slice(3, 6));
       } catch (error) {
         console.error("Error fetching data", error);
       }
@@ -48,8 +49,8 @@ const FeaturedProducts = () => {
         title="The art of modern living unlocked."
         ref={sectionRef}
       >
-        <div className="flex flex-col w-[90%] lg:items-center gap-8 lg:flex:row lg:justify-between lg:w-[1200px] mx-auto">
-          <div className="flex flex-col w-[90%] lg:items-center gap-4 lg:flex-row lg:justify-between lg:w-[1200px] mx-auto">
+        <div className="flex flex-col lg:items-center gap-10 lg:w-[1200px] ">
+          <div className="flex flex-col lg:gap-4 lg:flex-row  lg:w-full ">
             {products.map((product) => (
               <Product key={product.id} attributes={product.attributes} />
             ))}
