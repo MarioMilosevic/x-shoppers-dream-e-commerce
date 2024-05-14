@@ -33,7 +33,7 @@ const FeaturedProducts = () => {
 
   return (
       <Section
-        width="1200"
+        option="large"
         subtitle="Featured products"
         title="The art of modern living unlocked."
         ref={sectionRef}

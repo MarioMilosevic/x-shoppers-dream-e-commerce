@@ -11,7 +11,7 @@ const Operations = () => {
   return (
     <>
       <Section
-        width="800"
+        option="small"
         title="Where simplicity meets efficiency to bring your home to life."
         subtitle="Operations"
         ref={sectionRef}

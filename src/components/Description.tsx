@@ -10,7 +10,7 @@ const Description = () => {
   useIntersecting(sectionRef);
   return (
     <Section
-      width={"1000"}
+      option="medium"
       subtitle="Creeds we live by"
       title="Elevate your home with our attitude of excellence and timeless style."
       ref={ sectionRef}

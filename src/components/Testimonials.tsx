@@ -51,7 +51,7 @@ const Testimonials = () => {
 
   return (
     <Section
-      width="800"
+      option="small"
       title=" Discover the stories of our delighted customers - thousands and
       counting!"
       subtitle="Testimonials"

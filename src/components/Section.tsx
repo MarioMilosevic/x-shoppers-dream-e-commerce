@@ -3,14 +3,15 @@ import { SectionProps, widthOptions } from "../types/types";
 
 const Section = forwardRef(
   (
-    { width, subtitle, title, children }: SectionProps,
+    { option, subtitle, title, children }: SectionProps,
     ref: ForwardedRef<HTMLElement>
   ) => {
     const widthOptions: widthOptions = {
-      1200: "lg:w-[1200px]",
-      100: "lg:w-[1000px]",
-      800: "lg:w-[800px]",
+      large: "lg:w-[1200px]",
+      medium: "lg:w-[1000px]",
+      small: "lg:w-[800px]",
     };
+    // console.log(moram da provjerim u slider za props, u arrowcomponent isto)
 
     return (
       <section
@@ -18,7 +19,7 @@ const Section = forwardRef(
         ref={ref}
       >
         <div
-          className={`w-[65%] py-28 lg:py-custom-py mx-auto ${widthOptions[width]} flex flex-col gap-20`}
+          className={`w-[65%] py-28 lg:py-custom-py mx-auto ${widthOptions[option]} flex flex-col gap-20`}
         >
           <div className="w-full flex flex-col gap-2 mx-auto">
             <h3 className="text-fuchsia-600 text-base uppercase lg:text-[1.1rem]">

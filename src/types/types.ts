@@ -56,7 +56,7 @@ export type OutletContext = {
 };
 
 export type SectionProps = {
-  width: keyof widthOptions;
+  option: keyof widthOptions;
   title: string;
   subtitle: string;
   children: ReactNode;
@@ -79,7 +79,7 @@ export type ArrowContainerProps = {
 };
 
 export type widthOptions = {
-  1200: string;
-  100: string;
-  800: string;
+  large: string;
+  medium: string;
+  small: string;
 };
