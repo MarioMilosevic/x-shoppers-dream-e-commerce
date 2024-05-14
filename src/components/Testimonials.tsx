@@ -39,43 +39,46 @@ const Testimonials = () => {
   }, [currentSlideIndex]);
 
   return (
-      <Section
-        width="800"
-        title=" Discover the stories of our delighted customers - thousands and
+    <Section
+      width="800"
+      title=" Discover the stories of our delighted customers - thousands and
       counting!"
-        subtitle="Testimonials"
-        ref={sectionRef}
-      >
-        <div className="w-[800px] relative flex items-center justify-center overflow-hidden">
-          <div className="flex justify-center">
-            <div
-              className="bg-neutral-50 opacity-80 flex items-center z-10 justify-center rounded-full p-3 absolute top-[25%] cursor-pointer left-0  w-14 h-14"
-              onClick={previousSlide}
-            >
-              <BsArrowLeft className="w-6 h-6" />
-            </div>
+      subtitle="Testimonials"
+      ref={sectionRef}
+    >
+      <div className="w-[800px] relative flex items-center justify-center overflow-hidden">
+        <div className="flex justify-center">
+          <div
+            className="bg-neutral-50 opacity-80 flex items-center z-10 justify-center rounded-full p-3 absolute top-[25%] cursor-pointer left-0  w-14 h-14"
+            onClick={previousSlide}
+          >
+            <BsArrowLeft className="w-6 h-6" />
+          </div>
 
-            <div className="relative w-[800px] h-[25rem]">
-              {testimonials.map((el, index) => (
-                <Slide
-                  {...el}
-                  key={index}
-                  translate={100 * (index - currentSlideIndex)}
-                  currentSlideIndex={currentSlideIndex}
-                  index={ index}
-                />
-              ))}
-            </div>
-            <div
-              className="bg-neutral-50 flex items-center opacity-80 justify-center rounded-full p-3 absolute top-[25%] cursor-pointer right-0 w-14 h-14"
-              onClick={nextSlide}
-            >
-              <BsArrowRight className="w-6 h-6" />
+          <div className="relative w-[800px] h-[25rem]">
+            {testimonials.map((el, index) => (
+              <Slide
+                {...el}
+                key={index}
+                translate={100 * (index - currentSlideIndex)}
+                currentSlideIndex={currentSlideIndex}
+                index={index}
+              />
+            ))}
+            <div className="w-[608px] absolute top-12 left-24">
+              <hr className="animate-[expand_5s_linear_infinite]  bg-fuchsia-600 h-[3px]" />
             </div>
           </div>
+          <div
+            className="bg-neutral-50 flex items-center opacity-80 justify-center rounded-full p-3 absolute top-[25%] cursor-pointer right-0 w-14 h-14"
+            onClick={nextSlide}
+          >
+            <BsArrowRight className="w-6 h-6" />
+          </div>
         </div>
-        <hr className="animate-[expand_5s_linear_infinite]  bg-fuchsia-600 h-[2px]" />
-      </Section>
+      </div>
+      {/* uz stejt direktno manipulisati ovim hr da li je hidden ili block tako nesto  */}
+    </Section>
   );
 };
 
