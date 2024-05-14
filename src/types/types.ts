@@ -4,14 +4,14 @@ import { IconType } from "react-icons";
 export type ButtonProps = {
   children: ReactNode;
   color: string;
-  buttonHandler:() => void
+  buttonHandler: () => void;
 };
 
 export type ListItemProps = {
   children: ReactNode;
   isActive: boolean;
   name: string;
-  path:string
+  path: string;
 };
 
 export type ProductState = {
@@ -40,11 +40,10 @@ export type InfoProps = {
   children: ReactNode;
 };
 
-
 export type OperationProps = {
   title: string;
   text: string;
-  icon: IconType
+  icon: IconType;
 };
 
 export type OutletContext = {
@@ -57,14 +56,14 @@ export type OutletContext = {
 };
 
 export type SectionProps = {
-  width: string;
+  width: keyof widthOptions;
   title: string;
   subtitle: string;
   children: ReactNode;
-}
+};
 
 export type SlideProps = {
-  title:string;
+  title: string;
   text: string;
   img: string;
   name: string;
@@ -76,5 +75,11 @@ export type SlideProps = {
 export type ArrowContainerProps = {
   direction: string;
   clickHandler: () => void;
-  children:ReactNode
-}
+  children: ReactNode;
+};
+
+export type widthOptions = {
+  1200: string;
+  100: string;
+  800: string;
+};

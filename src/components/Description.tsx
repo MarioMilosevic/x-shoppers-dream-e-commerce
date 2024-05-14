@@ -11,7 +11,7 @@ const Description = () => {
   return (
     <Section
       width={"1000"}
-      subtitle="CREEDS WE LIVE BY"
+      subtitle="Creeds we live by"
       title="Elevate your home with our attitude of excellence and timeless style."
       ref={ sectionRef}
     >

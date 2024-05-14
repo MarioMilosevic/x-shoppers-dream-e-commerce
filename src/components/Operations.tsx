@@ -13,7 +13,7 @@ const Operations = () => {
       <Section
         width="800"
         title="Where simplicity meets efficiency to bring your home to life."
-        subtitle="OPERATIONS"
+        subtitle="Operations"
         ref={sectionRef}
       >
         <div className="flex lg:justify-between ">
