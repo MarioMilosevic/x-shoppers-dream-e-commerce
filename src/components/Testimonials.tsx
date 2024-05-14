@@ -2,8 +2,9 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import { useIntersecting } from "../hooks/useIntersecting";
 import Section from "./Section";
 import { testimonials } from "../utils/constants";
-import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
+import { HiOutlineArrowLongLeft, HiOutlineArrowLongRight } from "react-icons/hi2";
 import Slide from "./Slide";
+import ArrowContainer from "./ArrowContainer";
 
 const Testimonials = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
@@ -55,13 +56,9 @@ const Testimonials = () => {
     >
       <div className="w-[800px] relative flex items-center justify-center overflow-hidden">
         <div className="flex justify-center">
-          <div
-            className="bg-neutral-50 opacity-80 flex items-center z-10 justify-center rounded-full p-3 absolute top-[25%] cursor-pointer left-0  w-14 h-14"
-            onClick={previousSlide}
-          >
-            <BsArrowLeft className="w-6 h-6" />
-          </div>
-
+          <ArrowContainer direction={"left"} clickHandler={previousSlide}>
+          <HiOutlineArrowLongLeft className="w-10 h-10"/>
+          </ArrowContainer>
           <div className="relative w-[800px] h-[25rem]">
             {testimonials.map((el, index) => (
               <Slide
@@ -75,15 +72,11 @@ const Testimonials = () => {
               <hr className="animate-[expand_5s_linear_infinite]  bg-fuchsia-600 h-[3px]" />
             </div>
           </div>
-          <div
-            className="bg-neutral-50 flex items-center opacity-80 justify-center rounded-full p-3 absolute top-[25%] cursor-pointer right-0 w-14 h-14"
-            onClick={nextSlide}
-          >
-            <BsArrowRight className="w-6 h-6" />
-          </div>
+          <ArrowContainer direction={"right"} clickHandler={nextSlide}>
+            <HiOutlineArrowLongRight className="w-10 h-10"/>
+          </ArrowContainer>
         </div>
       </div>
-      {/* uz stejt direktno manipulisati ovim hr da li je hidden ili block tako nesto  */}
     </Section>
   );
 };

@@ -72,3 +72,9 @@ export type SlideProps = {
   currentSlideIndex: number;
   index: number;
 };
+
+export type ArrowContainerProps = {
+  direction: string;
+  clickHandler: () => void;
+  children:ReactNode
+}
