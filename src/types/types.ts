@@ -3,7 +3,7 @@ import { IconType } from "react-icons";
 
 export type ButtonProps = {
   children: ReactNode;
-  color: string;
+  color: keyof ButtonColors;
   buttonHandler: () => void;
 };
 
@@ -87,4 +87,10 @@ export type widthOptions = {
 export type ArrowContainerOptions = {
   right: string;
   left: string;
+}
+
+export type ButtonColors = {
+  purple: string;
+  white: string;
+  red: string;
 }

@@ -11,7 +11,6 @@ const Section = forwardRef(
       medium: "lg:w-[1000px]",
       small: "lg:w-[800px]",
     };
-    // console.log(moram da provjerim u slider za props, u arrowcomponent isto)
 
     return (
       <section

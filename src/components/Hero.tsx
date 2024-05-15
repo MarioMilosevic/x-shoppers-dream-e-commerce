@@ -25,10 +25,10 @@ const Hero = () => {
           Create your perfect space with our designs.
         </h2>
         <div className="flex gap-4">
-          <Button buttonHandler={() => navigate("/Products")} color="Purple">
+          <Button buttonHandler={() => navigate("/Products")} color="purple">
             Explore products
           </Button>
-          <Button buttonHandler={scrollToDescription} color="">
+          <Button buttonHandler={scrollToDescription} color="white">
             <span>Learn more</span>
             <IoIosArrowRoundDown />
           </Button>
