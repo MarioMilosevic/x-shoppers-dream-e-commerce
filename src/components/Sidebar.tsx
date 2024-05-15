@@ -2,10 +2,9 @@ import { SidebarProps } from "../types/types";
 import Button from "./Button";
 // import { useState   } from "react";
 const Sidebar = ({ products }: SidebarProps) => {
-  console.log("sidebar", products)
-
-    
-
+  console.log("sidebar", products);
+  const categories = new Set(products.map((product) => product.category));
+  const companies = new Set(products.map((product)=> product.company))
   return (
     <aside className="border-r  border-black h-[1000px] text-sm">
       <input
@@ -15,21 +14,19 @@ const Sidebar = ({ products }: SidebarProps) => {
       />
       <h3 className="font-medium pt-4 pb-2">Category</h3>
       <ul className="flex flex-col gap-2">
-        <li className="font-light">All</li>
-        <li className="font-light">Office</li>
-        <li className="font-light">Living Room</li>
-        <li className="font-light">Kitchen</li>
-        <li className="font-light">Bedroom</li>
-        <li className="font-light">Dinning</li>
-        <li className="font-light">Kids</li>
+        <li className="font-light capitalize">All</li>
+        {[...categories].map((category) => (
+          <li key={category} className="font-light capitalize">
+            {category}
+          </li>
+        ))}
       </ul>
       <h3 className="font-medium pt-4 pb-2">Company</h3>
       <select className="bg-fuchsia-100 border border-fuchsia-500 p-1 w-[100px]">
         <option value="All">All</option>
-        <option value="Marcos">Marcos</option>
-        <option value="Liddy">Liddy</option>
-        <option value="Ikea">Ikea</option>
-        <option value="Caressa">Caressa</option>
+        {[...companies].map((company) => (
+          <option key={company} value={company} className="capitalize">{company }</option>
+        ))}
       </select>
       <h3 className="font-medium pt-4 pb-2">Color</h3>
       <ul className="flex items-center gap-1">
