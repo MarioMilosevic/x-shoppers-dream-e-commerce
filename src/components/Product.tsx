@@ -8,7 +8,7 @@ const Product = ({ image, name, price }: ProductProps) => {
         alt={name}
         className="w-[75%] mx-auto lg:w-full lg:h-[250px] object-cover rounded-md cursor-pointer"
       />
-      <div className="w-[50%] mx-auto lg:w-full flex flex-col gap-4">
+      <div className="w-[50%] mx-auto lg:w-full flex justify-between">
         <h2 className="capitalize text-medium font-medium lg:text-xl">
           {name}
         </h2>

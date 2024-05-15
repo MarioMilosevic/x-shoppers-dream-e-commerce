@@ -1,14 +1,14 @@
 import { SidebarProps } from "../types/types";
+import { useState } from "react";
 import Button from "./Button";
-// import { useState   } from "react";
+
 const Sidebar = ({ products }: SidebarProps) => {
-  // trebace mi useState da bih prikazao globalni stejt znaci 2 stejta 1 globalni 1 lokalni
-  console.log("sidebar", products);
-  const categories = new Set(products.map((product) => product.category));
-  const companies = new Set(products.map((product) => product.company))
+  const [sidebarProducts, setSidebarProducts] = useState(products)
+  const categories = new Set(sidebarProducts.map((product) => product.category));
+  const companies = new Set(sidebarProducts.map((product) => product.company))
 
   return (
-    <aside className="border-r  border-black h-[1000px] text-sm">
+    <aside className="text-sm">
       <input
         type="text"
         placeholder="Search"

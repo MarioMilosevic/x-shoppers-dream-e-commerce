@@ -1,15 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { ProductState } from "../../types/types";
 
 export type appState = {
   loading: boolean;
-  products: ProductState[];
 };
 
 const initialState: appState = {
   loading: false,
-  products: [],
 };
 
 export const appSlice = createSlice({
@@ -19,12 +16,8 @@ export const appSlice = createSlice({
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
     },
-    setProducts: (state, action: PayloadAction<ProductState[]>) => {
-      console.log(action.payload)
-      state.products = action.payload;
-    },
   },
 });
 
-export const { setLoading, setProducts } = appSlice.actions;
+export const { setLoading } = appSlice.actions;
 export default appSlice.reducer;
