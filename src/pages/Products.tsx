@@ -7,6 +7,7 @@ import Loading from "../components/Loading";
 
 const Products = () => {
   const [products, setProducts] = useState<ProductState[]>();
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -22,6 +23,7 @@ const Products = () => {
     };
     fetchData();
   }, []);
+  console.log('render')
   if (!products) return <Loading />;
   return (
     <div className="lg:w-[1200px] grid grid-cols-[15%,1fr] gap-12 mx-auto py-16 border border-black">
@@ -32,3 +34,6 @@ const Products = () => {
 };
 
 export default Products;
+// klikom na all moram da prikazem sve proizvode = glavni stejt
+// SIDEBAR klikom na office itd ja uzmem glavni stejt i u njemu nadjem sta cu da prikazem 
+// CONTENT nema pristup

@@ -6,29 +6,16 @@ import Section from "./Section";
 import Button from "./Button";
 import { useIntersecting } from "../hooks/useIntersecting";
 import { useNavigate } from "react-router";
+import { useProductsSlice } from "../hooks/useProductsSlice";
 
 const FeaturedProducts = () => {
-  const [products, setProducts] = useState<ProductState[]>([]);
+  const products = useProductsSlice()
+  console.log(products)
   const sectionRef = useRef(null);
   useIntersecting(sectionRef);
   const navigate = useNavigate();
+  const sectionProducts = products.slice(3,6)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const dataResponse = await response.json();
-        console.log(dataResponse);
-        setProducts(dataResponse.slice(3, 6));
-      } catch (error) {
-        console.error("Error fetching data", error);
-      }
-    };
-    fetchData();
-  }, []);
 
   return (
     <Section
@@ -39,7 +26,7 @@ const FeaturedProducts = () => {
     >
       <div className="flex flex-col lg:items-center gap-10 lg:w-[1200px] ">
         <div className="flex flex-col lg:gap-4 lg:flex-row  lg:w-full ">
-          {products.map((product) => (
+          {sectionProducts.map((product) => (
             <Product key={product.id} {...product} />
           ))}
         </div>
