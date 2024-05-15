@@ -1,40 +1,10 @@
+import { SidebarProps } from "../types/types";
 import Button from "./Button";
-import { useEffect, useState   } from "react";
-import { url} from "../utils/constants";
-const Sidebar = () => {
-  // const [response, setResponse] = useState()
-  useEffect(() => {
-    const fetchData = async () => {
-     try {
-       const response = await fetch(url)
-       if (!response.ok) {
-         throw new Error('Network response was not ok')
-       }
-       const dataResponse = await response.json()
-       console.log(dataResponse)
-      //  setResponse(dataResponse)
-     } catch (error) {
-      console.error('Error fetching data', error)
-      }
-    }
-    fetchData()
-    // console.log(response)
-  //  const fetchData = async () => {
-  //    try {
-  //      const response = await fetch(url);
-  //      if (!response.ok) {
-  //        throw new Error("Network response was not ok");
-  //      }
-  //      const dataResponse = await response.json();
-  //      const { data } = dataResponse;
-  //      setProducts(data.slice(3, 6));
-  //    } catch (error) {
-  //      console.error("Error fetching data", error);
-  //    }
-  //  };
-  //  fetchData();
- }, []);
+// import { useState   } from "react";
+const Sidebar = ({ products }: SidebarProps) => {
+  console.log("sidebar", products)
 
+    
 
   return (
     <aside className="border-r  border-black h-[1000px] text-sm">
@@ -76,9 +46,14 @@ const Sidebar = () => {
       {/* value, min, max, step */}
       <div className="flex gap-2 items-center pt-4 pb-2">
         <h3 className="font-medium ">Free shipping</h3>
-        <input type="checkbox"/>
+        <input type="checkbox" />
       </div>
-      <Button color="red" buttonHandler={()=> console.log('da izbrise filtere')}>Clear filters</Button>
+      <Button
+        color="red"
+        buttonHandler={() => console.log("da izbrise filtere")}
+      >
+        Clear filters
+      </Button>
     </aside>
   );
 };

@@ -92,3 +92,10 @@ export type ButtonColors = {
   white: string;
   red: string;
 };
+
+export type SidebarProps = {
+  products?: ProductState[]
+}
+export type ProductsContentProps = {
+  products?: ProductState[]
+}

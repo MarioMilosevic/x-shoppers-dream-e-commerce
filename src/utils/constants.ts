@@ -6,23 +6,21 @@ import anastasiya from "../assets/anastasiya petrova.jpeg";
 import vinney from "../assets/vinney malesh.webp";
 import tyron from "../assets/tyron mayers.jpg";
 import anna from "../assets/anna capron.avif";
-// export const url =
-//   "https://strapi-store-server.onrender.com/api/products?search=&category=all&company=all&order=a-z&price=100000&page=1";
 
-  export const url = "https://www.course-api.com/react-store-products";
+export const url = "https://www.course-api.com/react-store-products";
 
 export const pages = [
   {
     id: crypto.randomUUID(),
     name: "Home",
     isActive: true,
-    path:"/"
+    path: "/",
   },
   {
     id: crypto.randomUUID(),
     name: "Products",
     isActive: false,
-    path:"/Products"
+    path: "/Products",
   },
 ];
 

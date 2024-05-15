@@ -11,7 +11,7 @@ const FeaturedProducts = () => {
   const [products, setProducts] = useState<ProductState[]>([]);
   const sectionRef = useRef(null);
   useIntersecting(sectionRef);
-  const navigate= useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +21,7 @@ const FeaturedProducts = () => {
           throw new Error("Network response was not ok");
         }
         const dataResponse = await response.json();
-console.log(dataResponse)
+        console.log(dataResponse);
         setProducts(dataResponse.slice(3, 6));
       } catch (error) {
         console.error("Error fetching data", error);
@@ -30,25 +30,24 @@ console.log(dataResponse)
     fetchData();
   }, []);
 
-
   return (
-      <Section
-        option="large"
-        subtitle="Featured products"
-        title="The art of modern living unlocked."
-        ref={sectionRef}
-      >
-        <div className="flex flex-col lg:items-center gap-10 lg:w-[1200px] ">
-          <div className="flex flex-col lg:gap-4 lg:flex-row  lg:w-full ">
-            {products.map((product) => (
-              <Product key={product.id} {...product} />
-            ))}
-          </div>
-            <Button color="purple" buttonHandler={() => navigate("/Products")}>
-              All Products
-            </Button>
+    <Section
+      option="large"
+      subtitle="Featured products"
+      title="The art of modern living unlocked."
+      ref={sectionRef}
+    >
+      <div className="flex flex-col lg:items-center gap-10 lg:w-[1200px] ">
+        <div className="flex flex-col lg:gap-4 lg:flex-row  lg:w-full ">
+          {products.map((product) => (
+            <Product key={product.id} {...product} />
+          ))}
         </div>
-      </Section>
+        <Button color="purple" buttonHandler={() => navigate("/Products")}>
+          All Products
+        </Button>
+      </div>
+    </Section>
   );
 };
 
