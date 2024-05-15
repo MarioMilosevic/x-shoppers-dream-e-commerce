@@ -9,6 +9,7 @@ import { pages } from "../utils/constants";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 const SharedLayout = () => {
+ 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const navigate = useNavigate();
   const navRef = useRef<HTMLDivElement | null>(

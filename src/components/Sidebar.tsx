@@ -2,9 +2,11 @@ import { SidebarProps } from "../types/types";
 import Button from "./Button";
 // import { useState   } from "react";
 const Sidebar = ({ products }: SidebarProps) => {
+  // trebace mi useState da bih prikazao globalni stejt znaci 2 stejta 1 globalni 1 lokalni
   console.log("sidebar", products);
   const categories = new Set(products.map((product) => product.category));
-  const companies = new Set(products.map((product)=> product.company))
+  const companies = new Set(products.map((product) => product.company))
+
   return (
     <aside className="border-r  border-black h-[1000px] text-sm">
       <input
@@ -22,7 +24,7 @@ const Sidebar = ({ products }: SidebarProps) => {
         ))}
       </ul>
       <h3 className="font-medium pt-4 pb-2">Company</h3>
-      <select className="bg-fuchsia-100 border border-fuchsia-500 p-1 w-[100px]">
+      <select className="bg-fuchsia-100 border border-fuchsia-500 p-1 w-[100px] capitalize">
         <option value="All">All</option>
         {[...companies].map((company) => (
           <option key={company} value={company} className="capitalize">{company }</option>
@@ -30,7 +32,7 @@ const Sidebar = ({ products }: SidebarProps) => {
       </select>
       <h3 className="font-medium pt-4 pb-2">Color</h3>
       <ul className="flex items-center gap-1">
-        <li>All</li>
+        <li className="font-light">All</li>
         <button className="w-3 h-3 rounded-full bg-red-500"></button>
         <button className="w-3 h-3 rounded-full bg-green-500"></button>
         <button className="w-3 h-3 rounded-full bg-blue-500"></button>
