@@ -20,7 +20,7 @@ const Operations = () => {
           {operations.map((operation, index) => (
             <Button
               key={index}
-              color={currentActiveIndex === index ? "Purple" : ""}
+              color={currentActiveIndex === index ? "purple" : "white"}
               buttonHandler={() => setCurrentActiveIndex(index)}
             >
               {operation.buttonTitle}

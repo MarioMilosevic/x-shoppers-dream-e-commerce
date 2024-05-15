@@ -21,8 +21,8 @@ const FeaturedProducts = () => {
           throw new Error("Network response was not ok");
         }
         const dataResponse = await response.json();
-        const { data } = dataResponse;
-        setProducts(data.slice(3, 6));
+console.log(dataResponse)
+        setProducts(dataResponse.slice(3, 6));
       } catch (error) {
         console.error("Error fetching data", error);
       }
@@ -41,10 +41,10 @@ const FeaturedProducts = () => {
         <div className="flex flex-col lg:items-center gap-10 lg:w-[1200px] ">
           <div className="flex flex-col lg:gap-4 lg:flex-row  lg:w-full ">
             {products.map((product) => (
-              <Product key={product.id} attributes={product.attributes} />
+              <Product key={product.id} {...product} />
             ))}
           </div>
-            <Button color="Purple" buttonHandler={() => navigate("/Products")}>
+            <Button color="purple" buttonHandler={() => navigate("/Products")}>
               All Products
             </Button>
         </div>

@@ -15,23 +15,21 @@ export type ListItemProps = {
 };
 
 export type ProductState = {
-  id: number;
-  attributes: ProductAttributes;
+  category: string;
+  colors: string[];
+  company: string;
+  description: string;
+  id: string;
+  image: string;
+  name: string;
+  price: number;
+  shipping: boolean;
 };
 
-export type ProductAttributes = {
-  category: string;
-  color: string[];
-  company: string;
-  createdAt: string;
-  description: string;
-  featured: boolean;
+export type ProductProps = {
   image: string;
-  price: string;
-  publishedAt: string;
-  shipping: boolean;
-  title: string;
-  updatedAt: string;
+  name: string;
+  price: number;
 };
 
 export type InfoProps = {
@@ -87,10 +85,10 @@ export type widthOptions = {
 export type ArrowContainerOptions = {
   right: string;
   left: string;
-}
+};
 
 export type ButtonColors = {
   purple: string;
   white: string;
   red: string;
-}
+};

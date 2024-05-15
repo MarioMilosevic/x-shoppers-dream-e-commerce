@@ -10,4 +10,3 @@ export const handleStickyNav = (ref:RefObject<HTMLElement>, cls:string) => {
   }
 };
 
-

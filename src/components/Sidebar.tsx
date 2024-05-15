@@ -1,6 +1,40 @@
 import Button from "./Button";
+import { useEffect, useState   } from "react";
+import { url} from "../utils/constants";
 const Sidebar = () => {
-  
+  // const [response, setResponse] = useState()
+  useEffect(() => {
+    const fetchData = async () => {
+     try {
+       const response = await fetch(url)
+       if (!response.ok) {
+         throw new Error('Network response was not ok')
+       }
+       const dataResponse = await response.json()
+       console.log(dataResponse)
+      //  setResponse(dataResponse)
+     } catch (error) {
+      console.error('Error fetching data', error)
+      }
+    }
+    fetchData()
+    // console.log(response)
+  //  const fetchData = async () => {
+  //    try {
+  //      const response = await fetch(url);
+  //      if (!response.ok) {
+  //        throw new Error("Network response was not ok");
+  //      }
+  //      const dataResponse = await response.json();
+  //      const { data } = dataResponse;
+  //      setProducts(data.slice(3, 6));
+  //    } catch (error) {
+  //      console.error("Error fetching data", error);
+  //    }
+  //  };
+  //  fetchData();
+ }, []);
+
 
   return (
     <aside className="border-r  border-black h-[1000px] text-sm">
