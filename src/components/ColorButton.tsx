@@ -10,7 +10,7 @@ const ColorButton = ({ color }:colorButtonProps) => {
     }
 
 
-  return <button className={`w-3 h-3 rounded-full ${colorOptions[color]}`}></button>;
+  return <button className={`w-3 h-3 rounded-full opacity-50 ${colorOptions[color]}`}></button>;
 }
 
 export default ColorButton

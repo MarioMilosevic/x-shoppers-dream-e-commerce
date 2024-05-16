@@ -29,7 +29,7 @@ const Sidebar = ({ products }: SidebarProps) => {
         ))}
       </ul>
       <h3 className="font-medium pt-4 pb-2">Company</h3>
-      <select className="bg-fuchsia-100 border border-fuchsia-500 p-1 w-[100px] capitalize">
+      <select className="bg-fuchsia-100 border border-fuchsia-500 px-1 capitalize">
         <option value="All">All</option>
         {[...companies].map((company) => (
           <option key={company} value={company} className="capitalize">
@@ -48,7 +48,7 @@ const Sidebar = ({ products }: SidebarProps) => {
       <span className="text-fuchsia-500">$3,099,99</span>
       <input type="range" />
       {/* value, min, max, step */}
-      <div className="flex gap-2 items-center pt-4 pb-2">
+      <div className="flex gap-2 items-center py-4">
         <h3 className="font-medium ">Free shipping</h3>
         <input type="checkbox" />
       </div>
@@ -63,3 +63,5 @@ const Sidebar = ({ products }: SidebarProps) => {
 };
 
 export default Sidebar;
+
+

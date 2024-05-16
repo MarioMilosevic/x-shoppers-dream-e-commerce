@@ -4,10 +4,10 @@ const ProductsContent = ({workingState}:ProductsContentProps) => {
   return (
     <div className="flex flex-col text-sm">
       <div className="flex justify-between items-center pb-6">
-        <p>{workingState?.length} products found</p>
+        <p className="font-medium">{workingState?.length} products found</p>
         <hr className="bg-fuchsia-600 w-[60%]  h-[2px] " />
-        <div className="flex text-md">
-          <label htmlFor="sort">Sort by</label>
+        <div className="flex text-md items-center gap-2">
+          <label htmlFor="sort">Sort by:</label>
           <select name="sort" id="sort" className="bg-fuchsia-100 border border-fuchsia-500">
             <option value="lowest">Price (Lowest)</option>
             <option value="highest">Price (Highest)</option>
