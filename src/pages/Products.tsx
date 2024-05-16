@@ -32,7 +32,6 @@ const Products = () => {
   // da napravim funkcije
 
   
-  console.log('render')
   if (!products) return <Loading />;
   return (
     <div className="lg:w-[1200px] grid grid-cols-[15%,1fr] gap-12 mx-auto py-16">

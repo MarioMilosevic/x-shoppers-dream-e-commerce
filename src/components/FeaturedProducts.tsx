@@ -38,7 +38,7 @@ const FeaturedProducts = () => {
       <div className="flex flex-col lg:items-center gap-10 lg:w-[1200px]">
         <div className="flex flex-col lg:gap-4 lg:flex-row  lg:w-full ">
           {products.map((product) => (
-            <Product key={product.id} {...product} size='large' hover={ "true"} />
+            <Product key={product.id} {...product} textSize='large' hover={ "true"} imgSize="large"/>
           ))}
         </div>
         <Button color="purple" buttonHandler={() => navigate("/Products")}>

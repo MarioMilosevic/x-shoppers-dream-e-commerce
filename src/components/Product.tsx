@@ -1,14 +1,27 @@
 import {
   ProductProps,
-  sizeOptions,
+  textSizeOptions,
   ProductHoverOptions,
+  imgSizeOptions,
 } from "../types/types";
 
-const Product = ({ image, name, price, size, hover }: ProductProps) => {
-  const sizeOptions: sizeOptions = {
+const Product = ({
+  image,
+  name,
+  price,
+  textSize,
+  hover,
+  imgSize,
+}: ProductProps) => {
+  const textSizeOptions: textSizeOptions = {
     large: "lg:text-xl ",
     medium: "lg:text-lg",
     small: "lg:text-md",
+  };
+
+  const imgSizeOptions: imgSizeOptions = {
+    large: "lg:h-[250px]",
+    small: "lg:h-[180px]",
   };
 
   const hoverOptions: ProductHoverOptions = {
@@ -23,10 +36,10 @@ const Product = ({ image, name, price, size, hover }: ProductProps) => {
       <img
         src={image}
         alt={name}
-        className="w-[75%] mx-auto lg:w-full lg:h-[250px] object-cover rounded-md cursor-pointer"
+        className={`w-[75%] mx-auto lg:w-full object-cover rounded-md cursor-pointer ${imgSizeOptions[imgSize]}`}
       />
       <div
-        className={`w-[50%] mx-auto lg:w-full flex justify-between ${sizeOptions[size]}`}
+        className={`w-[50%] mx-auto lg:w-full flex justify-between ${textSizeOptions[textSize]}`}
       >
         <h2 className="capitalize text-medium font-medium">{name}</h2>
         <span className="font-semibold  text-fuchsia-500">

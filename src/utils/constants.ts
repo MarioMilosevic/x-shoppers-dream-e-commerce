@@ -6,6 +6,7 @@ import anastasiya from "../assets/anastasiya petrova.jpeg";
 import vinney from "../assets/vinney malesh.webp";
 import tyron from "../assets/tyron mayers.jpg";
 import anna from "../assets/anna capron.avif";
+import { ColorOptions } from "../types/types";
 
 export const url = "https://www.course-api.com/react-store-products";
 
@@ -89,3 +90,5 @@ export const testimonials = [
     city: "Los Angeles, USA",
   },
 ];
+
+export const buttonColors: Array<keyof ColorOptions> = ["red", "green", "blue", "black", "yellow"];

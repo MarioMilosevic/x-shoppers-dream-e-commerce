@@ -27,11 +27,17 @@ export type ProductState = {
 };
 
 export type ProductProps = {
-  size: keyof sizeOptions;
+  textSize: keyof textSizeOptions;
+  imgSize: keyof imgSizeOptions;
   image: string;
   name: string;
   price: number;
   hover: keyof ProductHoverOptions;
+};
+
+export type imgSizeOptions = {
+  large: string;
+  small: string;
 };
 
 export type ProductHoverOptions = {
@@ -88,7 +94,7 @@ export type widthOptions = {
   medium: string;
   small: string;
 };
-export type sizeOptions = {
+export type textSizeOptions = {
   large: string;
   medium: string;
   small: string;
@@ -109,6 +115,19 @@ export type SidebarProps = {
   products: ProductState[];
   workingState?: ProductState[];
 };
+
 export type ProductsContentProps = {
   workingState?: ProductState[];
+};
+
+export type colorButtonProps = {
+  color: keyof ColorOptions;
+}
+
+export type ColorOptions = {
+  red: string;
+  blue: string;
+  black: string;
+  green: string;
+  yellow: string;
 };
