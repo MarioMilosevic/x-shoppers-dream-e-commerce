@@ -37,7 +37,7 @@ const Products = () => {
   return (
     <div className="lg:w-[1200px] grid grid-cols-[15%,1fr] gap-12 mx-auto py-16">
       <Sidebar products={products} workingState={workingState}/>
-      <ProductsContent products={products} workingState={workingState}/>
+      <ProductsContent workingState={workingState}/>
     </div>
   );
 };
