@@ -111,13 +111,12 @@ export type ButtonColors = {
   red: string;
 };
 
-export type SidebarProps = {
-  products: ProductState[];
-  workingState?: ProductState[];
-};
-
-export type ProductsContentProps = {
-  workingState?: ProductState[];
+export type filtersType = {
+    category: string;
+    company: string;
+    colors: string[];
+    price: number;
+    shipping: boolean;
 };
 
 export type colorButtonProps = {

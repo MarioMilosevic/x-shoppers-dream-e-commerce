@@ -1,16 +1,13 @@
 import Sidebar from "../components/Sidebar";
 import ProductsContent from "../components/ProductsContent";
 import Loading from "../components/Loading";
-import { ProductState } from "../types/types";
 import { useProductsSlice } from "../hooks/useProductsSlice";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { url } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { setProducts } from "../redux/features/productsSlice";
 
 const Products = () => {
-  // const [products, setProducts] = useState<ProductState[]>();
-  // const [workingState, setWorkingState] = useState<ProductState[]>()
   const products = useProductsSlice();
   const dispatch = useDispatch();
 
@@ -22,6 +19,7 @@ const Products = () => {
           throw new Error("Network response was not ok");
         }
         const dataResponse = await response.json();
+        console.log(dataResponse)
         dispatch(setProducts(dataResponse));
       } catch (error) {
         console.error("Error fetching data", error);

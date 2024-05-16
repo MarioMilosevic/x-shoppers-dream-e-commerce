@@ -1,17 +1,20 @@
-import { SidebarProps } from "../types/types";
-import { useState } from "react";
 import Button from "./Button";
 import { buttonColors } from "../utils/constants";
 import ColorButton from "./ColorButton";
+import { useProductsSlice } from "../hooks/useProductsSlice";
 
-const Sidebar = ({ products }: SidebarProps) => {
-  const [sidebarProducts, setSidebarProducts] = useState(products);
-  // moracu na njemu da radim
-  const categories = new Set(
-    sidebarProducts.map((product) => product.category)
-  );
-  const companies = new Set(sidebarProducts.map((product) => product.company));
+const Sidebar = () => {
+  const products = useProductsSlice();
+  const categories = new Set(products.map((product) => product.category));
+  const companies = new Set(products.map((product) => product.company));
 
+  // const currentFilters = {
+  //   category: "",
+  //   company: "",
+  //   colors: [],
+  //   price: "",
+  //   shipping: "",
+  // };
   return (
     <aside className="text-sm">
       <input
@@ -63,5 +66,3 @@ const Sidebar = ({ products }: SidebarProps) => {
 };
 
 export default Sidebar;
-
-
