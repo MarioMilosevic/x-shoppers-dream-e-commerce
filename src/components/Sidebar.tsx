@@ -3,27 +3,23 @@ import { buttonColors } from "../utils/constants";
 import ColorButton from "./ColorButton";
 import { useProductsSlice } from "../hooks/useProductsSlice";
 import { useDispatch } from "react-redux";
-import { filterProducts } from "../redux/features/productsSlice";
-import { useState } from "react";
-import { startFilters } from "../utils/constants";
-import { filtersType } from "../types/types";
+import { setFilters } from "../redux/features/productsSlice";
 
 const Sidebar = () => {
   const products = useProductsSlice();
-  const categories = new Set(products.map((product) => product.category));
-  const companies = new Set(products.map((product) => product.company));
-  const dispatch = useDispatch()
-  const [currentFilters, setCurrentFilters] = useState<filtersType>(startFilters)
- 
-  // const biggestPrice = Math.max(...products.map(product => product.price))
-  // console.log(biggestPrice)
+  console.log("svi produkti", products);
+  const categoriesSet = new Set(products.map((product) => product.category));
+  const companiesSet = new Set(products.map((product) => product.company));
 
-  
+  const categories = ["All", ...categoriesSet];
+  const companies = ["All", ...companiesSet];
+
+  const dispatch = useDispatch();
 
   const proba = (e) => {
-    dispatch(filterProducts({company:"Ikea"}))
-    console.log('radi')
-  }
+    dispatch(setFilters({ company: "Ikea" }));
+    console.log("radi");
+  };
 
   return (
     <aside className="text-sm">
@@ -34,17 +30,27 @@ const Sidebar = () => {
       />
       <h3 className="font-medium pt-4 pb-2">Category</h3>
       <ul className="flex flex-col gap-2">
-        <li className="font-light cursor-pointer capitalize">All</li>
-        {[...categories].map((category) => (
-          <li key={category} className="font-light capitalize cursor-pointer" onClick={(e)=> proba(e)}>
+        {categories.map((category) => (
+          <li
+            key={category}
+            className="font-light capitalize cursor-pointer"
+            onClick={(e) => proba(e)}
+          >
             {category}
           </li>
         ))}
       </ul>
       <h3 className="font-medium pt-4 pb-2">Company</h3>
-      <select className="bg-fuchsia-100 border border-fuchsia-500 px-1 capitalize">
-        <option value="All">All</option>
-        {[...companies].map((company) => (
+      <select
+        className="bg-fuchsia-100 border border-fuchsia-500 px-1 capitalize"
+        name="company"
+        onChange={(e) =>
+          dispatch(
+            setFilters({ category: e.target.name, company: e.target.value })
+          )
+        }
+      >
+        {companies.map((company) => (
           <option key={company} value={company} className="capitalize">
             {company}
           </option>

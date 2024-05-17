@@ -1,26 +1,36 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { ProductState, filtersType } from "../../types/types";
-
-const initialState: ProductState[] = []
+import { ProductState, productFiltersType } from "../../types/types";
+import { RootState } from "../store/store";
+export const startFilters: productFiltersType = {
+  currentCategory: "All",
+  currentCompany: "All",
+  // colors: [],
+  // price: 0,
+  // shipping: false,
+};
+const initialState: ProductState[] = [];
 
 export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    setProducts: ( state, action: PayloadAction<ProductState[]>) => {
-      return action.payload
+    setProducts: (state, action: PayloadAction<ProductState[]>) => {
+      return action.payload;
     },
-    filterProducts: (state, action: PayloadAction<filtersType>) => {
-      console.log("iz filterproductsa",action.payload)
-      const {key, value} = action.payload
-      const filteredArray = state.filter(product => product[key] === value)
-      return filteredArray
-    }
+    setFilters: (state, action: PayloadAction<productFiltersType>) => {
+      console.log("iz setPFilters", action.payload);
+      const { category, company } = action.payload;
+      const filteredArray = state.filter(
+        (product) => product[category] === company
+      );
+      console.log("filtrirani iz slajsa", filteredArray);
+      return filteredArray;
+    },
   },
 });
 
-export const { setProducts, filterProducts } = productsSlice.actions;
+export const { setProducts, setFilters } = productsSlice.actions;
 export default productsSlice.reducer;
 
 // 1 da imam objekat koji ima te propertije
