@@ -20,8 +20,8 @@ const Product = ({
   };
 
   const imgSizeOptions: imgSizeOptions = {
-    large: "lg:h-[250px]",
-    small: "lg:h-[180px]",
+    large: "h-[250px]",
+    small: "h-[180px]",
   };
 
   const hoverOptions: ProductHoverOptions = {
@@ -31,15 +31,15 @@ const Product = ({
 
   return (
     <article
-      className={`flex flex-col gap-4 lg:gap-4 lg:w-full transition-all duration-700 ${hoverOptions[hover]}`}
+      className={`flex flex-col pb-2 gap-4 lg:gap-4 lg:w-full transition-all duration-700 ${hoverOptions[hover]}`}
     >
       <img
         src={image}
         alt={name}
-        className={`w-[75%] mx-auto lg:w-full object-cover rounded-md cursor-pointer ${imgSizeOptions[imgSize]}`}
+        className={`mx-auto w-full object-cover rounded-md cursor-pointer ${imgSizeOptions[imgSize]}`}
       />
       <div
-        className={`w-[50%] mx-auto lg:w-full flex justify-between ${textSizeOptions[textSize]}`}
+        className={`mx-auto w-full flex justify-between ${textSizeOptions[textSize]}`}
       >
         <h2 className="capitalize text-medium font-medium">{name}</h2>
         <span className="font-semibold  text-fuchsia-500">

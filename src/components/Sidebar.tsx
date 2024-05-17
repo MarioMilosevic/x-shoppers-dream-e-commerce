@@ -4,19 +4,21 @@ import ColorButton from "./ColorButton";
 import { useProductsSlice } from "../hooks/useProductsSlice";
 import { useDispatch } from "react-redux";
 import { filterProducts } from "../redux/features/productsSlice";
+import { useState } from "react";
+import { startFilters } from "../utils/constants";
+import { filtersType } from "../types/types";
 
 const Sidebar = () => {
   const products = useProductsSlice();
   const categories = new Set(products.map((product) => product.category));
   const companies = new Set(products.map((product) => product.company));
   const dispatch = useDispatch()
-  // const currentFilters = {
-  //   category: "",
-  //   company: "",
-  //   colors: [],
-  //   price: "",
-  //   shipping: "",
-  // };
+  const [currentFilters, setCurrentFilters] = useState<filtersType>(startFilters)
+ 
+  // const biggestPrice = Math.max(...products.map(product => product.price))
+  // console.log(biggestPrice)
+
+  
 
   const proba = (e) => {
     dispatch(filterProducts({company:"Ikea"}))

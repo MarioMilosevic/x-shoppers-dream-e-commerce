@@ -11,7 +11,7 @@ const Button = ({ children, color, buttonHandler }: ButtonProps) => {
 
   return (
     <button
-      className={`flex items-center font-semibold rounded-md px-4 py-2 text-sm  transition-all duration-300 ${buttonColors[color]}`}
+      className={`flex items-center font-semibold rounded-md px-4 py-2 text-sm transition-all duration-300 ${buttonColors[color]}`}
       onClick={buttonHandler}
     >
       {children}

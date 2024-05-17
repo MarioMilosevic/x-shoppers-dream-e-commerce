@@ -111,3 +111,11 @@ export const buttonColors: Array<keyof ColorOptions> = [
   "black",
   "yellow",
 ];
+
+export const startFilters = {
+  category: "All",
+  company: "All",
+  colors: [],
+  price: 0,
+  shipping: false,
+};

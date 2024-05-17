@@ -57,22 +57,22 @@ const Testimonials = () => {
       subtitle="Testimonials"
       ref={sectionRef}
     >
-      <div className="w-[800px] relative flex items-center justify-center overflow-hidden">
-        <div className="flex justify-center">
+      <div className="relative flex items-center justify-center overflow-hidden">
+        <div className="flex justify-center w-full">
           <ArrowContainer direction={"left"} clickHandler={previousSlide}>
             <HiOutlineArrowLongLeft className="w-10 h-10" />
           </ArrowContainer>
-          <div className="relative w-[800px] h-[25rem]">
+          <div className="w-full relative h-[25rem] lg:h-[25rem]">
             {testimonials.map((el, index) => (
               <Slide
-                {...el}
-                key={index}
-                currentSlideIndex={currentSlideIndex}
-                index={index}
+              {...el}
+              key={index}
+              currentSlideIndex={currentSlideIndex}
+              index={index}
               />
             ))}
-            <div className="w-[608px] absolute top-12 left-24" ref={displayRef}>
-              <hr className="animate-[expand_5s_linear_infinite]  bg-fuchsia-600 h-[3px]" />
+            <div className=" lg:w-[76%] relative lg:mx-auto" ref={displayRef}>
+              <hr className="animate-[expand_5s_linear_infinite] absolute top-12 left-0 bg-fuchsia-600 h-[3px]" />
             </div>
           </div>
           <ArrowContainer direction={"right"} clickHandler={nextSlide}>

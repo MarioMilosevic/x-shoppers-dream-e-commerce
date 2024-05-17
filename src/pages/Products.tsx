@@ -1,7 +1,7 @@
 import Sidebar from "../components/Sidebar";
 import ProductsContent from "../components/ProductsContent";
 import Loading from "../components/Loading";
-import { useProductsSlice } from "../hooks/useProductsSlice";
+// import { useProductsSlice } from "../hooks/useProductsSlice";
 import { useEffect } from "react";
 import { url } from "../utils/constants";
 import { useDispatch } from "react-redux";
@@ -11,7 +11,7 @@ import { setError, setLoading } from "../redux/features/appSlice";
 import ErrorFetch from "../components/ErrorFetch";
 
 const Products = () => {
-  const products = useProductsSlice();
+  // const products = useProductsSlice();
   const {loading, error} = useAppSlice()
   const dispatch = useDispatch();
   useEffect(() => {
