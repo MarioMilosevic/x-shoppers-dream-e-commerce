@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { ProductState, filtersType } from "../../types/types";
 
-
 const initialState: ProductState[] = []
 
 export const productsSlice = createSlice({
@@ -13,6 +12,7 @@ export const productsSlice = createSlice({
       return action.payload
     },
     filterProducts: (state, action: PayloadAction<filtersType>) => {
+      console.log("iz filterproductsa",action.payload)
       const {key, value} = action.payload
       const filteredArray = state.filter(product => product[key] === value)
       return filteredArray
