@@ -2,12 +2,12 @@ import Button from "./Button";
 import { buttonColors } from "../utils/constants";
 import ColorButton from "./ColorButton";
 import { useProductsSlice } from "../hooks/useProductsSlice";
-import { useDispatch } from "react-redux";
-import { filterCompany, filterCategory } from "../redux/features/productsSlice";
+// import { useDispatch } from "react-redux";
 
 const Sidebar = () => {
   const products = useProductsSlice();
-  const dispatch = useDispatch();
+  console.log(products)
+  // const dispatch = useDispatch();
   // console.log("svi produkti", products);
   const categoriesSet = new Set(products.map((product) => product.category));
   const companiesSet = new Set(products.map((product) => product.company));
@@ -28,7 +28,8 @@ const Sidebar = () => {
             key={category}
             className="font-light capitalize cursor-pointer"
             data-category={category}
-            onClick={() => dispatch(filterCategory(category))}
+            // onClick={() => console.log(category)}
+            // onClick={() => dispatch(filterCategory(category))}
           >
             {category}
           </li>
@@ -38,11 +39,11 @@ const Sidebar = () => {
       <select
         className="bg-fuchsia-100 border border-fuchsia-500 px-1 capitalize"
         name="company"
-        onChange={(e) =>
-          dispatch(
-            filterCompany({ category: e.target.name, company: e.target.value })
-          )
-        }
+        // onChange={(e) =>
+        //   dispatch(
+        //     filterCompany({ category: e.target.name, company: e.target.value })
+        //   )
+        // }
       >
         {companies.map((company) => (
           <option key={company} value={company} className="capitalize">

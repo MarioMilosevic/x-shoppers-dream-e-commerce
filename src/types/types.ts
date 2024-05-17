@@ -111,13 +111,6 @@ export type ButtonColors = {
   red: string;
 };
 
-// export type filtersType = {
-//     category: string;
-//     company: string;
-//     colors: string[];
-//     price: number;
-//     shipping: boolean;
-// };
 
 export type productFiltersType = {
   currentCategory: string;

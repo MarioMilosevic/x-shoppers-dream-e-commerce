@@ -23,7 +23,7 @@ const Slide = ({
       <h2 className="font-medium text-lg lg:text-2xl">{title}</h2>
       
       <div className="flex flex-col">
-        <p className="text-sm leading-5 lg:leading-6">{text}</p>
+        <p className="text-sm lg:text-base leading-5 lg:leading-6">{text}</p>
         <div className="flex flex-col pt-4 lg:pt-12">
           <img
             src={img}
