@@ -10,7 +10,6 @@ import { setProducts } from "../redux/features/productsSlice";
 const Products = () => {
   const products = useProductsSlice();
   const dispatch = useDispatch();
-
   useEffect(() => {
     const fetchData = async () => {
       try {

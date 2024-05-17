@@ -7,26 +7,27 @@ import { Outlet } from "react-router";
 import { handleStickyNav } from "../utils/helperFunctions";
 import { pages } from "../utils/constants";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 const SharedLayout = () => {
  
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const navigate = useNavigate();
+  const location = useLocation()
   const navRef = useRef<HTMLDivElement | null>(
     null
   ) as React.RefObject<HTMLElement>;
-
   useEffect(() => {
-    const handleScroll = () => {
-      handleStickyNav(navRef, "sticky");
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+    if (location.pathname === "/") {
+      const handleScroll = () => {
+        handleStickyNav(navRef, "sticky");
+      };
+      window.addEventListener("scroll", handleScroll);
+      
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, [location.pathname]);
 
   const toggleIsOpen = () => {
     setIsOpen(!isOpen);

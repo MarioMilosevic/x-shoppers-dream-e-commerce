@@ -20,7 +20,7 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { setProducts } = productsSlice.actions;
+export const { setProducts, filterProducts } = productsSlice.actions;
 export default productsSlice.reducer;
 
 // 1 da imam objekat koji ima te propertije
@@ -30,17 +30,3 @@ export default productsSlice.reducer;
 // i tu nesto setujem da se to apdejtuje nemam pojma
 
 // 3. samo returnam setFilter
-
-
-    
-/*
-const currentFilters = {
-  category,
-  company,
-  color,
-  price,
-  shipping
-}
-
-
-*/ 

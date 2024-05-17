@@ -2,12 +2,14 @@ import Button from "./Button";
 import { buttonColors } from "../utils/constants";
 import ColorButton from "./ColorButton";
 import { useProductsSlice } from "../hooks/useProductsSlice";
+import { useDispatch } from "react-redux";
+import { filterProducts } from "../redux/features/productsSlice";
 
 const Sidebar = () => {
   const products = useProductsSlice();
   const categories = new Set(products.map((product) => product.category));
   const companies = new Set(products.map((product) => product.company));
-
+  const dispatch = useDispatch()
   // const currentFilters = {
   //   category: "",
   //   company: "",
@@ -15,6 +17,12 @@ const Sidebar = () => {
   //   price: "",
   //   shipping: "",
   // };
+
+  const proba = (e) => {
+    dispatch(filterProducts({company:"Ikea"}))
+    console.log('radi')
+  }
+
   return (
     <aside className="text-sm">
       <input
@@ -24,9 +32,9 @@ const Sidebar = () => {
       />
       <h3 className="font-medium pt-4 pb-2">Category</h3>
       <ul className="flex flex-col gap-2">
-        <li className="font-light capitalize">All</li>
+        <li className="font-light cursor-pointer capitalize">All</li>
         {[...categories].map((category) => (
-          <li key={category} className="font-light capitalize">
+          <li key={category} className="font-light capitalize cursor-pointer" onClick={(e)=> proba(e)}>
             {category}
           </li>
         ))}

@@ -7,8 +7,21 @@ import vinney from "../assets/vinney malesh.webp";
 import tyron from "../assets/tyron mayers.jpg";
 import anna from "../assets/anna capron.avif";
 import { ColorOptions } from "../types/types";
+import techCrunchImg from "../assets/techCrunch.8e59ce33cdb22ba0b8dd.png";
+import bussinessInsiderImg from "../assets/businessInsider.a50839ce9f675fc574e6.png";
+import newYorkTImesImg from "../assets/newYorkTimes.1279b92266cf081e20a6.png";
+import forbesImg from "../assets/forbes.c9d98237f5d5f000eaad.png";
+import usaTodayImg from "../assets/usaToday.56382ee08e942ad7c93c.png";
 
 export const url = "https://www.course-api.com/react-store-products";
+
+export const images = [
+  techCrunchImg,
+  bussinessInsiderImg,
+  newYorkTImesImg,
+  forbesImg,
+  usaTodayImg,
+];
 
 export const pages = [
   {
@@ -91,4 +104,10 @@ export const testimonials = [
   },
 ];
 
-export const buttonColors: Array<keyof ColorOptions> = ["red", "green", "blue", "black", "yellow"];
+export const buttonColors: Array<keyof ColorOptions> = [
+  "red",
+  "green",
+  "blue",
+  "black",
+  "yellow",
+];
