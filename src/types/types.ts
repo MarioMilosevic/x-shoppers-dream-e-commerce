@@ -120,9 +120,12 @@ export type ButtonColors = {
 // };
 
 export type productFiltersType = {
-  category: string;
-  company: string;
-}
+  currentCategory: string;
+  currentCompany: string;
+  colors: string[];
+  price: number;
+  shipping: boolean;
+};
 
 export type colorButtonProps = {
   color: keyof ColorOptions;
