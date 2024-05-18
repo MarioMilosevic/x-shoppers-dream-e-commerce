@@ -1,15 +1,19 @@
 import Button from "./Button";
 import { buttonColors } from "../utils/constants";
 import ColorButton from "./ColorButton";
-import { useProductsSlice } from "../hooks/useProductsSlice";
+// import { useProductsSlice } from "../hooks/useProductsSlice";
+import { useFilteredProductsSlice } from "../hooks/useFilteredProductsSlice";
 import { useDispatch } from "react-redux";
 import { setFilters } from "../redux/features/productsSlice";
+import { useProductsSlice } from "../hooks/useProductsSlice";
 
 const Sidebar = () => {
-  const products = useProductsSlice();
-  console.log(products)
+  // const products = useProductsSlice();
+  const filteredProducts = useFilteredProductsSlice()
+  const products = useProductsSlice()
+  console.log(filteredProducts)
+  // console.log(products)
   const dispatch = useDispatch();
-  // console.log("svi produkti", products);
   const categoriesSet = new Set(products.map((product) => product.category));
   const companiesSet = new Set(products.map((product) => product.company));
 

@@ -8,11 +8,14 @@ import {
 const initialState: productSliceInitialState = {
   products: [],
   filters: {
+    id:"",
     category: "All",
     company: "All",
     colors: [],
     price: 0,
     shipping: false,
+    image: "",
+    name:""
   },
   filteredProducts: [],
   // ili u funkciji napraviti
@@ -25,7 +28,7 @@ export const productsSlice = createSlice({
   reducers: {
     setProducts: (state, action: PayloadAction<productFiltersType[]>) => {
       state.products = action.payload;
-      state.filteredProducts = action.payload
+      state.filteredProducts = action.payload;
     },
     setFilters: (
       state,
@@ -34,7 +37,13 @@ export const productsSlice = createSlice({
       const { key, value } = action.payload;
       // currentCompany Ikea
       console.log(key, value);
-      state.filteredProducts = state.products.filter((product) => product[key] === (state.filters[key] = value));
+      if (value === "All") {
+        state.filteredProducts = state.products;
+      } else {
+        state.filteredProducts = state.products.filter(
+          (product) => product[key] === (state.filters[key] = value)
+        );
+      }
     },
   },
 });

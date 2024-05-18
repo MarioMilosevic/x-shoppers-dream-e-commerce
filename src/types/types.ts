@@ -113,11 +113,14 @@ export type ButtonColors = {
 
 
 export type productFiltersType = {
+  id: string;
   category: string;
   company: string;
   colors: string[];
   price: number;
   shipping: boolean;
+  image: string;
+  name: string;
 };
 
 export type productSliceInitialState = {

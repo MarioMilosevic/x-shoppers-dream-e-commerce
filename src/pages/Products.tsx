@@ -23,6 +23,7 @@ const Products = () => {
           throw new Error("Network response was not ok");
         }
         const dataResponse = await response.json();
+        console.log(dataResponse)
         dispatch(setProducts(dataResponse));
       } catch (error) {
         console.error("Error fetching data", error);

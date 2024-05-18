@@ -1,11 +1,11 @@
 import Product from "./Product"
-import { useProductsSlice } from "../hooks/useProductsSlice"
+import { useFilteredProductsSlice } from "../hooks/useFilteredProductsSlice"
 const ProductsContent = () => {
-  const products = useProductsSlice()
+  const filteredProducts = useFilteredProductsSlice()
   return (
     <div className="flex flex-col text-sm">
       <div className="flex justify-between items-center pb-6">
-        <p className="font-medium">{products?.length} products found</p>
+        <p className="font-medium">{filteredProducts?.length} products found</p>
         <hr className="bg-fuchsia-600 w-[60%]  h-[2px] " />
         <div className="flex text-md items-center gap-2">
           <label htmlFor="sort">Sort by:</label>
@@ -18,7 +18,7 @@ const ProductsContent = () => {
         </div>
       </div>
       <div className="grid grid-cols-3 gap-3">
-      {products?.map(product => {
+      {filteredProducts?.map(product => {
         return <Product key={product.id} {...product} textSize="small" hover={"false"} imgSize="small"/>
       })}
       </div>
