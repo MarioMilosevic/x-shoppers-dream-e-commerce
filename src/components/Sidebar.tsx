@@ -6,11 +6,14 @@ import { useFilteredProductsSlice } from "../hooks/useFilteredProductsSlice";
 import { useDispatch } from "react-redux";
 import { setFilters } from "../redux/features/productsSlice";
 import { useProductsSlice } from "../hooks/useProductsSlice";
+import { useFilters } from "../hooks/useFilters";
 
 const Sidebar = () => {
   // const products = useProductsSlice();
   const filteredProducts = useFilteredProductsSlice()
   const products = useProductsSlice()
+  const filters = useFilters()
+  console.log(filters)
   console.log(filteredProducts)
   // console.log(products)
   const dispatch = useDispatch();
@@ -33,8 +36,14 @@ const Sidebar = () => {
             key={category}
             className="font-light capitalize cursor-pointer"
             data-category={category}
-            // onClick={() => console.log(category)}
-            // onClick={() => dispatch(filterCategory(category))}
+            onClick={(e) =>
+              dispatch(
+                setFilters({
+                  key: "category",
+                  value: e.currentTarget.getAttribute("data-category"),
+                })
+              )
+            }
           >
             {category}
           </li>
@@ -44,7 +53,9 @@ const Sidebar = () => {
       <select
         className="bg-fuchsia-100 border border-fuchsia-500 px-1 capitalize"
         name="company"
-        onChange={(e) => dispatch(setFilters({key:e.target.name, value:e.target.value}))}
+        onChange={(e) =>
+          dispatch(setFilters({ key: e.target.name, value: e.target.value }))
+        }
         // onChange={(e) =>
         //   dispatch(
         //     filterCompany({ category: e.target.name, company: e.target.value })

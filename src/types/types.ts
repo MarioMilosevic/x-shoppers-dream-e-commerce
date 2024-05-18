@@ -114,7 +114,7 @@ export type ButtonColors = {
 
 export type productFiltersType = {
   id: string;
-  category: string;
+  category: string | null;
   company: string;
   colors: string[];
   price: number;
