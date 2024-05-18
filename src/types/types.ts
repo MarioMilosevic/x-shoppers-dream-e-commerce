@@ -113,12 +113,18 @@ export type ButtonColors = {
 
 
 export type productFiltersType = {
-  currentCategory: string;
-  currentCompany: string;
+  category: string;
+  company: string;
   colors: string[];
   price: number;
   shipping: boolean;
 };
+
+export type productSliceInitialState = {
+  products: productFiltersType[];
+  filters: productFiltersType;
+  filteredProducts:productFiltersType[]
+}
 
 export type colorButtonProps = {
   color: keyof ColorOptions;

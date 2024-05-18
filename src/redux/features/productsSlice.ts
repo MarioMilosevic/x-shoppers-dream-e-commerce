@@ -1,17 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { ProductState, productFiltersType } from "../../types/types";
+import {
+  productFiltersType,
+  productSliceInitialState,
+} from "../../types/types";
 
-const initialState = {
+const initialState: productSliceInitialState = {
   products: [],
   filters: {
-    currentCategory: "All",
-    currentCompany: "All",
+    category: "All",
+    company: "All",
     colors: [],
     price: 0,
     shipping: false,
   },
-  filteredProducts: []
+  filteredProducts: [],
   // ili u funkciji napraviti
 };
 
@@ -20,24 +23,21 @@ export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    setProducts: (state, action: PayloadAction<ProductState[]>) => {
-       state.products = action.payload;
+    setProducts: (state, action: PayloadAction<productFiltersType[]>) => {
+      state.products = action.payload;
+      state.filteredProducts = action.payload
     },
-    // filterCompany: (state, action: PayloadAction<productFiltersType>) => {
-    //   const { category, company } = action.payload;
-    //   return state.filter((product) => product[category] === company);
-    // },
-    // filterCategory: (state, action: PayloadAction<string>) => {
-    //   const filteredArray = state.filter(
-    //     (product) => product.category === action.payload
-    //   );
-    //   return filteredArray;
-    // },
+    setFilters: (
+      state,
+      action: PayloadAction<{ key: string; value: string }>
+    ) => {
+      const { key, value } = action.payload;
+      // currentCompany Ikea
+      console.log(key, value);
+      state.filteredProducts = state.products.filter((product) => product[key] === (state.filters[key] = value));
+    },
   },
 });
 
-
-
-export const { setProducts } =
-  productsSlice.actions;
+export const { setProducts, setFilters } = productsSlice.actions;
 export default productsSlice.reducer;

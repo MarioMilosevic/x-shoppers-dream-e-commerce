@@ -2,12 +2,13 @@ import Button from "./Button";
 import { buttonColors } from "../utils/constants";
 import ColorButton from "./ColorButton";
 import { useProductsSlice } from "../hooks/useProductsSlice";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setFilters } from "../redux/features/productsSlice";
 
 const Sidebar = () => {
   const products = useProductsSlice();
   console.log(products)
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // console.log("svi produkti", products);
   const categoriesSet = new Set(products.map((product) => product.category));
   const companiesSet = new Set(products.map((product) => product.company));
@@ -39,6 +40,7 @@ const Sidebar = () => {
       <select
         className="bg-fuchsia-100 border border-fuchsia-500 px-1 capitalize"
         name="company"
+        onChange={(e) => dispatch(setFilters({key:e.target.name, value:e.target.value}))}
         // onChange={(e) =>
         //   dispatch(
         //     filterCompany({ category: e.target.name, company: e.target.value })
