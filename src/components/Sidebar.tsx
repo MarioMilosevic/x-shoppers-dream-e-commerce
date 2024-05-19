@@ -9,26 +9,28 @@ import { useFilters } from "../hooks/useFilters";
 import { useState } from "react";
 
 const Sidebar = () => {
-  const filteredProducts = useFilteredProductsSlice()
-  const [isCategoryActive, setIsCategoryActive] = useState();
-  const products = useProductsSlice()
-  const filters = useFilters()
+  const filteredProducts = useFilteredProductsSlice();
+  const products = useProductsSlice();
+  const [activeCategoryIndex, setActiveCategoryIndex] = useState<number>(0);
+  const filters = useFilters();
   // console.log(filters)
   // console.log(filteredProducts)
   const dispatch = useDispatch();
   const categoriesSet = new Set(products.map((product) => product.category));
   const companiesSet = new Set(products.map((product) => product.company));
-  console.log(categoriesSet)
+  console.log(categoriesSet);
   const categories = ["All", ...categoriesSet];
-  console.log(categories)
-  const transformedCategories = categories.map((category, index) => ({
-    [category]: category,
-    isActive:index === 0
-  }));
-  console.log(transformedCategories)
   const companies = ["All", ...companiesSet];
 
-  const activeClass = `underline underline-offset-[6px] decoration-fuchsia-600`
+  const categoryHandler = (e, index) => {
+    dispatch(
+      setFilters({
+        key: "category",
+        value: e.currentTarget.getAttribute("data-category"),
+      }),
+      setActiveCategoryIndex(index)
+    );
+  };
 
   return (
     <aside className="text-sm">
@@ -39,23 +41,22 @@ const Sidebar = () => {
       />
       <h3 className="font-medium pt-4 pb-2">Category</h3>
       <ul className="flex flex-col gap-2">
-        {categories.map((category) => (
-          <li
-            key={category}
-            className={`font-light capitalize cursor-pointer ${isCategoryActive && activeClass }`}
-            data-category={category}
-            onClick={(e) =>
-              dispatch(
-                setFilters({
-                  key: "category",
-                  value: e.currentTarget.getAttribute("data-category"),
-                })
-              )
-            }
-          >
-            {category}
-          </li>
-        ))}
+        {categories.map((category, index) => {
+          const active =
+            activeCategoryIndex === index
+              ? "underline underline-offset-[6px] decoration-fuchsia-600"
+              : "";
+          return (
+            <li
+              key={category}
+              className={`font-light capitalize cursor-pointer ${active}`}
+              data-category={category}
+              onClick={(e) => categoryHandler(e, index)}
+            >
+              {category}
+            </li>
+          );
+        })}
       </ul>
       <h3 className="font-medium pt-4 pb-2">Company</h3>
       <select

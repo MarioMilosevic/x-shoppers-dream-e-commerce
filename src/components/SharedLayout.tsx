@@ -51,10 +51,7 @@ const SharedLayout = () => {
                   key={index}
                   {...page}
                   setActivePageIndex={() => setActivePageIndex(index)}
-                  isActive={
-                    activePageIndex === index
-                      ? "true" : "false"
-                  }
+                  isActive={activePageIndex === index ? "true" : "false"}
                 >
                   {page.name}
                 </ListItem>
@@ -88,8 +85,13 @@ const SharedLayout = () => {
                 onClick={toggleIsOpen}
               />
               <ul className="flex flex-col gap-16 text-lg font-medium text-slate-700">
-                {pages.map((page) => (
-                  <ListItem key={page.id} {...page}>
+                {pages.map((page, index) => (
+                  <ListItem
+                    key={index}
+                    {...page}
+                    setActivePageIndex={() => setActivePageIndex(index)}
+                    isActive={activePageIndex === index ? "true" : "false"}
+                  >
                     {page.name}
                   </ListItem>
                 ))}
