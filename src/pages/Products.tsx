@@ -9,6 +9,8 @@ import { setProducts } from "../redux/features/productsSlice";
 import { useAppSlice } from "../hooks/useAppSlice";
 import { setError, setLoading } from "../redux/features/appSlice";
 import ErrorFetch from "../components/ErrorFetch";
+// test
+import { mario } from "../utils/constants";
 
 const Products = () => {
   // const products = useProductsSlice();
@@ -18,13 +20,14 @@ const Products = () => {
     const fetchData = async () => {
       try {
         dispatch(setLoading(true))
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const dataResponse = await response.json();
-        console.log(dataResponse)
-        dispatch(setProducts(dataResponse));
+        // const response = await fetch(url);
+        // if (!response.ok) {
+        //   throw new Error("Network response was not ok");
+        // }
+        // const dataResponse = await response.json();
+        // console.log(dataResponse)
+        // dispatch(setProducts(dataResponse));
+        dispatch(setProducts(mario));
       } catch (error) {
         console.error("Error fetching data", error);
         dispatch(setError(true))

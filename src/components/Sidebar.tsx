@@ -1,27 +1,35 @@
 import Button from "./Button";
 import { buttonColors } from "../utils/constants";
 import ColorButton from "./ColorButton";
-// import { useProductsSlice } from "../hooks/useProductsSlice";
 import { useFilteredProductsSlice } from "../hooks/useFilteredProductsSlice";
 import { useDispatch } from "react-redux";
 import { setFilters } from "../redux/features/productsSlice";
 import { useProductsSlice } from "../hooks/useProductsSlice";
 import { useFilters } from "../hooks/useFilters";
+import { useState } from "react";
 
 const Sidebar = () => {
-  // const products = useProductsSlice();
   const filteredProducts = useFilteredProductsSlice()
+  const [isCategoryActive, setIsCategoryActive] = useState();
   const products = useProductsSlice()
   const filters = useFilters()
-  console.log(filters)
-  console.log(filteredProducts)
-  // console.log(products)
+  // console.log(filters)
+  // console.log(filteredProducts)
   const dispatch = useDispatch();
   const categoriesSet = new Set(products.map((product) => product.category));
   const companiesSet = new Set(products.map((product) => product.company));
-
+  console.log(categoriesSet)
   const categories = ["All", ...categoriesSet];
+  console.log(categories)
+  const transformedCategories = categories.map((category, index) => ({
+    [category]: category,
+    isActive:index === 0
+  }));
+  console.log(transformedCategories)
   const companies = ["All", ...companiesSet];
+
+  const activeClass = `underline underline-offset-[6px] decoration-fuchsia-600`
+
   return (
     <aside className="text-sm">
       <input
@@ -34,7 +42,7 @@ const Sidebar = () => {
         {categories.map((category) => (
           <li
             key={category}
-            className="font-light capitalize cursor-pointer"
+            className={`font-light capitalize cursor-pointer ${isCategoryActive && activeClass }`}
             data-category={category}
             onClick={(e) =>
               dispatch(
@@ -56,11 +64,6 @@ const Sidebar = () => {
         onChange={(e) =>
           dispatch(setFilters({ key: e.target.name, value: e.target.value }))
         }
-        // onChange={(e) =>
-        //   dispatch(
-        //     filterCompany({ category: e.target.name, company: e.target.value })
-        //   )
-        // }
       >
         {companies.map((company) => (
           <option key={company} value={company} className="capitalize">

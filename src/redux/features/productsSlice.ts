@@ -26,28 +26,52 @@ export const productsSlice = createSlice({
       action: PayloadAction<{ key: string; value: string | null }>
     ) => {
       const { key, value } = action.payload;
+      // console.log(key);
+      // console.log(value);
+      // company Ikea
       state.filters[key] = value;
-
+      // ukoliko state.filters[key] === false ?
       let filteredProducts = [...state.filteredProducts];
 
-      if (key === "All") return (state.filteredProducts = state.products);
+      if (state.filters.company === "All" && state.filters.category === "All") {
+        state.filteredProducts = state.products
+      }
 
-      filteredProducts = filteredProducts.filter(
-        (product) => product[key] === value
-      );
 
+
+      // if (value === "All") {
+      //   console.log("uslo u prvi if");
+      //   state.filteredProducts = state.products;
+      // }
+      if (value !== "All") {
+        // console.log("uslo u drugi if");
+        filteredProducts = filteredProducts.filter(
+          (product) => product[key] === value
+        );
+        state.filteredProducts = filteredProducts;
+      }
+      //////////////////////////////////////////////////////////////////////////////////////////////////
       // if (state.filters.category && key === "category") {
       //   filteredProducts = filteredProducts.filter(
       //     (product) => product.category === value
       //   );
       // }
+
+      if (state.filters[key] === key) {
+        // console.log(state.filters[key]);
+        // console.log(key);
+        filteredProducts = filteredProducts.filter(
+          (product) => product[key] === value
+        );
+      }
+
       // if (state.filters.company && key === "company") {
       //   filteredProducts = filteredProducts.filter(
       //     (product) => product.company === value
       //   );
       // }
 
-      state.filteredProducts = filteredProducts;
+      // state.filteredProducts = filteredProducts;
     },
   },
 });
