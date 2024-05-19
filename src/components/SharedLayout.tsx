@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router";
 const SharedLayout = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [activePageIndex, setActivePageIndex] = useState<number>(0);
   const navigate = useNavigate();
   const location = useLocation();
   const navRef = useRef<HTMLDivElement | null>(
@@ -45,8 +46,16 @@ const SharedLayout = () => {
           </div>
           <div className="hidden lg:flex">
             <ul className="flex gap-10 text-base font-medium text-slate-700">
-              {pages.map((page) => (
-                <ListItem key={page.id} {...page}>
+              {pages.map((page, index) => (
+                <ListItem
+                  key={index}
+                  {...page}
+                  setActivePageIndex={() => setActivePageIndex(index)}
+                  isActive={
+                    activePageIndex === index
+                      ? "true" : "false"
+                  }
+                >
                   {page.name}
                 </ListItem>
               ))}

@@ -25,22 +25,17 @@ export const images = [
 
 export const pages = [
   {
-    id: crypto.randomUUID(),
     name: "Home",
-    isActive: true,
     path: "/",
   },
   {
-    id: crypto.randomUUID(),
     name: "Products",
-    isActive: false,
     path: "/Products",
   },
 ];
 
 export const operations = [
   {
-    id: crypto.randomUUID(),
     buttonTitle: "Swift Delivery",
     title: "Get your home furnishings in a flash with rapid delivery.",
     icon: GiWhirlwind,
@@ -48,7 +43,6 @@ export const operations = [
     isActive: true,
   },
   {
-    id: crypto.randomUUID(),
     buttonTitle: "Stellar Support",
     title: "Always here to help: stellar support around the clock.",
     icon: TbHeartHandshake,
@@ -56,7 +50,6 @@ export const operations = [
     isActive: false,
   },
   {
-    id: crypto.randomUUID(),
     buttonTitle: "Fresh Finds",
     title: "Stay ahead of the trends with our latest discoveries.",
     icon: IoMdCheckmark,
@@ -64,7 +57,6 @@ export const operations = [
     isActive: false,
   },
   {
-    id: crypto.randomUUID(),
     buttonTitle: "Easy Returns",
     title: "No stress or worries for your home goods.",
     icon: RiExchangeDollarLine,

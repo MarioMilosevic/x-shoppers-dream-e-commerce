@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { IconType } from "react-icons";
+import { MouseEventHandler } from "react";
 
 export type ButtonProps = {
   children: ReactNode;
@@ -9,10 +10,16 @@ export type ButtonProps = {
 
 export type ListItemProps = {
   children: ReactNode;
-  isActive: boolean;
+  isActive: keyof ListItemOptions;
   name: string;
   path: string;
+  setActivePageIndex:(MouseEventHandler<HTMLAnchorElement>)
 };
+
+export type ListItemOptions = {
+  true: string;
+  false: string;
+}
 
 export type ProductState = {
   category: string;

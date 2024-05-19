@@ -14,7 +14,7 @@ const tailwindConfig = {
       },
     },
     screens: {
-      lg: "1240px",
+      lg: "1200px",
     },
   },
   plugins: [],
