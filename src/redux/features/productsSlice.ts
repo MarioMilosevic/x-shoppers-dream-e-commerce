@@ -26,44 +26,75 @@ export const productsSlice = createSlice({
       action: PayloadAction<{ key: string; value: string | null }>
     ) => {
       const { key, value } = action.payload;
-      // console.log(key);
-      // console.log(value);
+      console.log(key);
+      console.log(value);
       // company Ikea
       state.filters[key] = value;
       // ukoliko state.filters[key] === false ?
-      let filteredProducts = [...state.filteredProducts];
+      let filteredProducts = [...state.products];
 
       if (state.filters.company === "All" && state.filters.category === "All") {
-        state.filteredProducts = state.products
+        console.log("uslo u prvi if RESET");
+        state.filteredProducts = state.products;
+        return;
       }
 
+      if (state.filters.company === "All" && state.filters[key] === value) {
+        console.log("ako je kompany all");
+        console.log(state.filters[key]);
+        console.log(value);
+        console.log(filteredProducts);
+        filteredProducts = filteredProducts.filter(
+          (product) => product[key] === value
+        );
+        // odje vrati prazan []
+        console.log(filteredProducts);
+        state.filteredProducts = filteredProducts;
+        // ODJE MI JE BAG
+      }
 
+      if (state.filters.category === "All" && state.filters.company !== "All") {
+        console.log("ako je category All a company nije All");
+        filteredProducts = filteredProducts.filter(
+          (product) => product.company === state.filters.company
+        );
+        state.filteredProducts = filteredProducts;
+        // i odje je bag
+      }
+
+      if (state.filters[key] === key) {
+        console.log("uslo u treci if");
+        console.log(state.filters[key]);
+        console.log(key);
+        state.filteredProducts = filteredProducts.filter(
+          (product) => product[key] === value
+        );
+      }
+
+      if (state.filters.company !== "All" && state.filters.category !== "All") {
+        console.log(state.filters.category);
+        console.log(state.filters.company);
+        console.log("oba nisu all");
+        filteredProducts = state.products.filter((product) => {
+          const companyMatches = product.company === state.filters.company;
+          const categoryMatches = product.category === state.filters.category;
+          // console.log(companyMatches)
+          // console.log(categoryMatches)
+          return companyMatches && categoryMatches;
+        });
+        state.filteredProducts = filteredProducts;
+      }
 
       // if (value === "All") {
       //   console.log("uslo u prvi if");
       //   state.filteredProducts = state.products;
       // }
-      if (value !== "All") {
-        // console.log("uslo u drugi if");
-        filteredProducts = filteredProducts.filter(
-          (product) => product[key] === value
-        );
-        state.filteredProducts = filteredProducts;
-      }
       //////////////////////////////////////////////////////////////////////////////////////////////////
       // if (state.filters.category && key === "category") {
       //   filteredProducts = filteredProducts.filter(
       //     (product) => product.category === value
       //   );
       // }
-
-      if (state.filters[key] === key) {
-        // console.log(state.filters[key]);
-        // console.log(key);
-        filteredProducts = filteredProducts.filter(
-          (product) => product[key] === value
-        );
-      }
 
       // if (state.filters.company && key === "company") {
       //   filteredProducts = filteredProducts.filter(

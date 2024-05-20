@@ -13,12 +13,12 @@ const Sidebar = () => {
   const products = useProductsSlice();
   const [activeCategoryIndex, setActiveCategoryIndex] = useState<number>(0);
   const filters = useFilters();
-  // console.log(filters)
-  // console.log(filteredProducts)
+  console.log(filters)
+  console.log(filteredProducts)
+  console.log("svi produkti",products)
   const dispatch = useDispatch();
   const categoriesSet = new Set(products.map((product) => product.category));
   const companiesSet = new Set(products.map((product) => product.company));
-  console.log(categoriesSet);
   const categories = ["All", ...categoriesSet];
   const companies = ["All", ...companiesSet];
 

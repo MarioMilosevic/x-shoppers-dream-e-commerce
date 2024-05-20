@@ -30,7 +30,7 @@ export const pages = [
   },
   {
     name: "Products",
-    path: "/Products",
+    path: "/products",
   },
 ];
 
@@ -106,15 +106,14 @@ export const buttonColors: Array<keyof ColorOptions> = [
 
 export const initialFilters = {
   id: "",
-  category: "",
-  company: "",
+  category: "All",
+  company: "All",
   colors: [],
   price: 0,
   shipping: false,
   image: "",
   name: "",
 };
-
 
 export const mario = [
   {
