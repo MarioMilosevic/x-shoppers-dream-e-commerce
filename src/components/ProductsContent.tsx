@@ -1,7 +1,10 @@
 import Product from "./Product"
 import { useFilteredProductsSlice } from "../hooks/useFilteredProductsSlice"
+import { sortProducts } from "../redux/features/productsSlice"
+import { useDispatch } from "react-redux"
 const ProductsContent = () => {
   const filteredProducts = useFilteredProductsSlice()
+  const dispatch = useDispatch()
   return (
     <div className="flex flex-col text-sm">
       <div className="flex justify-between items-center pb-6">
@@ -9,7 +12,7 @@ const ProductsContent = () => {
         <hr className="bg-fuchsia-600 w-[60%]  h-[2px] " />
         <div className="flex text-md items-center gap-2">
           <label htmlFor="sort">Sort by:</label>
-          <select name="sort" id="sort" className="bg-fuchsia-100 border  border-fuchsia-500">
+          <select name="sort" id="sort" className="bg-fuchsia-100 border border-fuchsia-500" onChange={(e) => dispatch(sortProducts(e.target.value))}>
             <option value="lowest">Price (Lowest)</option>
             <option value="highest">Price (Highest)</option>
             <option value="a-z">Name (A-Z)</option>

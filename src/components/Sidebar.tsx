@@ -1,28 +1,24 @@
 import Button from "./Button";
 import { buttonColors } from "../utils/constants";
 import ColorButton from "./ColorButton";
-import { useFilteredProductsSlice } from "../hooks/useFilteredProductsSlice";
 import { useDispatch } from "react-redux";
 import { setFilters } from "../redux/features/productsSlice";
 import { useProductsSlice } from "../hooks/useProductsSlice";
-import { useFilters } from "../hooks/useFilters";
 import { useState } from "react";
 
 const Sidebar = () => {
-  const filteredProducts = useFilteredProductsSlice();
   const products = useProductsSlice();
   const [activeCategoryIndex, setActiveCategoryIndex] = useState<number>(0);
-  const filters = useFilters();
-  console.log(filters)
-  console.log(filteredProducts)
-  console.log("svi produkti",products)
   const dispatch = useDispatch();
   const categoriesSet = new Set(products.map((product) => product.category));
   const companiesSet = new Set(products.map((product) => product.company));
   const categories = ["All", ...categoriesSet];
   const companies = ["All", ...companiesSet];
 
-  const categoryHandler = (e, index) => {
+  const categoryHandler = (
+    e: React.MouseEvent<HTMLLIElement, MouseEvent>,
+    index:number
+  ) => {
     dispatch(
       setFilters({
         key: "category",
