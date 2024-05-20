@@ -26,36 +26,50 @@ export const productsSlice = createSlice({
       action: PayloadAction<{ key: string; value: string | null }>
     ) => {
       const { key, value } = action.payload;
+
       state.filters[key] = value;
       let filteredProducts = [...state.products];
 
-      if (state.filters.company === "All" && state.filters.category === "All") {
-        state.filteredProducts = state.products;
-        return;
-      }
-
-      if (state.filters.company === "All" && state.filters.category !== "All") {
-        filteredProducts = filteredProducts.filter(
-          (product) => product.category === state.filters.category
-        );
-        state.filteredProducts = filteredProducts;
-      }
-
-      if (state.filters.category === "All" && state.filters.company !== "All") {
+      if (state.filters.company && state.filters.company !== "All") {
         filteredProducts = filteredProducts.filter(
           (product) => product.company === state.filters.company
         );
-        state.filteredProducts = filteredProducts;
+      }
+      if (state.filters.category && state.filters.category !== "All") {
+        filteredProducts = filteredProducts.filter(
+          (product) => product.category === state.filters.category
+        );
       }
 
-      if (state.filters.company !== "All" && state.filters.category !== "All") {
-        filteredProducts = state.products.filter((product) => {
-          const companyMatches = product.company === state.filters.company;
-          const categoryMatches = product.category === state.filters.category;
-          return companyMatches && categoryMatches;
-        });
-        state.filteredProducts = filteredProducts;
-      }
+      state.filteredProducts = filteredProducts;
+
+      // if (state.filters.company === "All" && state.filters.category === "All") {
+      //   state.filteredProducts = state.products;
+      //   return;
+      // }
+
+      // if (state.filters.company === "All" && state.filters.category !== "All") {
+      //   filteredProducts = filteredProducts.filter(
+      //     (product) => product.category === state.filters.category
+      //   );
+      //   state.filteredProducts = filteredProducts;
+      // }
+
+      // if (state.filters.category === "All" && state.filters.company !== "All") {
+      //   filteredProducts = filteredProducts.filter(
+      //     (product) => product.company === state.filters.company
+      //   );
+      //   state.filteredProducts = filteredProducts;
+      // }
+
+      // if (state.filters.company !== "All" && state.filters.category !== "All") {
+      //   filteredProducts = state.products.filter((product) => {
+      //     const companyMatches = product.company === state.filters.company;
+      //     const categoryMatches = product.category === state.filters.category;
+      //     return companyMatches && categoryMatches;
+      //   });
+      //   state.filteredProducts = filteredProducts;
+      // }
     },
     sortProducts: (state, action: PayloadAction<string>) => {
       console.log(action.payload);
@@ -65,11 +79,11 @@ export const productsSlice = createSlice({
       if (action.payload === "highest") {
         state.filteredProducts.sort((a, b) => b.price - a.price);
       }
-      if (action.payload === 'a-z') {
-        state.filteredProducts.sort((a,b) => a.name.localeCompare(b.name))
-      } 
+      if (action.payload === "a-z") {
+        state.filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+      }
       if (action.payload === "z-a") {
-        state.filteredProducts.sort((a,b) => b.name.localeCompare(a.name))
+        state.filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
       }
     },
   },
