@@ -21,7 +21,7 @@ const Section = forwardRef(
           className={`w-[65%] py-28 lg:py-custom-py mx-auto ${widthOptions[option]} flex flex-col gap-20`}
         >
           <div className="w-full flex flex-col gap-2 mx-auto">
-            <h3 className="text-fuchsia-600 text-base uppercase lg:text-[1.1rem]">
+            <h3 className="text-fuchsia-500 text-base uppercase lg:text-[1.1rem]">
               {subtitle}
             </h3>
             <h2 className="text-2xl lg:text-4xl font-medium leading-8 lg:leading-[3.2rem]">

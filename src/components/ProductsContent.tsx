@@ -9,7 +9,7 @@ const ProductsContent = () => {
     <div className="flex flex-col text-sm">
       <div className="flex justify-between items-center pb-6">
         <p className="font-medium">{filteredProducts?.length} products found</p>
-        <hr className="bg-fuchsia-600 w-[60%]  h-[2px] " />
+        <hr className="bg-fuchsia-500 w-[60%]  h-[2px] " />
         <div className="flex text-md items-center gap-2">
           <label htmlFor="sort">Sort by:</label>
           <select name="sort" id="sort" className="bg-fuchsia-100 border border-fuchsia-500" onChange={(e) => dispatch(sortProducts(e.target.value))}>

@@ -72,7 +72,7 @@ const Testimonials = () => {
               />
             ))}
             <div className=" lg:w-[76%] relative lg:mx-auto" ref={displayRef}>
-              <hr className="animate-[expand_5s_linear_infinite] absolute top-12 left-0 bg-fuchsia-600 h-[3px]" />
+              <hr className="animate-[expand_5s_linear_infinite] absolute top-12 left-0 bg-fuchsia-500 h-[3px]" />
             </div>
           </div>
           <ArrowContainer direction={"right"} clickHandler={nextSlide}>

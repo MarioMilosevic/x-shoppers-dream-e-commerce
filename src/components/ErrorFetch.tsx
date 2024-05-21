@@ -8,7 +8,7 @@ const ErrorFetch = () => {
         </div>
         <Link
           to={"/"}
-          className="w-28 bg-fuchsia-400 text-center text-md text-fuchsia-100 rounded-full px-8 py-4 hover:bg-fuchsia-300 transition-all duration-300"
+          className="w-28 bg-fuchsia-400 text-center text-md text-fuchsia-100 rounded-full px-8 py-4 hover:bg-fuchsia-200 transition-all duration-300"
         >
           Go back
         </Link>

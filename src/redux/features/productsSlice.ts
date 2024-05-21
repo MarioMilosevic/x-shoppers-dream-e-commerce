@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { initialFilters } from "../../utils/constants";
 import {
-  productFiltersType,
+  productResponseType,
   productSliceInitialState,
 } from "../../types/types";
 
@@ -17,7 +17,7 @@ export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    setProducts: (state, action: PayloadAction<productFiltersType[]>) => {
+    setProducts: (state, action: PayloadAction<productResponseType[]>) => {
       state.products = action.payload;
       state.filteredProducts = action.payload;
     },
@@ -41,7 +41,16 @@ export const productsSlice = createSlice({
         );
       }
 
+      if (state.filters.color && state.filters.color !== "") {
+        filteredProducts = filteredProducts.filter((product) =>
+          product.colors.includes(state.filters.color)
+        );
+      }
+
       state.filteredProducts = filteredProducts;
+
+      // "#ff0000", "#00ff00", "#0000ff", "#000", "#ffb900";
+      // crvena,    zelena,     plava      crna,    zuta
 
       // if (state.filters.company === "All" && state.filters.category === "All") {
       //   state.filteredProducts = state.products;

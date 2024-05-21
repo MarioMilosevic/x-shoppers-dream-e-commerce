@@ -96,23 +96,38 @@ export const testimonials = [
   },
 ];
 
-export const buttonColors: Array<keyof ColorOptions> = [
-  "red",
-  "green",
-  "blue",
-  "black",
-  "yellow",
+// "#ff0000", "#00ff00", "#0000ff", "#000", "#ffb900";
+// crvena,    zelena,     plava      crna,    zuta
+
+export const buttonColors = [
+  {
+    name: "red",
+    color: "#ff0000",
+  },
+  {
+    name: "green",
+    color: "#00ff00",
+  },
+  {
+    name: "blue",
+    color: "#0000ff",
+  },
+  {
+    name: "black",
+    color: "#000",
+  },
+  {
+    name: "yellow",
+    color: "#ffb900",
+  },
 ];
 
 export const initialFilters = {
-  id: "",
   category: "All",
   company: "All",
-  colors: [],
+  color: "",
   price: 0,
   shipping: false,
-  image: "",
-  name: "",
 };
 
 export const mario = [

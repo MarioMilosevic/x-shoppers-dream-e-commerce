@@ -8,7 +8,7 @@ const ListItem = ({
   setActivePageIndex,
 }: ListItemProps) => {
   const listItemOptions: ListItemOptions = {
-    true: "underline underline-offset-[6px] decoration-fuchsia-600",
+    true: "underline underline-offset-[6px] decoration-fuchsia-500",
     false: "",
   };
 

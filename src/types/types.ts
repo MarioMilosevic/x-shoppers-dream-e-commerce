@@ -119,7 +119,7 @@ export type ButtonColors = {
 };
 
 
-export type productFiltersType = {
+export type productResponseType = {
   id: string;
   category: string | null;
   company: string;
@@ -130,20 +130,28 @@ export type productFiltersType = {
   name: string;
 };
 
+export type productFiltersType = {
+  category: string;
+  company: string;
+  color: string;
+  price: number;
+  shipping: boolean;
+}
+
 export type productSliceInitialState = {
-  products: productFiltersType[];
+  products: productResponseType[];
   filters: productFiltersType;
-  filteredProducts:productFiltersType[]
+  filteredProducts:productResponseType[]
 }
 
-export type colorButtonProps = {
-  color: keyof ColorOptions;
-}
+// export type colorButtonProps = {
+//   color: keyof ColorOptions;
+// }
 
-export type ColorOptions = {
-  red: string;
-  blue: string;
-  black: string;
-  green: string;
-  yellow: string;
-};
+// export type ColorOptions = {
+//   red: string;
+//   blue: string;
+//   black: string;
+//   green: string;
+//   yellow: string;
+// };

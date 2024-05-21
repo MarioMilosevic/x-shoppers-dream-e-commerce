@@ -65,7 +65,7 @@ const SharedLayout = () => {
           >
             <span>Cart</span>
             <BsBag className="text-[1.25rem] self-start" />
-            <span className="bg-fuchsia-600 text-fuchsia-50 text-sm w-[1.1rem] h-[1.1rem] flex items-center justify-center rounded-full absolute top-1 -right-3">
+            <span className="bg-fuchsia-500 text-fuchsia-50 text-sm w-[1.1rem] h-[1.1rem] flex items-center justify-center rounded-full absolute top-1 -right-3">
               0
             </span>
           </Link>
@@ -81,7 +81,7 @@ const SharedLayout = () => {
               } flex justify-center items-center lg:hidden`}
             >
               <FaWindowClose
-                className="absolute h-6 w-6 top-12 right-12 cursor-pointer  text-fuchsia-600"
+                className="absolute h-6 w-6 top-12 right-12 cursor-pointer  text-fuchsia-500"
                 onClick={toggleIsOpen}
               />
               <ul className="flex flex-col gap-16 text-lg font-medium text-slate-700">

@@ -8,12 +8,20 @@ import { useState } from "react";
 
 const Sidebar = () => {
   const products = useProductsSlice();
+  console.log(products)
   const [activeCategoryIndex, setActiveCategoryIndex] = useState<number>(0);
+  const [activeColorIndex, setActiveColorIndex] = useState<number>(0);
+
   const dispatch = useDispatch();
   const categoriesSet = new Set(products.map((product) => product.category));
   const companiesSet = new Set(products.map((product) => product.company));
+  const colorsSet = new Set(products.flatMap((product) => product.colors))
+  console.log(colorsSet)
+
+
   const categories = ["All", ...categoriesSet];
   const companies = ["All", ...companiesSet];
+  const colors = [...colorsSet]
 
   const categoryHandler = (
     e: React.MouseEvent<HTMLLIElement, MouseEvent>,
@@ -28,6 +36,15 @@ const Sidebar = () => {
     );
   };
 
+  const colorHandler = (e, index) => {
+    e.preventDefault()
+    setActiveColorIndex(index)
+    dispatch(setFilters({
+      key: "color",
+      value:e.target.name
+    }))
+  }
+
   return (
     <aside className="text-sm">
       <input
@@ -40,7 +57,7 @@ const Sidebar = () => {
         {categories.map((category, index) => {
           const active =
             activeCategoryIndex === index
-              ? "underline underline-offset-[6px] decoration-fuchsia-600"
+              ? "underline underline-offset-[6px] decoration-fuchsia-500"
               : "";
           return (
             <li
@@ -71,8 +88,19 @@ const Sidebar = () => {
       <h3 className="font-medium pt-4 pb-2">Color</h3>
       <ul className="flex items-center gap-1">
         <li className="font-light">All</li>
-        {buttonColors.map((button, index) => {
-          return <ColorButton key={index} color={button} />;
+        {/* {buttonColors.map((button, index) => {
+           const active =
+             activeColorIndex === index
+               ? "opacity-100"
+               : "opacity-50";
+          return <ColorButton key={index} {...button} clickHandler={(e) => colorHandler(e, index)} activeColorIndex={activeColorIndex } />;
+        })} */}
+        {colors.map((button, index) => {
+           const active =
+             activeColorIndex === index
+               ? "opacity-100"
+               : "opacity-50";
+          return <ColorButton key={index} button={button} isActive={active } />;
         })}
       </ul>
       <h3 className="font-medium pt-4 pb-2">Price</h3>
