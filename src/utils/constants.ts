@@ -6,7 +6,6 @@ import anastasiya from "../assets/anastasiya petrova.jpeg";
 import vinney from "../assets/vinney malesh.webp";
 import tyron from "../assets/tyron mayers.jpg";
 import anna from "../assets/anna capron.avif";
-import { ColorOptions } from "../types/types";
 import techCrunchImg from "../assets/techCrunch.8e59ce33cdb22ba0b8dd.png";
 import bussinessInsiderImg from "../assets/businessInsider.a50839ce9f675fc574e6.png";
 import newYorkTImesImg from "../assets/newYorkTimes.1279b92266cf081e20a6.png";
@@ -96,36 +95,11 @@ export const testimonials = [
   },
 ];
 
-// "#ff0000", "#00ff00", "#0000ff", "#000", "#ffb900";
-// crvena,    zelena,     plava      crna,    zuta
-
-export const buttonColors = [
-  {
-    name: "red",
-    color: "#ff0000",
-  },
-  {
-    name: "green",
-    color: "#00ff00",
-  },
-  {
-    name: "blue",
-    color: "#0000ff",
-  },
-  {
-    name: "black",
-    color: "#000",
-  },
-  {
-    name: "yellow",
-    color: "#ffb900",
-  },
-];
 
 export const initialFilters = {
   category: "All",
   company: "All",
-  color: "",
+  color: "All",
   price: 0,
   shipping: false,
 };

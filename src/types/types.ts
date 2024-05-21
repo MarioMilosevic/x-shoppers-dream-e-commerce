@@ -13,13 +13,13 @@ export type ListItemProps = {
   isActive: keyof ListItemOptions;
   name: string;
   path: string;
-  setActivePageIndex:(MouseEventHandler<HTMLAnchorElement>)
+  setActivePageIndex: MouseEventHandler<HTMLAnchorElement>;
 };
 
 export type ListItemOptions = {
   true: string;
   false: string;
-}
+};
 
 export type ProductState = {
   category: string;
@@ -118,7 +118,6 @@ export type ButtonColors = {
   red: string;
 };
 
-
 export type productResponseType = {
   id: string;
   category: string | null;
@@ -136,22 +135,26 @@ export type productFiltersType = {
   color: string;
   price: number;
   shipping: boolean;
-}
+};
 
 export type productSliceInitialState = {
   products: productResponseType[];
   filters: productFiltersType;
-  filteredProducts:productResponseType[]
+  filteredProducts: productResponseType[];
+};
+
+export type colorButtonProps = {
+  button: string;
+  isActive: keyof colorButtonIsActive;
+  clickHandler: (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    index:number,
+    button: string
+  ) => void;
+  index: number;
+};
+
+export type colorButtonIsActive = {
+  true: string;
+  false:string
 }
-
-// export type colorButtonProps = {
-//   color: keyof ColorOptions;
-// }
-
-// export type ColorOptions = {
-//   red: string;
-//   blue: string;
-//   black: string;
-//   green: string;
-//   yellow: string;
-// };

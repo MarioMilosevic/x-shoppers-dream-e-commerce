@@ -1,5 +1,4 @@
 import Button from "./Button";
-import { buttonColors } from "../utils/constants";
 import ColorButton from "./ColorButton";
 import { useDispatch } from "react-redux";
 import { setFilters } from "../redux/features/productsSlice";
@@ -8,24 +7,21 @@ import { useState } from "react";
 
 const Sidebar = () => {
   const products = useProductsSlice();
-  console.log(products)
   const [activeCategoryIndex, setActiveCategoryIndex] = useState<number>(0);
   const [activeColorIndex, setActiveColorIndex] = useState<number>(0);
 
   const dispatch = useDispatch();
   const categoriesSet = new Set(products.map((product) => product.category));
   const companiesSet = new Set(products.map((product) => product.company));
-  const colorsSet = new Set(products.flatMap((product) => product.colors))
-  console.log(colorsSet)
-
+  const colorsSet = new Set(products.flatMap((product) => product.colors));
 
   const categories = ["All", ...categoriesSet];
   const companies = ["All", ...companiesSet];
-  const colors = [...colorsSet]
+  const colors = ["All",...colorsSet];
 
   const categoryHandler = (
     e: React.MouseEvent<HTMLLIElement, MouseEvent>,
-    index:number
+    index: number
   ) => {
     dispatch(
       setFilters({
@@ -36,15 +32,20 @@ const Sidebar = () => {
     );
   };
 
-  const colorHandler = (e, button) => {
-    e.preventDefault()
-    console.log(button)
-    setActiveColorIndex(button)
-    dispatch(setFilters({
-      key: "color",
-      value:button
-    }))
-  }
+  const colorHandler = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    index: number,
+    button: string
+  ) => {
+    e.preventDefault();
+    setActiveColorIndex(index);
+    dispatch(
+      setFilters({
+        key: "color",
+        value: button,
+      })
+    );
+  };
 
   return (
     <aside className="text-sm">
@@ -88,13 +89,17 @@ const Sidebar = () => {
       </select>
       <h3 className="font-medium pt-4 pb-2">Color</h3>
       <ul className="flex items-center gap-1">
-        <li className="font-light">All</li>
         {colors.map((button, index) => {
-           const isActive =
-             activeColorIndex === index
-               ? "true"
-               : "false";
-          return <ColorButton key={index} button={button} isActive={isActive} clickHandler={colorHandler} />;
+          const isActive = activeColorIndex === index ? "true" : "false";
+          return (
+            <ColorButton
+              key={index}
+              button={button}
+              isActive={isActive}
+              index={index}
+              clickHandler={colorHandler}
+            />
+          );
         })}
       </ul>
       <h3 className="font-medium pt-4 pb-2">Price</h3>
