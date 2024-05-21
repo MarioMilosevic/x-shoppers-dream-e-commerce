@@ -36,12 +36,13 @@ const Sidebar = () => {
     );
   };
 
-  const colorHandler = (e, index) => {
+  const colorHandler = (e, button) => {
     e.preventDefault()
-    setActiveColorIndex(index)
+    console.log(button)
+    setActiveColorIndex(button)
     dispatch(setFilters({
       key: "color",
-      value:e.target.name
+      value:button
     }))
   }
 
@@ -88,19 +89,12 @@ const Sidebar = () => {
       <h3 className="font-medium pt-4 pb-2">Color</h3>
       <ul className="flex items-center gap-1">
         <li className="font-light">All</li>
-        {/* {buttonColors.map((button, index) => {
-           const active =
-             activeColorIndex === index
-               ? "opacity-100"
-               : "opacity-50";
-          return <ColorButton key={index} {...button} clickHandler={(e) => colorHandler(e, index)} activeColorIndex={activeColorIndex } />;
-        })} */}
         {colors.map((button, index) => {
-           const active =
+           const isActive =
              activeColorIndex === index
-               ? "opacity-100"
-               : "opacity-50";
-          return <ColorButton key={index} button={button} isActive={active } />;
+               ? "true"
+               : "false";
+          return <ColorButton key={index} button={button} isActive={isActive} clickHandler={colorHandler} />;
         })}
       </ul>
       <h3 className="font-medium pt-4 pb-2">Price</h3>

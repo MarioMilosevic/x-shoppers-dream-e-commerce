@@ -26,6 +26,8 @@ export const productsSlice = createSlice({
       action: PayloadAction<{ key: string; value: string | null }>
     ) => {
       const { key, value } = action.payload;
+      console.log(key)
+      console.log(value)
 
       state.filters[key] = value;
       let filteredProducts = [...state.products];
