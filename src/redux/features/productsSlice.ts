@@ -45,6 +45,12 @@ export const productsSlice = createSlice({
         );
       }
 
+      if (state.filters.search !== "") {
+        filteredProducts = filteredProducts.filter((product) =>
+          product.name.includes(state.filters.search)
+        );
+      }
+
       state.filteredProducts = filteredProducts;
     },
     sortProducts: (state, action: PayloadAction<string>) => {

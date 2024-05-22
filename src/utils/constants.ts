@@ -100,6 +100,7 @@ export const initialFilters = {
   category: "All",
   company: "All",
   color: "All",
+  search:"",
   price: 0,
   shipping: false,
 };

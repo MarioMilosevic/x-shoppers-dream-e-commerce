@@ -17,7 +17,7 @@ const Sidebar = () => {
 
   const categories = ["All", ...categoriesSet];
   const companies = ["All", ...companiesSet];
-  const colors = ["All",...colorsSet];
+  const colors = ["All", ...colorsSet];
 
   const categoryHandler = (
     e: React.MouseEvent<HTMLLIElement, MouseEvent>,
@@ -52,7 +52,8 @@ const Sidebar = () => {
       <input
         type="text"
         placeholder="Search"
-        className="bg-fuchsia-100 border border-fuchsia-500 px-2 py-1  w-full placeholder:tracking-wide"
+        className="bg-fuchsia-50 border border-fuchsia-500 rounded-md px-2 py-1  w-full placeholder:tracking-wide"
+        onChange={(e) => dispatch(setFilters({key:'search', value:e.target.value}))}
       />
       <h3 className="font-medium pt-4 pb-2">Category</h3>
       <ul className="flex flex-col gap-2">
@@ -75,7 +76,7 @@ const Sidebar = () => {
       </ul>
       <h3 className="font-medium pt-4 pb-2">Company</h3>
       <select
-        className="bg-fuchsia-100 border border-fuchsia-500 px-1 capitalize"
+        className="bg-fuchsia-50 rounded-md border border-fuchsia-500 px-1 capitalize"
         name="company"
         onChange={(e) =>
           dispatch(setFilters({ key: e.target.name, value: e.target.value }))
@@ -104,7 +105,7 @@ const Sidebar = () => {
       </ul>
       <h3 className="font-medium pt-4 pb-2">Price</h3>
       <span className="text-fuchsia-500">$3,099,99</span>
-      <input type="range" />
+      <input type="range" className="bg-fuchsia-500 text-fuchsia-200" />
       {/* value, min, max, step */}
       <div className="flex gap-2 items-center py-4">
         <h3 className="font-medium ">Free shipping</h3>

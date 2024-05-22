@@ -12,7 +12,7 @@ const ProductsContent = () => {
         <hr className="bg-fuchsia-500 w-[60%]  h-[2px] " />
         <div className="flex text-md items-center gap-2">
           <label htmlFor="sort">Sort by:</label>
-          <select name="sort" id="sort" className="bg-fuchsia-100 border border-fuchsia-500" onChange={(e) => dispatch(sortProducts(e.target.value))}>
+          <select name="sort" id="sort" className="bg-fuchsia-50 rounded-md border border-fuchsia-500" onChange={(e) => dispatch(sortProducts(e.target.value))}>
             <option value="lowest">Price (Lowest)</option>
             <option value="highest">Price (Highest)</option>
             <option value="a-z">Name (A-Z)</option>

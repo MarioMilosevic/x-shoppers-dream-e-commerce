@@ -133,6 +133,7 @@ export type productFiltersType = {
   category: string;
   company: string;
   color: string;
+  search: string;
   price: number;
   shipping: boolean;
 };
