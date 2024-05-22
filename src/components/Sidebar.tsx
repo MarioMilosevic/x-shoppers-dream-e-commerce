@@ -116,7 +116,7 @@ console.log(products)
       <input type="range" className="bg-fuchsia-500 text-fuchsia-200" value={price} min={0} max={price} step={1}/>
       <div className="flex gap-2 items-center py-4">
         <h3 className="font-medium">Free shipping</h3>
-        <input type="checkbox" />
+        <input type="checkbox" onChange={(e) => dispatch(setFilters({key:"shipping", value:e.target.checked}))}/>
       </div>
       <Button
         color="red"

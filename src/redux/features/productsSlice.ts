@@ -25,6 +25,7 @@ export const productsSlice = createSlice({
       action: PayloadAction<{ key: string; value: string | null }>
     ) => {
       const { key, value } = action.payload;
+      // console.log(key, value)
       state.filters[key] = value;
       let filteredProducts = [...state.products];
 
@@ -48,6 +49,12 @@ export const productsSlice = createSlice({
       if (state.filters.search !== "") {
         filteredProducts = filteredProducts.filter((product) =>
           product.name.includes(state.filters.search)
+        );
+      }
+
+      if (state.filters.shipping) {
+        filteredProducts = filteredProducts.filter(
+          (product) => product.shipping
         );
       }
 
