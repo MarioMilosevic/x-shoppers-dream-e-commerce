@@ -101,7 +101,7 @@ export const initialFilters = {
   company: "All",
   color: "All",
   search:"",
-  price: 0,
+  price: "309999",
   shipping: false,
 };
 

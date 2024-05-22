@@ -134,7 +134,7 @@ export type productFiltersType = {
   company: string;
   color: string;
   search: string;
-  price: number;
+  price: string;
   shipping: boolean;
 };
 

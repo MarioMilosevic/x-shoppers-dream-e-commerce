@@ -52,6 +52,11 @@ export const productsSlice = createSlice({
         );
       }
 
+      if (state.filters.price) {
+        filteredProducts = filteredProducts.filter((product) => product.price <= state.filters.price)
+      }
+
+
       if (state.filters.shipping) {
         filteredProducts = filteredProducts.filter(
           (product) => product.shipping

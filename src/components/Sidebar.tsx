@@ -5,17 +5,20 @@ import { setFilters } from "../redux/features/productsSlice";
 import { useProductsSlice } from "../hooks/useProductsSlice";
 import { useState } from "react";
 import { calculateHighestNumber } from "../utils/helperFunctions";
+import { useFiltersSlice } from "../hooks/useFiltersSlice";
 
 const Sidebar = () => {
   const products = useProductsSlice();
   const [activeCategoryIndex, setActiveCategoryIndex] = useState<number>(0);
   const [activeColorIndex, setActiveColorIndex] = useState<number>(0);
+  const filters = useFiltersSlice();
+  console.log(filters.price);
   const dispatch = useDispatch();
   const categoriesSet = new Set(products.map((product) => product.category));
   const companiesSet = new Set(products.map((product) => product.company));
   const colorsSet = new Set(products.flatMap((product) => product.colors));
 
-  const {price} = calculateHighestNumber(products)
+  const { price } = calculateHighestNumber(products);
 
   const categories = ["All", ...categoriesSet];
   const companies = ["All", ...companiesSet];
@@ -109,13 +112,25 @@ const Sidebar = () => {
       </ul>
       <h3 className="font-medium pt-4 pb-2">Price</h3>
       <span className="text-fuchsia-500">
-        {`$${(price / 100).toLocaleString()}`}
+        {`$${(filters.price / 100).toLocaleString()}`}
       </span>
-      <input type="range" className="bg-fuchsia-500 text-fuchsia-200"/>
-      {/* <input type="range" className="bg-fuchsia-500 text-fuchsia-200" value={price} min={0} max={price} step={1}/> */}
+      <input
+        type="range"
+        className="bg-fuchsia-500 text-fuchsia-200"
+        value={filters.price}
+        min="0"
+        max={price}
+        onChange={(e) => dispatch(setFilters({key:"price", value:e.target.value}))}
+      />
+    
       <div className="flex gap-2 items-center py-4">
         <h3 className="font-medium">Free shipping</h3>
-        <input type="checkbox" onChange={(e) => dispatch(setFilters({key:"shipping", value:e.target.checked}))}/>
+        <input
+          type="checkbox"
+          onChange={(e) =>
+            dispatch(setFilters({ key: "shipping", value: e.target.checked }))
+          }
+        />
       </div>
       <Button
         color="red"
