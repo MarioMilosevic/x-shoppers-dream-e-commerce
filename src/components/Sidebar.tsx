@@ -94,10 +94,9 @@ const Sidebar = () => {
       <h3 className="font-medium pt-4 pb-2">Company</h3>
       <select
         className="bg-fuchsia-50 rounded-md border border-fuchsia-500 px-1 capitalize"
-        name="company"
         value={filters.company}
         onChange={(e) =>
-          dispatch(setFilters({ key: e.target.name, value: e.target.value }))
+          dispatch(setFilters({ key: "company", value: e.target.value }))
         }
       >
         {companies.map((company) => (

@@ -106,6 +106,9 @@ export const initialFilters = {
   sort:"lowest",
 };
 
+export type FilterKeys = keyof typeof initialFilters;
+
+
 export const mario = [
   {
     id: "recZkNf2kwmdBcqd0",

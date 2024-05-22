@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { initialFilters } from "../../utils/constants";
+import { initialFilters,FilterKeys } from "../../utils/constants";
 import {
   productResponseType,
   productSliceInitialState,
 } from "../../types/types";
+import { sortProductsUtil } from "../../utils/helperFunctions";
 
 const initialState: productSliceInitialState = {
   products: [],
@@ -25,7 +26,7 @@ export const productsSlice = createSlice({
     },
     setFilters: (
       state,
-      action: PayloadAction<{ key: string; value: string | null | boolean }>
+      action: PayloadAction<{ key: FilterKeys; value: string | boolean | null }>
     ) => {
       const { key, value } = action.payload;
       state.filters[key] = value;
@@ -65,24 +66,11 @@ export const productsSlice = createSlice({
           (product) => product.shipping
         );
       }
-
-      state.filteredProducts = filteredProducts;
+      state.filteredProducts = sortProductsUtil(filteredProducts, state.filters.sort)
     },
     sortProducts: (state, action: PayloadAction<string>) => {
-      state.filters.sort = action.payload
-      
-      if (action.payload === "lowest") {
-        state.filteredProducts.sort((a, b) => a.price - b.price);
-      }
-      if (action.payload === "highest") {
-        state.filteredProducts.sort((a, b) => b.price - a.price);
-      }
-      if (action.payload === "a-z") {
-        state.filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
-      }
-      if (action.payload === "z-a") {
-        state.filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
-      }
+      state.filters.sort = action.payload;
+      state.filteredProducts = sortProductsUtil(state.filteredProducts, action.payload)
     },
     clearFilters: (state) => {
       state.filteredProducts = state.products;
