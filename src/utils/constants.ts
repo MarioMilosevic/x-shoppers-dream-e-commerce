@@ -101,8 +101,9 @@ export const initialFilters = {
   company: "All",
   color: "All",
   search:"",
-  price: "309999",
+  price: 309999,
   shipping: false,
+  sort:"lowest",
 };
 
 export const mario = [

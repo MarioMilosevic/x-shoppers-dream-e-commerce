@@ -134,8 +134,9 @@ export type productFiltersType = {
   company: string;
   color: string;
   search: string;
-  price: string;
+  price: number;
   shipping: boolean;
+  sort: string;
 };
 
 export type productSliceInitialState = {

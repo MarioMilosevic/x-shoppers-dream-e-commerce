@@ -19,13 +19,15 @@ export const productsSlice = createSlice({
     setProducts: (state, action: PayloadAction<productResponseType[]>) => {
       state.products = action.payload;
       state.filteredProducts = action.payload;
+      state.filteredProducts = state.filteredProducts.sort(
+        (a, b) => a.price - b.price
+      );
     },
     setFilters: (
       state,
-      action: PayloadAction<{ key: string; value: string | null }>
+      action: PayloadAction<{ key: string; value: string | null | boolean }>
     ) => {
       const { key, value } = action.payload;
-      // console.log(key, value)
       state.filters[key] = value;
       let filteredProducts = [...state.products];
 
@@ -53,9 +55,10 @@ export const productsSlice = createSlice({
       }
 
       if (state.filters.price) {
-        filteredProducts = filteredProducts.filter((product) => product.price <= state.filters.price)
+        filteredProducts = filteredProducts.filter(
+          (product) => product.price <= state.filters.price
+        );
       }
-
 
       if (state.filters.shipping) {
         filteredProducts = filteredProducts.filter(
@@ -66,6 +69,8 @@ export const productsSlice = createSlice({
       state.filteredProducts = filteredProducts;
     },
     sortProducts: (state, action: PayloadAction<string>) => {
+      state.filters.sort = action.payload
+      
       if (action.payload === "lowest") {
         state.filteredProducts.sort((a, b) => a.price - b.price);
       }
@@ -79,8 +84,13 @@ export const productsSlice = createSlice({
         state.filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
       }
     },
+    clearFilters: (state) => {
+      state.filteredProducts = state.products;
+      state.filters = initialFilters;
+    },
   },
 });
 
-export const { setProducts, setFilters, sortProducts } = productsSlice.actions;
+export const { setProducts, setFilters, sortProducts, clearFilters } =
+  productsSlice.actions;
 export default productsSlice.reducer;
