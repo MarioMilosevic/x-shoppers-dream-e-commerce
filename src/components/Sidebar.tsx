@@ -9,11 +9,15 @@ const Sidebar = () => {
   const products = useProductsSlice();
   const [activeCategoryIndex, setActiveCategoryIndex] = useState<number>(0);
   const [activeColorIndex, setActiveColorIndex] = useState<number>(0);
-
+console.log(products)
   const dispatch = useDispatch();
   const categoriesSet = new Set(products.map((product) => product.category));
   const companiesSet = new Set(products.map((product) => product.company));
   const colorsSet = new Set(products.flatMap((product) => product.colors));
+  const {price} = products.reduce((prev, current) => {
+    return (prev.price > current.price) ? prev : current
+  }, 0)
+  console.log(price)
 
   const categories = ["All", ...categoriesSet];
   const companies = ["All", ...companiesSet];
@@ -53,7 +57,9 @@ const Sidebar = () => {
         type="text"
         placeholder="Search"
         className="bg-fuchsia-50 border border-fuchsia-500 rounded-md px-2 py-1  w-full placeholder:tracking-wide"
-        onChange={(e) => dispatch(setFilters({key:'search', value:e.target.value}))}
+        onChange={(e) =>
+          dispatch(setFilters({ key: "search", value: e.target.value }))
+        }
       />
       <h3 className="font-medium pt-4 pb-2">Category</h3>
       <ul className="flex flex-col gap-2">
@@ -104,11 +110,12 @@ const Sidebar = () => {
         })}
       </ul>
       <h3 className="font-medium pt-4 pb-2">Price</h3>
-      <span className="text-fuchsia-500">$3,099,99</span>
-      <input type="range" className="bg-fuchsia-500 text-fuchsia-200" />
-      {/* value, min, max, step */}
+      <span className="text-fuchsia-500">
+        {`$${(price / 100).toLocaleString()}`}
+      </span>
+      <input type="range" className="bg-fuchsia-500 text-fuchsia-200" value={price} min={0} max={price} step={1}/>
       <div className="flex gap-2 items-center py-4">
-        <h3 className="font-medium ">Free shipping</h3>
+        <h3 className="font-medium">Free shipping</h3>
         <input type="checkbox" />
       </div>
       <Button

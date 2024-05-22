@@ -2,9 +2,13 @@ import Product from "./Product"
 import { useFilteredProductsSlice } from "../hooks/useFilteredProductsSlice"
 import { sortProducts } from "../redux/features/productsSlice"
 import { useDispatch } from "react-redux"
+import { useEffect } from "react"
 const ProductsContent = () => {
   const filteredProducts = useFilteredProductsSlice()
   const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(sortProducts('lowest'))
+  }, [dispatch])
   return (
     <div className="flex flex-col text-sm">
       <div className="flex justify-between items-center pb-6">

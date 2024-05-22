@@ -1,6 +1,5 @@
 import { HiOutlineSparkles } from "react-icons/hi";
-import { FiEye } from "react-icons/fi";
-import { GiSofa } from "react-icons/gi";
+import { FiEye, FiHeart } from "react-icons/fi";
 import Info from "./Info";
 import { useIntersecting } from "../hooks/useIntersecting";
 import Section from "./Section";
@@ -24,7 +23,7 @@ const Description = () => {
           With clear vision and keen insight, we guide customers down the path
           to lasting success with exceptional service and anticipation.
         </Info>
-        <Info icon={GiSofa} title={"Heritage"}>
+        <Info icon={FiHeart} title={"Heritage"}>
           As a trusted partner, we offer expert guidance, drawing on our deep
           wisdom and wealth of experience to ensure satisfaction and success.
         </Info>
