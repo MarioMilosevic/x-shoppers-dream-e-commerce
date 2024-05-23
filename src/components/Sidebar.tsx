@@ -6,13 +6,14 @@ import { useProductsSlice } from "../hooks/useProductsSlice";
 import { useState } from "react";
 import { calculateHighestNumber } from "../utils/helperFunctions";
 import { useFiltersSlice } from "../hooks/useFiltersSlice";
+import { useAppSlice } from "../hooks/useAppSlice";
 
 const Sidebar = () => {
   const products = useProductsSlice();
   const [activeCategoryIndex, setActiveCategoryIndex] = useState<number>(0);
   const [activeColorIndex, setActiveColorIndex] = useState<number>(0);
-  const [isOpen, setIsOpen] = useState<boolean>(false)
   const filters = useFiltersSlice();
+  const {isSidebarOpen } = useAppSlice()
   const dispatch = useDispatch();
   const categoriesSet = new Set(products.map((product) => product.category));
   const companiesSet = new Set(products.map((product) => product.company));
@@ -58,10 +59,10 @@ const Sidebar = () => {
     setActiveColorIndex(0);
   };
 
-  const mario = isOpen ? "translate-x-0" : "-translate-x-[100%]"
+  const mario = isSidebarOpen ? "translate-x-0" : "-translate-x-[100%]"
 
   return (
-    <aside className={`absolute lg:static text-sm lg:translate-x-0 ${mario}`}>
+    <aside className={`absolute z-10 bg-neutral-50 lg:static top-20 p-4 rounded-md text-sm lg:translate-x-0 transition-all duration-700 ${mario}`}>
       <input
         type="text"
         id="search"
