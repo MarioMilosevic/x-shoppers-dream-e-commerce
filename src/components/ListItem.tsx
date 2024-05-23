@@ -5,6 +5,7 @@ const ListItem = ({
   children,
   isActive,
   path,
+  index,
   clickHandler
 }: ListItemProps) => {
   const listItemOptions: ListItemOptions = {
@@ -14,7 +15,7 @@ const ListItem = ({
 
   return (
     <li className={`font-normal cursor-pointer ${listItemOptions[isActive]}`}>
-      <Link to={`${path}`} onClick={clickHandler}>
+      <Link to={`${path}`} onClick={() => clickHandler(index)}>
         {children}
       </Link>
     </li>

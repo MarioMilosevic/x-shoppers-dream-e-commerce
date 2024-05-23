@@ -55,7 +55,8 @@ const SharedLayout = () => {
                 <ListItem
                   key={index}
                   {...page}
-                  clickHandler={() => clickHandler(index)}
+                  index={index}
+                  clickHandler={clickHandler}
                   isActive={activePageIndex === index ? "true" : "false"}
                 >
                   {page.name}
@@ -94,7 +95,8 @@ const SharedLayout = () => {
                   <ListItem
                     key={index}
                     {...page}
-                    clickHandler={() => clickHandler(index)}
+                    index={index}
+                    clickHandler={clickHandler}
                     isActive={activePageIndex === index ? "true" : "false"}
                   >
                     {page.name}

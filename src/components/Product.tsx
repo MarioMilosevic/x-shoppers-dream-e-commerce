@@ -4,11 +4,13 @@ import {
   ProductHoverOptions,
   imgSizeOptions,
 } from "../types/types";
+import Button from "./Button";
 
 const Product = ({
   image,
   name,
   price,
+  description,
   textSize,
   hover,
   imgSize,
@@ -39,12 +41,21 @@ const Product = ({
         className={`mx-auto w-full object-cover rounded-md cursor-pointer ${imgSizeOptions[imgSize]}`}
       />
       <div
-        className={`mx-auto w-full flex justify-between ${textSizeOptions[textSize]}`}
+        className={`mx-auto w-full flex justify-between text-lg ${textSizeOptions[textSize]}`}
       >
-        <h2 className="capitalize text-medium font-medium">{name}</h2>
+        <h2 className="capitalize font-semibold">{name}</h2>
         <span className="font-semibold  text-fuchsia-500">
           ${(price / 100).toFixed(2)}
         </span>
+      </div>
+      <p className="lg:hidden text-xs">{description}</p>
+      <div className="lg:hidden flex items-center justify-start">
+        <Button
+          color="purple"
+          buttonHandler={() => console.log("treba d aode")}
+        >
+          Details
+        </Button>
       </div>
     </article>
   );

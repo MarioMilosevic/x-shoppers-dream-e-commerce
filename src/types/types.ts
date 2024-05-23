@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import { IconType } from "react-icons";
-// import { MouseEventHandler } from "react";
 
 export type ButtonProps = {
   children: ReactNode;
@@ -13,8 +12,8 @@ export type ListItemProps = {
   isActive: keyof ListItemOptions;
   name: string;
   path: string;
+  index: number;
   clickHandler:(index:number) => void
-  // setActivePageIndex: MouseEventHandler<HTMLAnchorElement>;
 };
 
 export type ListItemOptions = {
@@ -38,6 +37,7 @@ export type ProductProps = {
   textSize: keyof textSizeOptions;
   imgSize: keyof imgSizeOptions;
   image: string;
+  description: string;
   name: string;
   price: number;
   hover: keyof ProductHoverOptions;
@@ -124,6 +124,7 @@ export type productResponseType = {
   category: string | null;
   company: string;
   colors: string[];
+  description: string;
   price: number;
   shipping: boolean;
   image: string;
