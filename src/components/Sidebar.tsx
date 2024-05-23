@@ -11,6 +11,7 @@ const Sidebar = () => {
   const products = useProductsSlice();
   const [activeCategoryIndex, setActiveCategoryIndex] = useState<number>(0);
   const [activeColorIndex, setActiveColorIndex] = useState<number>(0);
+  const [isOpen, setIsOpen] = useState<boolean>(false)
   const filters = useFiltersSlice();
   const dispatch = useDispatch();
   const categoriesSet = new Set(products.map((product) => product.category));
@@ -52,15 +53,15 @@ const Sidebar = () => {
   };
 
   const resetHandler = () => {
-    dispatch(clearFilters())
-    setActiveCategoryIndex(0)
-    setActiveColorIndex(0)
-    console.log(filters)
-  }
+    dispatch(clearFilters());
+    setActiveCategoryIndex(0);
+    setActiveColorIndex(0);
+  };
 
+  const mario = isOpen ? "translate-x-0" : "-translate-x-[100%]"
 
   return (
-    <aside className="text-sm">
+    <aside className={`absolute lg:static text-sm lg:translate-x-0 ${mario}`}>
       <input
         type="text"
         id="search"
@@ -123,20 +124,20 @@ const Sidebar = () => {
       <h3 className="font-medium pt-4 pb-2">Price</h3>
 
       <div className="flex flex-col gap-1">
-      <span className="text-fuchsia-500">
-        {`$${(filters.price / 100).toLocaleString()}`}
-      </span>
-      <input
-        type="range"
-        className="bg-fuchsia-500 text-fuchsia-200"
-        value={filters.price}
-        min="0"
-        max={price}
-        onChange={(e) =>
-          dispatch(setFilters({ key: "price", value: e.target.value }))
-        }
+        <span className="text-fuchsia-500">
+          {`$${(filters.price / 100).toLocaleString()}`}
+        </span>
+        <input
+          type="range"
+          className="bg-fuchsia-500 text-fuchsia-200"
+          value={filters.price}
+          min="0"
+          max={price}
+          onChange={(e) =>
+            dispatch(setFilters({ key: "price", value: e.target.value }))
+          }
         />
-        </div>
+      </div>
 
       <div className="flex gap-2 items-center py-4">
         <h3 className="font-medium">Free shipping</h3>
@@ -150,10 +151,7 @@ const Sidebar = () => {
           }
         />
       </div>
-      <Button
-        color="red"
-        buttonHandler={() => resetHandler()}
-      >
+      <Button color="red" buttonHandler={() => resetHandler()}>
         Clear filters
       </Button>
     </aside>

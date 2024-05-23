@@ -4,11 +4,13 @@ import { PayloadAction } from "@reduxjs/toolkit";
 export type appState = {
   loading: boolean;
   error: boolean;
+  isSidebarOpen: boolean;
 };
 
 const initialState: appState = {
   loading: false,
   error: false,
+  isSidebarOpen: false,
 };
 
 export const appSlice = createSlice({
@@ -21,8 +23,11 @@ export const appSlice = createSlice({
     setError: (state, action: PayloadAction<boolean>) => {
       state.error = action.payload;
     },
+    toggleisSidebarOpen: (state) => {
+      state.isSidebarOpen = !state.isSidebarOpen;
+    },
   },
 });
 
-export const { setLoading, setError } = appSlice.actions;
+export const { setLoading, setError, toggleisSidebarOpen } = appSlice.actions;
 export default appSlice.reducer;

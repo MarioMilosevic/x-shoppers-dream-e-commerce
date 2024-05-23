@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { initialFilters,FilterKeys } from "../../utils/constants";
+import { initialFilters, FilterKeys } from "../../utils/constants";
 import {
   productResponseType,
   productSliceInitialState,
@@ -66,11 +66,17 @@ export const productsSlice = createSlice({
           (product) => product.shipping
         );
       }
-      state.filteredProducts = sortProductsUtil(filteredProducts, state.filters.sort)
+      state.filteredProducts = sortProductsUtil(
+        filteredProducts,
+        state.filters.sort
+      );
     },
     sortProducts: (state, action: PayloadAction<string>) => {
       state.filters.sort = action.payload;
-      state.filteredProducts = sortProductsUtil(state.filteredProducts, action.payload)
+      state.filteredProducts = sortProductsUtil(
+        state.filteredProducts,
+        action.payload
+      );
     },
     clearFilters: (state) => {
       state.filteredProducts = state.products;
@@ -82,3 +88,10 @@ export const productsSlice = createSlice({
 export const { setProducts, setFilters, sortProducts, clearFilters } =
   productsSlice.actions;
 export default productsSlice.reducer;
+
+// vidi breaking point na koji ti se lomi dizajn i
+// na taj breaking point stavis da nisu vise u gridu elementi no flex column
+// filteri nek budu absolute, sakrij ih
+// dodaj neki hamburger dugme na klik dugmeta translate x 100% (filtere da se vide)
+
+// https://react-course-comfy-sloth-store.netlify.app/products

@@ -76,7 +76,7 @@ const SharedLayout = () => {
               onClick={toggleIsOpen}
             />
             <div
-              className={`bg-neutral-50  fixed w-full h-full transition-all duration-700 top-0 ${
+              className={`bg-neutral-50  fixed w-full h-full z-10  transition-all duration-700 top-0 ${
                 isOpen ? "left-0" : "left-full"
               } flex justify-center items-center lg:hidden`}
             >

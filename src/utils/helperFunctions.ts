@@ -11,7 +11,6 @@ export const handleStickyNav = (ref: RefObject<HTMLElement>, cls: string) => {
   }
 };
 
-
 export const calculateHighestNumber = (arr: productResponseType[]) => {
   return arr.reduce(
     (prev, current) => {
@@ -20,6 +19,26 @@ export const calculateHighestNumber = (arr: productResponseType[]) => {
     { price: 0 }
   );
 };
+
+// export const sortProductsUtil = (
+//   products: productResponseType[],
+//   sortKey: string
+// ) => {
+//   if (sortKey === "lowest") {
+//     return products.sort((a, b) => a.price - b.price);
+//   }
+//   if (sortKey === "highest") {
+//     return products.sort((a, b) => b.price - a.price);
+//   }
+//   if (sortKey === "a-z") {
+//     return products.sort((a, b) => a.name.localeCompare(b.name));
+//   }
+//   if (sortKey === "z-a") {
+//     return products.sort((a, b) => b.name.localeCompare(a.name));
+//   } else {
+//     return products;
+//   }
+// };
 
 export const sortProductsUtil = (products: productResponseType[], sortKey: string) => {
   switch (sortKey) {
