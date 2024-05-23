@@ -33,6 +33,11 @@ const SharedLayout = () => {
     setIsOpen(!isOpen);
   };
 
+  const clickHandler = (index: number) => {
+    setIsOpen(false);
+    setActivePageIndex(index);
+  };
+
   return (
     <>
       <nav className="w-full" ref={navRef}>
@@ -50,7 +55,7 @@ const SharedLayout = () => {
                 <ListItem
                   key={index}
                   {...page}
-                  setActivePageIndex={() => setActivePageIndex(index)}
+                  clickHandler={() => clickHandler(index)}
                   isActive={activePageIndex === index ? "true" : "false"}
                 >
                   {page.name}
@@ -89,7 +94,7 @@ const SharedLayout = () => {
                   <ListItem
                     key={index}
                     {...page}
-                    setActivePageIndex={() => setActivePageIndex(index)}
+                    clickHandler={() => clickHandler(index)}
                     isActive={activePageIndex === index ? "true" : "false"}
                   >
                     {page.name}

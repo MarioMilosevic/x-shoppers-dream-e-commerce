@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { IconType } from "react-icons";
-import { MouseEventHandler } from "react";
+// import { MouseEventHandler } from "react";
 
 export type ButtonProps = {
   children: ReactNode;
@@ -13,7 +13,8 @@ export type ListItemProps = {
   isActive: keyof ListItemOptions;
   name: string;
   path: string;
-  setActivePageIndex: MouseEventHandler<HTMLAnchorElement>;
+  clickHandler:(index:number) => void
+  // setActivePageIndex: MouseEventHandler<HTMLAnchorElement>;
 };
 
 export type ListItemOptions = {

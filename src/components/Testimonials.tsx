@@ -11,22 +11,10 @@ import ArrowContainer from "./ArrowContainer";
 
 const Testimonials = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
-  // const displayRef = useRef<HTMLDivElement>(null);
   const displayRefs = useRef<(HTMLDivElement | null)[]>([]);
   const sectionRef = useRef(null);
   useIntersecting(sectionRef);
 
-  // const resetDisplay = () => {
-  //   console.log(displayRef.current)
-  //   displayRef.current
-  //     ? ((displayRef.current.style.display = "none"),
-  //       setTimeout(
-  //         () =>
-  //           displayRef.current && (displayRef.current.style.display = "block"),
-  //         0
-  //       ))
-  //     : null;
-  // };
   const resetDisplay = () => {
     displayRefs.current.forEach((ref) => {
       if (ref) {

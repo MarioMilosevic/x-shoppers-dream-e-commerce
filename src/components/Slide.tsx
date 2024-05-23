@@ -4,7 +4,7 @@ import { ForwardedRef, forwardRef } from "react";
 const Slide = forwardRef(
   (
     { title, text, img, name, city, currentSlideIndex, index }: SlideProps,
-    ref: ForwardedRef<HTMLElement>
+    ref: ForwardedRef<HTMLHRElement>
   ) => {
     const calculation = 100 * (index - currentSlideIndex);
 

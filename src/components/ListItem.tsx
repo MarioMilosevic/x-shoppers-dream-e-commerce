@@ -5,7 +5,7 @@ const ListItem = ({
   children,
   isActive,
   path,
-  setActivePageIndex,
+  clickHandler
 }: ListItemProps) => {
   const listItemOptions: ListItemOptions = {
     true: "underline underline-offset-[6px] decoration-fuchsia-500",
@@ -14,7 +14,7 @@ const ListItem = ({
 
   return (
     <li className={`font-normal cursor-pointer ${listItemOptions[isActive]}`}>
-      <Link to={`${path}`} onClick={setActivePageIndex}>
+      <Link to={`${path}`} onClick={clickHandler}>
         {children}
       </Link>
     </li>
