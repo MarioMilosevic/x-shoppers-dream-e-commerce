@@ -11,19 +11,33 @@ import ArrowContainer from "./ArrowContainer";
 
 const Testimonials = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
-  const displayRef = useRef<HTMLDivElement>(null);
+  // const displayRef = useRef<HTMLDivElement>(null);
+  const displayRefs = useRef<(HTMLDivElement | null)[]>([]);
   const sectionRef = useRef(null);
   useIntersecting(sectionRef);
 
+  // const resetDisplay = () => {
+  //   console.log(displayRef.current)
+  //   displayRef.current
+  //     ? ((displayRef.current.style.display = "none"),
+  //       setTimeout(
+  //         () =>
+  //           displayRef.current && (displayRef.current.style.display = "block"),
+  //         0
+  //       ))
+  //     : null;
+  // };
   const resetDisplay = () => {
-    displayRef.current
-      ? ((displayRef.current.style.display = "none"),
-        setTimeout(
-          () =>
-            displayRef.current && (displayRef.current.style.display = "block"),
-          0
-        ))
-      : null;
+    displayRefs.current.forEach((ref) => {
+      if (ref) {
+        ref.style.display = "none";
+        setTimeout(() => {
+          if (ref) {
+            ref.style.display = "block";
+          }
+        }, 0);
+      }
+    });
   };
 
   const nextSlide = useCallback(() => {
@@ -62,18 +76,16 @@ const Testimonials = () => {
           <ArrowContainer direction={"left"} clickHandler={previousSlide}>
             <HiOutlineArrowLongLeft className="w-10 h-10" />
           </ArrowContainer>
-          <div className="w-full relative h-[30rem] lg:h-[20rem]">
+          <div className="w-full relative h-[30rem] lg:h-[25rem]">
             {testimonials.map((el, index) => (
               <Slide
-              {...el}
-              key={index}
-              currentSlideIndex={currentSlideIndex}
-              index={index}
+                {...el}
+                key={index}
+                currentSlideIndex={currentSlideIndex}
+                index={index}
+                ref={(el) => (displayRefs.current[index] = el)}
               />
             ))}
-            <div className=" lg:w-[76%] relative lg:mx-auto" ref={displayRef}>
-              <hr className="animate-[expand_5s_linear_infinite] absolute top-12 left-0 bg-fuchsia-500 h-[3px]" />
-            </div>
           </div>
           <ArrowContainer direction={"right"} clickHandler={nextSlide}>
             <HiOutlineArrowLongRight className="w-10 h-10" />
