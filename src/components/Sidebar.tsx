@@ -59,10 +59,10 @@ const Sidebar = () => {
     setActiveColorIndex(0);
   };
 
-  const mario = isSidebarOpen ? "translate-x-0" : "-translate-x-[100%]"
+  const sidebar = isSidebarOpen ? "translate-x-0" : "-translate-x-[100%]"
 
   return (
-    <aside className={`absolute z-10 bg-neutral-50 lg:static top-20 p-4 rounded-md text-sm lg:translate-x-0 transition-all duration-700 ${mario}`}>
+    <aside className={`absolute z-10 bg-neutral-50 lg:static top-20 p-4 rounded-md text-sm lg:translate-x-0 lg:transition-none transition-all duration-700 ${sidebar}`}>
       <input
         type="text"
         id="search"

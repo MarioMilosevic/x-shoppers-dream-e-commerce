@@ -9,15 +9,15 @@ const ProductsContent = () => {
   const dispatch = useDispatch();
   return (
     <div className="flex flex-col text-sm lg:px-0 px-4">
-      <div className="flex justify-between items-center pb-6">
+      <div className="flex justify-between items-center pb-6 lg:text-md text-xs">
         <div className="lg:hidden cursor-pointer" onClick={() => dispatch(toggleisSidebarOpen())}>
-        <BsLayoutTextSidebar />
+        <BsLayoutTextSidebar className="w-4 h-4"/>
         </div>
-        <p className="font-medium lg:text-base lg:w-[25%] text-sm">
+        <p className="font-medium lg:text-base lg:w-[25%]">
           {filteredProducts?.length} products found
         </p>
         <hr className="bg-fuchsia-500 lg:w-[40%] w-[30%] h-[2px]" />
-        <div className="flex text-md items-center justify-end lg:w-[25%] gap-1">
+        <div className="flex items-center justify-end lg:w-[25%] gap-1">
           <label htmlFor="sort">Sort by:</label>
           <select
             name="sort"
