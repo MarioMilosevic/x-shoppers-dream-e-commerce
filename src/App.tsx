@@ -3,6 +3,7 @@ import Products from "./pages/Products";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import SharedLayout from "./components/SharedLayout";
+import SingleProduct from "./components/SingleProduct";
 function App() {
   return (
     <BrowserRouter>
@@ -10,6 +11,7 @@ function App() {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/cart/:cartId" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
         </Route>
       </Routes>

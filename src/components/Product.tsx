@@ -5,8 +5,10 @@ import {
   imgSizeOptions,
 } from "../types/types";
 import Button from "./Button";
+import { Link } from "react-router-dom";
 
 const Product = ({
+  id,
   image,
   name,
   price,
@@ -15,6 +17,7 @@ const Product = ({
   hover,
   imgSize,
 }: ProductProps) => {
+
   const textSizeOptions: textSizeOptions = {
     large: "lg:text-xl ",
     medium: "lg:text-lg",
@@ -35,11 +38,14 @@ const Product = ({
     <article
       className={`flex flex-col pb-2 gap-4 lg:gap-4 lg:w-full transition-all duration-700 ${hoverOptions[hover]}`}
     >
+      <Link to={`/cart/${id}`} >
       <img
         src={image}
         alt={name}
         className={`mx-auto w-full object-cover rounded-md cursor-pointer ${imgSizeOptions[imgSize]}`}
-      />
+        onClick={() => console.log(id)}
+        />
+        </Link>
       <div
         className={`mx-auto w-full flex justify-between text-lg ${textSizeOptions[textSize]}`}
       >
