@@ -9,7 +9,7 @@ const ProductsContent = () => {
   const dispatch = useDispatch();
   return (
     <div className="flex flex-col text-sm lg:px-0 px-4">
-      <div className="flex justify-between items-center pb-6 lg:text-md text-xs">
+      <div className="flex justify-between items-center pb-6 lg:text-base text-xs">
         <div className="lg:hidden cursor-pointer" onClick={() => dispatch(toggleisSidebarOpen())}>
         <BsLayoutTextSidebar className="w-4 h-4"/>
         </div>
