@@ -20,6 +20,48 @@ export const calculateHighestNumber = (arr: productResponseType[]) => {
   );
 };
 
+const mario =
+  "https://www.course-api.com/react-store-single-product?id=";
+
+export const fetchSingleProduct = async (id) => {
+  try {
+    const response = await fetch(`${mario}${id}`);
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    const data = await response.json();
+    console.log(data)
+    return data;
+  } catch (error) {
+    console.error("Error fetching the product:", error);
+    throw error;
+  }
+};
+
+// export const fetchSingleProduct = async (id:string) => {
+//   try {
+//     const response = await fetch(
+//       `https://course-api.com/react-store-single-product?id=${id}`,
+//       {
+//         mode: "no-cors",
+//       }
+//     );
+
+//     if (!response.ok) {
+//       throw new Error("Network response was not ok");
+//     }
+
+//     // With 'no-cors' mode, you can't access the response body, so this part will not work as expected
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error("Error fetching the product:", error);
+//     throw error;
+//   }
+// };
+
 // export const sortProductsUtil = (
 //   products: productResponseType[],
 //   sortKey: string
@@ -40,7 +82,10 @@ export const calculateHighestNumber = (arr: productResponseType[]) => {
 //   }
 // };
 
-export const sortProductsUtil = (products: productResponseType[], sortKey: string) => {
+export const sortProductsUtil = (
+  products: productResponseType[],
+  sortKey: string
+) => {
   switch (sortKey) {
     case "lowest":
       return products.sort((a, b) => a.price - b.price);
