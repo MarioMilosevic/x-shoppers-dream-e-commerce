@@ -28,19 +28,19 @@ const SingleProduct = () => {
     setSingleProduct(mario2);
   }, []);
   // }, [productId]);
-
   if (!singleProduct) return;
+  console.log(singleProduct);
   return (
     <div className="border border-black lg:max-w-[1300px] mx-auto py-16">
       <Button color="purple" buttonHandler={() => navigate("/products")}>
         Back to Products
       </Button>
       <div className="flex justify-between gap-2 border border-black py-8">
-        <div className="w-[50%] flex flex-col gap-4 border border-black">
+        <div className="w-[50%] flex flex-col gap-4 rounded-md">
           <img
             src={`${singleProduct?.images[activeImageIndex].url}`}
             alt={`${singleProduct?.images[activeImageIndex].url}`}
-            className="w-full h-[600px]"
+            className="w-full h-[600px] rounded-md"
           />
           <ul className="flex justify-between">
             {singleProduct.images.map((image, index) => {
@@ -63,7 +63,32 @@ const SingleProduct = () => {
             })}
           </ul>
         </div>
-        <div className="w-[50%] border border-black">drugi</div>
+        <div className="w-[45%] border border-black">
+          <h2 className="capitalize font-semibold text-4xl">
+            {singleProduct.name}
+          </h2>
+          <p>treba rejting odje</p>
+          <span className="text-fuchsia-500 text-xl">{`$${
+            singleProduct.price / 100
+          }`}</span>
+          <p className="leading-6">{singleProduct.description}</p>
+          <div className="flex flex-col gap-4 py-8 border border-b-fuchsia-500">
+            <div className="flex gap-4">
+              <div className="font-semibold w-[15%]">Available:</div>
+              <span>
+                {`${singleProduct.stock > 0 ? "In stock" : "Out of stock"}`}
+              </span>
+            </div>
+            <div className="flex gap-4">
+              <div className="font-semibold w-[15%]">SKU:</div>
+              <span className="capitalize">{singleProduct.id}</span>
+            </div>
+            <div className="flex gap-4">
+              <div className="font-semibold w-[15%]">Brand:</div>
+              <span className="capitalize">{singleProduct.company}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
