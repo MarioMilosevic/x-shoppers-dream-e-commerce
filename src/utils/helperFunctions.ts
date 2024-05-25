@@ -20,12 +20,14 @@ export const calculateHighestNumber = (arr: productResponseType[]) => {
   );
 };
 
-const mario =
-  "https://www.course-api.com/react-store-single-product?id=";
+// const mario =
+//   "https://www.course-api.com/react-store-single-product?id=";
 
-export const fetchSingleProduct = async (id) => {
+export const fetchSingleProduct = async (id:string) => {
   try {
-    const response = await fetch(`${mario}${id}`);
+    const response = await fetch(
+      `https://www.course-api.com/react-store-single-product?id=${id}`
+    );
 
     if (!response.ok) {
       throw new Error("Network response was not ok");
@@ -40,47 +42,6 @@ export const fetchSingleProduct = async (id) => {
   }
 };
 
-// export const fetchSingleProduct = async (id:string) => {
-//   try {
-//     const response = await fetch(
-//       `https://course-api.com/react-store-single-product?id=${id}`,
-//       {
-//         mode: "no-cors",
-//       }
-//     );
-
-//     if (!response.ok) {
-//       throw new Error("Network response was not ok");
-//     }
-
-//     // With 'no-cors' mode, you can't access the response body, so this part will not work as expected
-//     const data = await response.json();
-//     return data;
-//   } catch (error) {
-//     console.error("Error fetching the product:", error);
-//     throw error;
-//   }
-// };
-
-// export const sortProductsUtil = (
-//   products: productResponseType[],
-//   sortKey: string
-// ) => {
-//   if (sortKey === "lowest") {
-//     return products.sort((a, b) => a.price - b.price);
-//   }
-//   if (sortKey === "highest") {
-//     return products.sort((a, b) => b.price - a.price);
-//   }
-//   if (sortKey === "a-z") {
-//     return products.sort((a, b) => a.name.localeCompare(b.name));
-//   }
-//   if (sortKey === "z-a") {
-//     return products.sort((a, b) => b.name.localeCompare(a.name));
-//   } else {
-//     return products;
-//   }
-// };
 
 export const sortProductsUtil = (
   products: productResponseType[],
