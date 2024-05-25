@@ -35,19 +35,33 @@ const SingleProduct = () => {
       <Button color="purple" buttonHandler={() => navigate("/products")}>
         Back to Products
       </Button>
-      <div className="flex justify-between gap-2">
-        <div className="w-[50%] border border-black">
+      <div className="flex justify-between gap-2 border border-black py-8">
+        <div className="w-[50%] flex flex-col gap-4 border border-black">
           <img
             src={`${singleProduct?.images[activeImageIndex].url}`}
-            alt="mario"
+            alt={`${singleProduct?.images[activeImageIndex].url}`}
+            className="w-full h-[600px]"
           />
-          <div className="flex justify-between border border-black">
-            {singleProduct.images.map((image) => (
-              <div className="w-[85px] h-[85px]">
-                <img src={image.url} key={image.id} className="h-full w-full object-cover rounded-md" />
-              </div>
-            ))}
-          </div>
+          <ul className="flex justify-between">
+            {singleProduct.images.map((image, index) => {
+              const decoration =
+                activeImageIndex === index ? "border border-fuchsia-500" : "";
+
+              return (
+                <li
+                  key={index}
+                  className={`w-[80px] h-[80px] cursor-pointer rounded-md ${decoration}`}
+                  onClick={() => setactiveImageIndex(index)}
+                >
+                  <img
+                    src={image.url}
+                    key={image.id}
+                    className="h-full w-full object-cover rounded-md"
+                  />
+                </li>
+              );
+            })}
+          </ul>
         </div>
         <div className="w-[50%] border border-black">drugi</div>
       </div>
