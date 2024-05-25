@@ -164,3 +164,32 @@ export type colorButtonIsActive = {
   false:string
 }
 
+export type singleProductImages = {
+  filename: string;
+  height: number;
+  id: string;
+  size: number;
+  thumbnails: {
+    full:{url:string, width:number, height:number},
+    large:{url:string, width:number, height:number},
+    small:{url:string, width:number, height:number},
+  },
+  type: string;
+  url: string;
+  width:number
+}
+
+export type singleProductType = {
+  id: string;
+  category: string;
+  colors: string[];
+  company: string;
+  description: string;
+  images: singleProductImages[],
+  name: string;
+  price: number;
+  reviews: number;
+  shipping: boolean;
+  start: number;
+  stock: number;
+}
