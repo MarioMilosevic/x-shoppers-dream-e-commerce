@@ -1,18 +1,19 @@
 import { useParams } from "react-router";
 import { useProductsSlice } from "../hooks/useProductsSlice";
 import { fetchSingleProduct } from "../utils/helperFunctions";
-import { IoIosArrowRoundDown } from "react-icons/io";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+import Button from "./Button";
 const SingleProduct = () => {
   const products = useProductsSlice();
-  const { cartId } = useParams();
-
+  const { productId } = useParams();
+  const navigate = useNavigate();
+  const [singleProduct, setSingleProduct] = useState()
   useEffect(() => {
     const getProduct = async () => {
       try {
-        if (cartId) {
-          const fetchedProduct = await fetchSingleProduct(cartId);
+        if (productId) {
+          const fetchedProduct = await fetchSingleProduct(productId);
           console.log(fetchedProduct);
         }
       } catch (error) {
@@ -20,15 +21,19 @@ const SingleProduct = () => {
       }
     };
     getProduct();
-  }, [cartId]);
+  }, [productId]);
 
   console.log(products);
   return (
     <div className="border border-black lg:max-w-[1300px] mx-auto py-16">
-      <div className="border border-black flex items-center text-sm text-fuchsia-500 underilne underline-offset-[6px] decoration-fuchsia-500">
-        <Link to={"/products"}>Back to Products</Link>
-        <IoIosArrowRoundDown />
-
+      <Button color="purple" buttonHandler={() => navigate("/products")}>
+        Back to Products
+      </Button>
+      <div className="flex justify-between gap-2">
+        <div className="w-[50%]  border border-black">
+        <img src="" alt="" />
+        </div>
+        <div className="w-[50%] border border-black">drugi</div>
       </div>
     </div>
   );

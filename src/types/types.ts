@@ -37,6 +37,7 @@ export type ProductProps = {
   textSize: keyof textSizeOptions;
   imgSize: keyof imgSizeOptions;
   image: string;
+  id: string;
   description: string;
   name: string;
   price: number;

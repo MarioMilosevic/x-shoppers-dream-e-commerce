@@ -38,7 +38,7 @@ const Product = ({
     <article
       className={`flex flex-col pb-2 gap-4 lg:gap-4 lg:w-full transition-all duration-700 ${hoverOptions[hover]}`}
     >
-      <Link to={`/cart/${id}`} >
+      <Link to={`/products/${id}`} >
       <img
         src={image}
         alt={name}
