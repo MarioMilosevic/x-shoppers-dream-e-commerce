@@ -191,7 +191,7 @@ export type singleProductType = {
   price: number;
   reviews: number;
   shipping: boolean;
-  start: number;
+  stars: number;
   stock: number;
 }
 

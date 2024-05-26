@@ -107,6 +107,14 @@ export const initialFilters = {
 
 export type FilterKeys = keyof typeof initialFilters;
 
+export const stars = [
+  {color:""},
+  {color:""},
+  {color:""},
+  {color:""},
+  {color:""},
+]
+
 ////////////////////////////////////////////////////////////////////
 export const mario = [
   {

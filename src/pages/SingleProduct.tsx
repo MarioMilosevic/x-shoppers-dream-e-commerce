@@ -1,10 +1,10 @@
 import { useParams } from "react-router";
 import { useProductsSlice } from "../hooks/useProductsSlice";
 import { fetchSingleProduct } from "../utils/helperFunctions";
-import { CiStar } from "react-icons/ci";
+import { FaStar } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { mario2 } from "../utils/constants";
+import { mario2, stars } from "../utils/constants";
 import ColorButton from "../components/ColorButton";
 import Button from "../components/Button";
 import { singleProductType } from "../types/types";
@@ -16,23 +16,24 @@ const SingleProduct = () => {
   const navigate = useNavigate();
   const [singleProduct, setSingleProduct] = useState<singleProductType>();
   useEffect(() => {
-    // const getProduct = async () => {
-    //   try {
-    //     if (productId) {
-    //       const fetchedProduct = await fetchSingleProduct(productId);
-    //       setSingleProduct(fetchedProduct);
-    //       console.log(fetchedProduct);
-    //     }
-    //   } catch (error) {
-    //     console.error("Error fetching the product:", error);
-    //   }
-    // };
-    // getProduct();
-    setSingleProduct(mario2);
-  }, []);
+    const getProduct = async () => {
+      try {
+        if (productId) {
+          const fetchedProduct = await fetchSingleProduct(productId);
+          setSingleProduct(fetchedProduct);
+          console.log(fetchedProduct);
+        }
+      } catch (error) {
+        console.error("Error fetching the product:", error);
+      }
+    };
+    getProduct();
+    // setSingleProduct(mario2);
+  }, [productId]);
   // }, [productId]);
   if (!singleProduct) return;
   console.log(singleProduct);
+
   return (
     <div className="lg:max-w-[1300px] mx-auto py-16">
       <Button color="purple" buttonHandler={() => navigate("/products")}>
@@ -66,23 +67,20 @@ const SingleProduct = () => {
             })}
           </ul>
         </div>
-        {/*  */}
         <div className="flex flex-col justify-between w-[45%]">
           <h2 className="capitalize font-semibold text-4xl">
             {singleProduct.name}
           </h2>
-          {/*  */}
-          <div className="flex items-center">
-            <div className="flex">
-              <span><CiStar className="stroke-red-500"/></span>
-              <span><CiStar/></span>
-              <span><CiStar/></span>
-              <span><CiStar/></span>
-              <span><CiStar/></span>
-            </div>
+          <div className="flex items-center gap-2">
+            <ul className="flex">
+              {stars.map((star, index) => {
+                const starColor =
+                  singleProduct.stars >= index + 1 ? "orange" : "";
+                return <FaStar key={index} color={starColor} />;
+              })}
+            </ul>
             <div>{`(${singleProduct.reviews} customer reviews)`}</div>
           </div>
-          {/*  */}
           <span className="text-fuchsia-500 text-xl">{`$${
             singleProduct.price / 100
           }`}</span>
@@ -103,9 +101,9 @@ const SingleProduct = () => {
               <span className="capitalize">{singleProduct.company}</span>
             </div>
           </div>
-          <div className="flex gap-4 py-12">
+          <div className="flex gap-4 py-12 ">
             <div className="font-semibold w-[15%]">Colors:</div>
-            <ul className="flex items-center gap-1">
+            <ul className="flex items-center gap-2">
               {singleProduct.colors.map((button, index) => {
                 const isActive = activeColorIndex === index ? "true" : "false";
                 return (
