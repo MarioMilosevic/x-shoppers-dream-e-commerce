@@ -1,36 +1,53 @@
 import { useParams } from "react-router";
-import { useProductsSlice } from "../hooks/useProductsSlice";
+// import { useProductsSlice } from "../hooks/useProductsSlice";
 import { fetchSingleProduct } from "../utils/helperFunctions";
 import { FaStar } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { mario2, stars } from "../utils/constants";
+import { FaRegStarHalfStroke, FaRegStarHalf, FaRegStar } from "react-icons/fa6";
+import { mario2 } from "../utils/constants";
 import ColorButton from "../components/ColorButton";
 import Button from "../components/Button";
 import { singleProductType } from "../types/types";
 const SingleProduct = () => {
   const [activeImageIndex, setactiveImageIndex] = useState<number>(0);
   const [activeColorIndex, setActiveColorIndex] = useState<number>(0);
-  const products = useProductsSlice();
+  // const products = useProductsSlice();
   const { productId } = useParams();
   const navigate = useNavigate();
   const [singleProduct, setSingleProduct] = useState<singleProductType>();
   useEffect(() => {
-    const getProduct = async () => {
-      try {
-        if (productId) {
-          const fetchedProduct = await fetchSingleProduct(productId);
-          setSingleProduct(fetchedProduct);
-          console.log(fetchedProduct);
-        }
-      } catch (error) {
-        console.error("Error fetching the product:", error);
-      }
-    };
-    getProduct();
-    // setSingleProduct(mario2);
+    // const getProduct = async () => {
+    //   try {
+    //     if (productId) {
+    //       const fetchedProduct = await fetchSingleProduct(productId);
+    //       setSingleProduct(fetchedProduct);
+    //       console.log(fetchedProduct);
+    //     }
+    //   } catch (error) {
+    //     console.error("Error fetching the product:", error);
+    //   }
+    // };
+    // getProduct();
+    setSingleProduct(mario2);
   }, [productId]);
   // }, [productId]);
+
+  const createStarsArray = (stars: number) => {
+    const starsArray = [];
+
+    for (let i = 0; i < 5; i++) {
+      const halfStar = i + 0.5;
+
+      if (stars >= i + 1) starsArray.push(<FaStar color="orange" />);
+      else if (stars >= halfStar) {
+        starsArray.push(<FaRegStarHalfStroke color="orange" />);
+      } else starsArray.push(<FaRegStar color="orange" />);
+    }
+    console.log(starsArray);
+    return starsArray;
+  };
+
   if (!singleProduct) return;
   console.log(singleProduct);
 
@@ -72,13 +89,7 @@ const SingleProduct = () => {
             {singleProduct.name}
           </h2>
           <div className="flex items-center gap-2">
-            <ul className="flex">
-              {stars.map((star, index) => {
-                const starColor =
-                  singleProduct.stars >= index + 1 ? "orange" : "";
-                return <FaStar key={index} color={starColor} />;
-              })}
-            </ul>
+            <ul className="flex">{createStarsArray(singleProduct.stars)}</ul>
             <div>{`(${singleProduct.reviews} customer reviews)`}</div>
           </div>
           <span className="text-fuchsia-500 text-xl">{`$${
@@ -101,7 +112,7 @@ const SingleProduct = () => {
               <span className="capitalize">{singleProduct.company}</span>
             </div>
           </div>
-          <div className="flex gap-4 py-12 ">
+          <div className="flex gap-4">
             <div className="font-semibold w-[15%]">Colors:</div>
             <ul className="flex items-center gap-2">
               {singleProduct.colors.map((button, index) => {
