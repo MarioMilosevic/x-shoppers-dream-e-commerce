@@ -3,7 +3,7 @@ import Products from "./pages/Products";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import SharedLayout from "./components/SharedLayout";
-import SingleProduct from "./components/SingleProduct";
+import SingleProduct from "./pages/SingleProduct";
 function App() {
   return (
     <BrowserRouter>

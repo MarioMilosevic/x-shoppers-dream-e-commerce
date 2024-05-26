@@ -1,11 +1,12 @@
 import { useParams } from "react-router";
 import { useProductsSlice } from "../hooks/useProductsSlice";
 import { fetchSingleProduct } from "../utils/helperFunctions";
+import { CiStar } from "react-icons/ci";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { mario2 } from "../utils/constants";
-import ColorButton from "./ColorButton";
-import Button from "./Button";
+import ColorButton from "../components/ColorButton";
+import Button from "../components/Button";
 import { singleProductType } from "../types/types";
 const SingleProduct = () => {
   const [activeImageIndex, setactiveImageIndex] = useState<number>(0);
@@ -65,16 +66,28 @@ const SingleProduct = () => {
             })}
           </ul>
         </div>
-        <div className="w-[45%]">
+        {/*  */}
+        <div className="flex flex-col justify-between w-[45%]">
           <h2 className="capitalize font-semibold text-4xl">
             {singleProduct.name}
           </h2>
-          <p>treba rejting odje</p>
+          {/*  */}
+          <div className="flex items-center">
+            <div className="flex">
+              <span><CiStar className="stroke-red-500"/></span>
+              <span><CiStar/></span>
+              <span><CiStar/></span>
+              <span><CiStar/></span>
+              <span><CiStar/></span>
+            </div>
+            <div>{`(${singleProduct.reviews} customer reviews)`}</div>
+          </div>
+          {/*  */}
           <span className="text-fuchsia-500 text-xl">{`$${
             singleProduct.price / 100
           }`}</span>
           <p className="leading-6">{singleProduct.description}</p>
-          <div className="flex flex-col gap-4 py-8 border-b border-b-fuchsia-500">
+          <div className="flex flex-col gap-4 pb-8 border-b border-b-fuchsia-500">
             <div className="flex gap-4">
               <div className="font-semibold w-[15%]">Available:</div>
               <span>
@@ -119,7 +132,7 @@ const SingleProduct = () => {
               color="purple"
               buttonHandler={() => console.log("treba da doda u kart")}
             >
-              Add to cart
+              Add to Cart
             </Button>
           </div>
         </div>
