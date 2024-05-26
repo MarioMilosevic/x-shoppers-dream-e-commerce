@@ -4,10 +4,12 @@ import { fetchSingleProduct } from "../utils/helperFunctions";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { mario2 } from "../utils/constants";
+import ColorButton from "./ColorButton";
 import Button from "./Button";
 import { singleProductType } from "../types/types";
 const SingleProduct = () => {
   const [activeImageIndex, setactiveImageIndex] = useState<number>(0);
+  const [activeColorIndex, setActiveColorIndex] = useState<number>(0)
   const products = useProductsSlice();
   const { productId } = useParams();
   const navigate = useNavigate();
@@ -87,6 +89,24 @@ const SingleProduct = () => {
               <div className="font-semibold w-[15%]">Brand:</div>
               <span className="capitalize">{singleProduct.company}</span>
             </div>
+          </div>
+          <div className="flex gap-4 border border-black">
+            <div className="font-semibold w-[15%]">Colors:</div>
+            <ul className="flex items-center gap-1">
+              {singleProduct.colors.map((button, index) => {
+                const isActive = activeColorIndex === index ? "true" : "false";
+                return (
+                  <ColorButton
+                    key={index}
+                    button={button}
+                    isActive={isActive}
+                    index={index}
+                    size="medium"
+                    clickHandler={() => setActiveColorIndex(index)}
+                  />
+                );
+              })}
+            </ul>
           </div>
         </div>
       </div>

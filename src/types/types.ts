@@ -157,6 +157,7 @@ export type colorButtonProps = {
     button: string
   ) => void;
   index: number;
+  size:keyof colorButtonSizeOptions
 };
 
 export type colorButtonIsActive = {
@@ -192,4 +193,9 @@ export type singleProductType = {
   shipping: boolean;
   start: number;
   stock: number;
+}
+
+export type colorButtonSizeOptions = {
+  small: string;
+  medium: string;
 }

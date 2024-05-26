@@ -108,7 +108,7 @@ const Sidebar = () => {
         ))}
       </select>
       <h3 className="font-medium pt-4 pb-2">Color</h3>
-      <ul className="flex items-center gap-1">
+      <ul className="flex items-center gap-2">
         {colors.map((button, index) => {
           const isActive = activeColorIndex === index ? "true" : "false";
           return (
@@ -117,6 +117,7 @@ const Sidebar = () => {
               button={button}
               isActive={isActive}
               index={index}
+              size="small"
               clickHandler={colorHandler}
             />
           );

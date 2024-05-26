@@ -1,12 +1,12 @@
-import { colorButtonProps, colorButtonIsActive } from "../types/types";
-// import { IoIosCheckmark } from "react-icons/io";
+import { colorButtonProps, colorButtonIsActive, colorButtonSizeOptions } from "../types/types";
 const ColorButton = ({
   button,
   isActive,
   clickHandler,
   index,
+  size
 }: colorButtonProps) => {
-  const styling = button === "All" ? "" : "w-3 h-3 rounded-full";
+  const styling = button === "All" ? "" : "rounded-full";
 
   const isActiveOptions: colorButtonIsActive = {
     true: `${
@@ -17,9 +17,14 @@ const ColorButton = ({
     false: "opacity-20",
   };
 
+  const sizeOptions:colorButtonSizeOptions = {
+    small: "w-3 h-3",
+    medium:"w-5 h-5"
+  }
+
   return (
     <button
-      className={`${styling} ${isActiveOptions[isActive]} flex items-center justify-center`}
+      className={`${styling} ${sizeOptions[size]} ${isActiveOptions[isActive]} flex items-center justify-center`}
       style={{ backgroundColor: `${button}` }}
       onClick={(e) => clickHandler(e, index, button)}
     >
