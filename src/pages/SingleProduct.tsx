@@ -9,6 +9,7 @@ import { mario2 } from "../utils/constants";
 import ColorButton from "../components/ColorButton";
 import Button from "../components/Button";
 import { singleProductType } from "../types/types";
+import CartQuantityControl from "../components/CartQuantityControl";
 const SingleProduct = () => {
   const [activeImageIndex, setactiveImageIndex] = useState<number>(0);
   const [activeColorIndex, setActiveColorIndex] = useState<number>(0);
@@ -30,7 +31,7 @@ const SingleProduct = () => {
     // };
     // getProduct();
     setSingleProduct(mario2);
-  }, [productId]);
+  }, []);
   // }, [productId]);
 
   const createStarsArray = (stars: number) => {
@@ -131,16 +132,8 @@ const SingleProduct = () => {
             </ul>
           </div>
           <div className="w-[25%] flex flex-col gap-4">
-            <div className="flex justify-between text-3xl items-center">
-              <button>-</button>
-              <span className="font-semibold text-4xl">1</span>
-              <button>+</button>
-            </div>
-
-            <Button
-              color="purple"
-              buttonHandler={() => console.log("treba da doda u kart")}
-            >
+            <CartQuantityControl />
+            <Button color="purple" buttonHandler={() => navigate("/cart")}>
               Add to Cart
             </Button>
           </div>

@@ -62,7 +62,7 @@ const Sidebar = () => {
   const sidebar = isSidebarOpen ? "translate-x-0" : "-translate-x-[100%]"
 
   return (
-    <aside className={`absolute z-10 bg-neutral-100 lg:static top-20 p-4 rounded-md lg:text-base text-sm lg:translate-x-0 lg:transition-none transition-all duration-700 ${sidebar}`}>
+    <aside className={`lg:relative absolute z-10 bg-neutral-100 lg:top-0 top-20 p-4 rounded-md lg:text-base text-sm lg:translate-x-0 lg:transition-none transition-all duration-700 ${sidebar}`}>
       <input
         type="text"
         id="search"
