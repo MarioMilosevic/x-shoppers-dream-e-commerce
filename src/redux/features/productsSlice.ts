@@ -88,10 +88,3 @@ export const productsSlice = createSlice({
 export const { setProducts, setFilters, sortProducts, clearFilters } =
   productsSlice.actions;
 export default productsSlice.reducer;
-
-// vidi breaking point na koji ti se lomi dizajn i
-// na taj breaking point stavis da nisu vise u gridu elementi no flex column
-// filteri nek budu absolute, sakrij ih
-// dodaj neki hamburger dugme na klik dugmeta translate x 100% (filtere da se vide)
-
-// https://react-course-comfy-sloth-store.netlify.app/products

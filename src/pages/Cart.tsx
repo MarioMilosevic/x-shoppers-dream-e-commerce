@@ -1,10 +1,7 @@
 import { mario2 } from "../utils/constants";
 import { useEffect, useState } from "react";
 import { singleProductType } from "../types/types";
-import ColorButton from "../components/ColorButton";
-import { FaRegTrashAlt } from "react-icons/fa";
 import ChosenProduct from "../components/ChosenProduct";
-import CartQuantityControl from "../components/CartQuantityControl";
 import Button from "../components/Button";
 import { useNavigate } from "react-router";
 const Cart = () => {
@@ -15,21 +12,22 @@ const Cart = () => {
   }, []);
 
   if (!singleProduct) return;
-  console.log(singleProduct);
   return (
-    <div className="lg:max-w-[1200px] mx-auto py-16">
-      <div className="flex justify-around border-b border-b-neutral-400 py-8">
-        <div>Item</div>
+    <div className="lg:max-w-[1200px] mx-auto pt-16 pb-32">
+      <div className="flex justify-between border-b border-b-neutral-400 py-8">
+        <div className="w-[250px] flex justify-center">
+          <span>Item</span>
+        </div>
         <div>Price</div>
         <div>Quantity</div>
-        <div>Subtotal</div>
+        <div className="mr-32">Subtotal</div>
       </div>
       <ul className="border-b border-b-neutral-500 flex flex-col gap-8 py-16">
         <ChosenProduct product={singleProduct} />
         <ChosenProduct product={singleProduct} />
         <ChosenProduct product={singleProduct} />
       </ul>
-      <div className="flex justify-between items-center py-8">
+      <div className="flex justify-between items-center pt-12 pb-16">
         <Button color="purple" buttonHandler={() => navigate("/products")}>
           Continue Shopping
         </Button>
@@ -47,7 +45,7 @@ const Cart = () => {
             <h3>Shipping fee:</h3>
             <span>$2.97</span>
           </div>
-        <div className="border-t border-t-neutral-400 pt-8 pb-6 grid grid-cols-[75%_auto] w-[400px] text-2xl font-semibold">
+          <div className="border-t border-t-neutral-400 pt-8 pb-6 grid grid-cols-[75%_auto] w-[400px] text-2xl font-semibold">
             <h2>Order Total:</h2>
             <span>$363.98</span>
           </div>

@@ -4,7 +4,7 @@ import { fetchSingleProduct } from "../utils/helperFunctions";
 import { FaStar } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { FaRegStarHalfStroke, FaRegStarHalf, FaRegStar } from "react-icons/fa6";
+import { FaRegStarHalfStroke, FaRegStar } from "react-icons/fa6";
 import { mario2 } from "../utils/constants";
 import ColorButton from "../components/ColorButton";
 import Button from "../components/Button";

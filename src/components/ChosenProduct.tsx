@@ -1,10 +1,10 @@
 import CartQuantityControl from "./CartQuantityControl";
 import { LuTrash } from "react-icons/lu";
 import { ChosenProductType } from "../types/types";
-const ChosenProduct = ({ product }:ChosenProductType) => {
+const ChosenProduct = ({ product }: ChosenProductType) => {
   return (
     <li className="flex justify-between items-center relative">
-      <div className="border border-black flex gap-2 w-[250px]">
+      <div className="flex gap-4 w-[250px]">
         <img
           src={product.images[0].url}
           alt={product.images[0].url}
@@ -14,29 +14,29 @@ const ChosenProduct = ({ product }:ChosenProductType) => {
           <h3 className="capitalize font-semibold">{product.name}</h3>
           <div className="flex gap-2 items-center">
             <span className="font-light text-sm">Color:</span>
-            {product.colors.map((button) => {
-                return (
-                  <span
-                    className="flex justify-center items-center w-3 h-3 rounded-md"
-                    style={{ backgroundColor: `${button}` }}
-                  ></span>
-                );
+            {product.colors.map((button, index) => {
+              return (
+                <span
+                  key={index}
+                  className="flex justify-center items-center w-3 h-3 rounded-md"
+                  style={{ backgroundColor: `${button}` }}
+                ></span>
+              );
             })}
           </div>
         </div>
       </div>
-      <div className="border border-black text-fuchsia-500 ">{`$${product.price / 100}`}</div>
-      <div className="border border-black w-[100px]">
+      <div className="text-fuchsia-500 ">{`$${product.price / 100}`}</div>
+      <div className="w-[100px]">
         <CartQuantityControl />
       </div>
       {/* subtotal */}
-      <div className="border border-black text-neutral-500 mr-32">{`$${product.price / 100}`}</div>
+      <div className="text-neutral-500 mr-32">{`$${product.price / 100}`}</div>
       <button className="bg-red-400 p-1 rounded-md absolute right-8">
-        <LuTrash  fill="white"/>
+        <LuTrash fill="white" />
       </button>
     </li>
   );
 };
 
 export default ChosenProduct;
-
