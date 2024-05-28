@@ -2,6 +2,9 @@ import { mario2 } from "../utils/constants";
 import { useEffect, useState } from "react";
 import { singleProductType } from "../types/types";
 import ColorButton from "../components/ColorButton";
+import { FaRegTrashAlt } from "react-icons/fa";
+import ChosenProduct from "../components/ChosenProduct";
+import CartQuantityControl from "../components/CartQuantityControl";
 const Cart = () => {
   const [singleProduct, setSingleProduct] = useState<singleProductType>();
 
@@ -19,7 +22,19 @@ const Cart = () => {
         <div>Quantity</div>
         <div>Subtotal</div>
       </div>
-      <div className="border border-red-600">
+      <ul className="border border-black flex flex-col gap-4 py-4">
+      <ChosenProduct product={singleProduct } />
+      <ChosenProduct product={singleProduct } />
+      <ChosenProduct product={singleProduct } />
+      </ul>
+    </div>
+  );
+};
+
+export default Cart;
+
+
+  /* <div className="flex justify-between items-center">
         <div className="border border-black flex gap-2">
           <img
             src={singleProduct.images[0].url}
@@ -45,9 +60,9 @@ const Cart = () => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  );
-};
-
-export default Cart;
+        <div>{`$${singleProduct.price / 100}`}</div>
+        <CartQuantityControl />
+        {/* subtotal 
+        <div>{`$${singleProduct.price / 100}`}</div>
+        <FaRegTrashAlt />
+      </div>*/
