@@ -1,7 +1,7 @@
-import ColorButton from "./ColorButton";
 import CartQuantityControl from "./CartQuantityControl";
 import { LuTrash } from "react-icons/lu";
-const ChosenProduct = ({ product }) => {
+import { ChosenProductType } from "../types/types";
+const ChosenProduct = ({ product }:ChosenProductType) => {
   return (
     <li className="flex justify-between items-center relative">
       <div className="border border-black flex gap-2 w-[250px]">
@@ -11,28 +11,26 @@ const ChosenProduct = ({ product }) => {
           className="w-[100px] h-[80px] object-cover"
         />
         <div className="flex flex-col justify-center">
-          <h3 className="capitalize font-semibold text-base">{product.name}</h3>
+          <h3 className="capitalize font-semibold">{product.name}</h3>
           <div className="flex gap-2 items-center">
-            <span>Color:</span>
-            {product.colors.map((button, index) => {
-              return (
-                <ColorButton
-                  key={index}
-                  button={button}
-                  index={index}
-                  size="small"
-                />
-              );
+            <span className="font-light text-sm">Color:</span>
+            {product.colors.map((button) => {
+                return (
+                  <span
+                    className="flex justify-center items-center w-3 h-3 rounded-md"
+                    style={{ backgroundColor: `${button}` }}
+                  ></span>
+                );
             })}
           </div>
         </div>
       </div>
-      <div className="border border-black">{`$${product.price / 100}`}</div>
+      <div className="border border-black text-fuchsia-500 ">{`$${product.price / 100}`}</div>
       <div className="border border-black w-[100px]">
         <CartQuantityControl />
       </div>
       {/* subtotal */}
-      <div className="border border-black mr-32">{`$${product.price / 100}`}</div>
+      <div className="border border-black text-neutral-500 mr-32">{`$${product.price / 100}`}</div>
       <button className="bg-red-400 p-1 rounded-md absolute right-8">
         <LuTrash  fill="white"/>
       </button>
@@ -41,3 +39,4 @@ const ChosenProduct = ({ product }) => {
 };
 
 export default ChosenProduct;
+

@@ -199,3 +199,7 @@ export type colorButtonSizeOptions = {
   small: string;
   medium: string;
 }
+
+export type ChosenProductType = {
+  product: singleProductType;
+}

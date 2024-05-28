@@ -3,10 +3,10 @@ import { ButtonColors } from "../types/types";
 const Button = ({ children, color, buttonHandler }: ButtonProps) => {
   const buttonColors: ButtonColors = {
     purple:
-      "bg-fuchsia-500 text-fuchsia-50 lg:px-[1.40rem] lg:text-base lg:py-[0.6rem] hover:bg-fuchsia-600",
+      "bg-fuchsia-500 text-fuchsia-50 lg:px-[1.4rem] lg:text-base lg:py-[0.6rem] hover:bg-fuchsia-600",
     white:
       "bg-white lg:px-[1.40rem] lg:py-[0.6rem] lg:text-base hover:bg-neutral-200",
-    red: "bg-red-500 text-red-50 lg:px-[1rem] lg:py-[0.4rem] lg:text-sm hover:bg-red-600",
+    red: "bg-red-500 text-red-50 lg:px-[1.4rem] lg:py-[0.6rem] lg:text-base hover:bg-red-600",
   };
 
   return (
