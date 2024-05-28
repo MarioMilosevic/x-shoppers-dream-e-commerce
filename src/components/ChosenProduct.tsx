@@ -28,7 +28,7 @@ const ChosenProduct = ({ product }: ChosenProductType) => {
       </div>
       <div className="text-fuchsia-500 ">{`$${product.price / 100}`}</div>
       <div className="w-[100px]">
-        <CartQuantityControl />
+        <CartQuantityControl quantity={0}/>
       </div>
       {/* subtotal */}
       <div className="text-neutral-500 mr-32">{`$${product.price / 100}`}</div>

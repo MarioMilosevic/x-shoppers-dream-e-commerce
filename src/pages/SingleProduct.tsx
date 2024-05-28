@@ -1,9 +1,8 @@
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 // import { useProductsSlice } from "../hooks/useProductsSlice";
 import { fetchSingleProduct } from "../utils/helperFunctions";
 import { FaStar } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
 import { FaRegStarHalfStroke, FaRegStar } from "react-icons/fa6";
 import { mario2 } from "../utils/constants";
 import ColorButton from "../components/ColorButton";
@@ -18,25 +17,24 @@ const SingleProduct = () => {
   const navigate = useNavigate();
   const [singleProduct, setSingleProduct] = useState<singleProductType>();
   useEffect(() => {
-    // const getProduct = async () => {
-    //   try {
-    //     if (productId) {
-    //       const fetchedProduct = await fetchSingleProduct(productId);
-    //       setSingleProduct(fetchedProduct);
-    //       console.log(fetchedProduct);
-    //     }
-    //   } catch (error) {
-    //     console.error("Error fetching the product:", error);
-    //   }
-    // };
-    // getProduct();
+  //   const getProduct = async () => {
+  //     try {
+  //       if (productId) {
+  //         const fetchedProduct = await fetchSingleProduct(productId);
+  //         fetchedProduct.quantity = 1;
+  //         setSingleProduct(fetchedProduct);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching the product:", error);
+  //     }
+  //   };
+  //   getProduct();
+  // }, [productId]);
     setSingleProduct(mario2);
   }, []);
-  // }, [productId]);
 
   const createStarsArray = (stars: number) => {
     const starsArray = [];
-
     for (let i = 0; i < 5; i++) {
       const halfStar = i + 0.5;
 
@@ -45,9 +43,26 @@ const SingleProduct = () => {
         starsArray.push(<FaRegStarHalfStroke color="orange" />);
       } else starsArray.push(<FaRegStar color="orange" />);
     }
-    console.log(starsArray);
     return starsArray;
   };
+
+  const incrementProductQuantity = () => {
+    if (singleProduct?.quantity < singleProduct?.stock) { 
+      setSingleProduct((prev) => ({
+        ...prev,
+        quantity: prev.quantity + 1,
+      }));
+    }
+ };
+
+  const decrementProductQuantity = () => {
+    if (singleProduct?.quantity > 1) { 
+      setSingleProduct((prev) => ({
+        ...prev,
+        quantity: prev.quantity - 1,
+      }));
+    }
+  }
 
   if (!singleProduct) return;
   console.log(singleProduct);
@@ -90,7 +105,11 @@ const SingleProduct = () => {
             {singleProduct.name}
           </h2>
           <div className="flex items-center gap-2">
-            <ul className="flex">{createStarsArray(singleProduct.stars)}</ul>
+            <ul className="flex">
+              {createStarsArray(singleProduct.stars).map((star, index) => (
+                <li key={index}>{star}</li>
+              ))}
+            </ul>
             <div>{`(${singleProduct.reviews} customer reviews)`}</div>
           </div>
           <span className="text-fuchsia-500 text-xl">{`$${
@@ -132,7 +151,7 @@ const SingleProduct = () => {
             </ul>
           </div>
           <div className="w-[25%] flex flex-col gap-4">
-            <CartQuantityControl />
+            <CartQuantityControl quantity={singleProduct.quantity} incrementProductQuantity={incrementProductQuantity} decrementProductQuantity={decrementProductQuantity } />
             <Button color="purple" buttonHandler={() => navigate("/cart")}>
               Add to Cart
             </Button>

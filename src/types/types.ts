@@ -193,6 +193,7 @@ export type singleProductType = {
   shipping: boolean;
   stars: number;
   stock: number;
+  quantity?: number;
 }
 
 export type colorButtonSizeOptions = {

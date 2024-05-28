@@ -2,15 +2,17 @@ import { BsBag } from "react-icons/bs";
 import { useState, useRef, useEffect } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaWindowClose } from "react-icons/fa";
-import ListItem from "./ListItem";
 import { Outlet } from "react-router";
 import { handleStickyNav } from "../utils/helperFunctions";
 import { pages } from "../utils/constants";
 import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router";
+import { useCartSlice } from "../hooks/useCartSlice";
+import ListItem from "./ListItem";
 const SharedLayout = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activePageIndex, setActivePageIndex] = useState<number>(0);
+  const {cart} = useCartSlice()
   const navigate = useNavigate();
   const location = useLocation();
   const navRef = useRef<HTMLDivElement | null>(
@@ -72,7 +74,7 @@ const SharedLayout = () => {
             <span>Cart</span>
             <BsBag className="text-[1.25rem] self-start" />
             <span className="bg-fuchsia-500 text-fuchsia-50 text-sm w-[1.1rem] h-[1.1rem] flex items-center justify-center rounded-full absolute top-1 -right-3">
-              0
+              {cart.length}
             </span>
           </Link>
 

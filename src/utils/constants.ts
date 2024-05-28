@@ -375,6 +375,7 @@ export const mario2 = {
   stock: 10,
   price: 3099,
   shipping: true,
+  quantity: 1,
   colors: ["#000"],
   category: "living room",
   images: [
