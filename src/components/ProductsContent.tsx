@@ -6,7 +6,6 @@ import { BsLayoutTextSidebar } from "react-icons/bs";
 import { toggleisSidebarOpen } from "../redux/features/appSlice";
 const ProductsContent = () => {
   const filteredProducts = useFilteredProductsSlice();
-  console.log(filteredProducts)
   const dispatch = useDispatch();
   return (
     <div className="flex flex-col text-sm lg:px-0 px-4">

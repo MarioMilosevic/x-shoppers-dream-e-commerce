@@ -206,6 +206,7 @@ export type ChosenProductType = {
 };
 
 export type CartQuantityControlProps = {
+  id: string;
   quantity: number;
   incrementProductQuantity: () => void;
   decrementProductQuantity: () => void;

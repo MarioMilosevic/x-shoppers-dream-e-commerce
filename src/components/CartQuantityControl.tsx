@@ -1,17 +1,15 @@
 import { CartQuantityControlProps } from "../types/types";
-import { incrementProductQuantity } from "../redux/features/cartSlice";
 import { useCartSlice } from "../hooks/useCartSlice";
 const CartQuantityControl = ({
    quantity,
    incrementProductQuantity,
-   decrementProductQuantity,
-  // id,
+  decrementProductQuantity,
+   id
 }: CartQuantityControlProps) => {
-  const { cart } = useCartSlice();
+  const { cart } = useCartSlice()
   console.log(cart)
-  // const { quantity } = cart.find((item) => item.id === id) || {
-  //   quantity: 1,
-  // };
+  console.log(incrementProductQuantity)
+  console.log(id)
 
   return (
     <div className="flex justify-between text-3xl items-center">

@@ -11,7 +11,7 @@ type CartState = {
 const initialState: CartState = {
   cart: [],
   totalPrice: 0,
-  totalQuantity:0
+  totalQuantity: 0,
 };
 
 export const cartSlice = createSlice({
@@ -20,13 +20,24 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action: PayloadAction<singleProductType>) => {
       state.cart.push(action.payload);
+      state.totalQuantity += action.payload.quantity;
     },
-    incrementProductQuantity: (state, action: PayloadAction<string>) => {
+    incrementCartQuantity: (state, action: PayloadAction<string>) => {
       state.cart = state.cart.map((product) =>
         product.id === action.payload
           ? { ...product, quantity: product.quantity + 1 }
           : product
       );
+    },
+    decrementCartQuantity: (state, action: PayloadAction<string>) => {
+      state.cart = state.cart
+        .map((product) =>
+          product.id === action.payload && product.quantity > 0
+            ? { ...product, quantity: product.quantity - 1 }
+            : product
+        )
+        .filter((product) => product.quantity > 0);
+      // moram nac total quantity to mogu preko reduca recimo
     },
     clearCart: (state) => {
       state.cart = [];
@@ -34,5 +45,10 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, incrementProductQuantity ,clearCart } = cartSlice.actions;
+export const {
+  addToCart,
+  incrementCartQuantity,
+  decrementCartQuantity,
+  clearCart,
+} = cartSlice.actions;
 export default cartSlice.reducer;

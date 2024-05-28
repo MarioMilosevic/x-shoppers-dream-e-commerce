@@ -27,9 +27,6 @@ const Cart = () => {
       </div>
       <ul className="border-b border-b-neutral-500 flex flex-col gap-8 py-16">
         {cart.map((product) => <ChosenProduct key={product.id} product={product}/>)}
-        {/* <ChosenProduct product={singleProduct} />
-        <ChosenProduct product={singleProduct} />
-        <ChosenProduct product={singleProduct} /> */}
       </ul>
       <div className="flex justify-between items-center pt-12 pb-16">
         <Button color="purple" buttonHandler={() => navigate("/products")}>

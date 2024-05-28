@@ -1,7 +1,13 @@
 import CartQuantityControl from "./CartQuantityControl";
+import { useDispatch } from "react-redux";
 import { LuTrash } from "react-icons/lu";
 import { ChosenProductType } from "../types/types";
+import {
+  decrementCartQuantity,
+  incrementCartQuantity,
+} from "../redux/features/cartSlice";
 const ChosenProduct = ({ product }: ChosenProductType) => {
+    const dispatch = useDispatch()
   return (
     <li className="flex justify-between items-center relative">
       <div className="flex gap-4 w-[250px]">
@@ -28,7 +34,12 @@ const ChosenProduct = ({ product }: ChosenProductType) => {
       </div>
       <div className="text-fuchsia-500 ">{`$${product.price / 100}`}</div>
       <div className="w-[100px]">
-        <CartQuantityControl quantity={product.quantity}/>
+        <CartQuantityControl
+                  quantity={product.quantity}
+                  id={ product.id}
+          incrementProductQuantity={() => dispatch(incrementCartQuantity(product.id))}
+          decrementProductQuantity={() => dispatch(decrementCartQuantity(product.id))}
+        />
       </div>
       {/* subtotal */}
       <div className="text-neutral-500 mr-32">{`$${product.price / 100}`}</div>

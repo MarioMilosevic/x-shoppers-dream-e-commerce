@@ -178,10 +178,10 @@ const SingleProduct = () => {
           </div>
           <div className="w-[25%] flex flex-col gap-4">
             <CartQuantityControl
-              // id={singleProduct.id}
               quantity={singleProduct.quantity}
               incrementProductQuantity={incrementProductQuantity}
               decrementProductQuantity={decrementProductQuantity}
+              id=""
             />
             <Button color="purple" buttonHandler={() => addToCartHandler()}>
               Add to Cart
