@@ -13,7 +13,7 @@ export type ListItemProps = {
   name: string;
   path: string;
   index: number;
-  clickHandler:(index:number) => void
+  clickHandler: (index: number) => void;
 };
 
 export type ListItemOptions = {
@@ -153,17 +153,17 @@ export type colorButtonProps = {
   isActive: keyof colorButtonIsActive;
   clickHandler: (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    index:number,
+    index: number,
     button: string
   ) => void;
   index: number;
-  size:keyof colorButtonSizeOptions
+  size: keyof colorButtonSizeOptions;
 };
 
 export type colorButtonIsActive = {
   true: string;
-  false:string
-}
+  false: string;
+};
 
 export type singleProductImages = {
   filename: string;
@@ -171,14 +171,14 @@ export type singleProductImages = {
   id: string;
   size: number;
   thumbnails: {
-    full:{url:string, width:number, height:number},
-    large:{url:string, width:number, height:number},
-    small:{url:string, width:number, height:number},
-  },
+    full: { url: string; width: number; height: number };
+    large: { url: string; width: number; height: number };
+    small: { url: string; width: number; height: number };
+  };
   type: string;
   url: string;
-  width:number
-}
+  width: number;
+};
 
 export type singleProductType = {
   id: string;
@@ -186,21 +186,27 @@ export type singleProductType = {
   colors: string[];
   company: string;
   description: string;
-  images: singleProductImages[],
+  images: singleProductImages[];
   name: string;
   price: number;
   reviews: number;
   shipping: boolean;
   stars: number;
   stock: number;
-  quantity?: number;
-}
+  quantity: number;
+};
 
 export type colorButtonSizeOptions = {
   small: string;
   medium: string;
-}
+};
 
 export type ChosenProductType = {
   product: singleProductType;
-}
+};
+
+export type CartQuantityControlProps = {
+  quantity: number;
+  incrementProductQuantity: () => void;
+  decrementProductQuantity: () => void;
+};

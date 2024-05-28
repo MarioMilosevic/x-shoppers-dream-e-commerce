@@ -2,34 +2,37 @@ import { useParams, useNavigate } from "react-router";
 // import { useProductsSlice } from "../hooks/useProductsSlice";
 import { fetchSingleProduct } from "../utils/helperFunctions";
 import { FaStar } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { FaRegStarHalfStroke, FaRegStar } from "react-icons/fa6";
 import { mario2 } from "../utils/constants";
 import ColorButton from "../components/ColorButton";
 import Button from "../components/Button";
 import { singleProductType } from "../types/types";
 import CartQuantityControl from "../components/CartQuantityControl";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/features/cartSlice";
 const SingleProduct = () => {
   const [activeImageIndex, setactiveImageIndex] = useState<number>(0);
   const [activeColorIndex, setActiveColorIndex] = useState<number>(0);
+  const dispatch = useDispatch()
   // const products = useProductsSlice();
   const { productId } = useParams();
   const navigate = useNavigate();
   const [singleProduct, setSingleProduct] = useState<singleProductType>();
   useEffect(() => {
-  //   const getProduct = async () => {
-  //     try {
-  //       if (productId) {
-  //         const fetchedProduct = await fetchSingleProduct(productId);
-  //         fetchedProduct.quantity = 1;
-  //         setSingleProduct(fetchedProduct);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching the product:", error);
-  //     }
-  //   };
-  //   getProduct();
-  // }, [productId]);
+    //   const getProduct = async () => {
+    //     try {
+    //       if (productId) {
+    //         const fetchedProduct = await fetchSingleProduct(productId);
+    //         fetchedProduct.quantity = 1;
+    //         setSingleProduct(fetchedProduct);
+    //       }
+    //     } catch (error) {
+    //       console.error("Error fetching the product:", error);
+    //     }
+    //   };
+    //   getProduct();
+    // }, [productId]);
     setSingleProduct(mario2);
   }, []);
 
@@ -46,29 +49,52 @@ const SingleProduct = () => {
     return starsArray;
   };
 
-  const incrementProductQuantity = () => {
-    if (singleProduct?.quantity < singleProduct?.stock) { 
-      setSingleProduct((prev) => ({
-        ...prev,
-        quantity: prev.quantity + 1,
-      }));
-    }
- };
+  // const incrementProductQuantity = () => {
+  //   if (singleProduct?.quantity < singleProduct?.stock) {
+  //     setSingleProduct((prev) => ({
+  //       ...prev,
+  //       quantity: prev.quantity + 1,
+  //     }));
+  //   }
+  // };
 
-  const decrementProductQuantity = () => {
-    if (singleProduct?.quantity > 1) { 
-      setSingleProduct((prev) => ({
-        ...prev,
-        quantity: prev.quantity - 1,
-      }));
-    }
+  // const decrementProductQuantity = () => {
+  //   if (singleProduct?.quantity > 1) {
+  //     setSingleProduct((prev) => ({
+  //       ...prev,
+  //       quantity: prev.quantity - 1,
+  //     }));
+  //   }
+  // };
+
+  const addToCartHandler = () => {
+    navigate('/cart')
+    dispatch(addToCart(singleProduct))
   }
+
+  const incrementProductQuantity = useCallback(() => {
+    setSingleProduct((prev) =>
+      prev && prev.quantity < prev.stock
+        ? { ...prev, quantity: prev.quantity + 1 }
+        : prev
+    );
+  }, []);
+
+  const decrementProductQuantity = useCallback(() => {
+    setSingleProduct((prev) =>
+      prev && prev.quantity > 1
+        ? { ...prev, quantity: prev.quantity - 1 }
+        : prev
+    );
+  }, []);
+
+  
 
   if (!singleProduct) return;
   console.log(singleProduct);
 
   return (
-    <div className="lg:max-w-[1300px] mx-auto py-16">
+    <div className="lg:max-w-[1300px] mx-auto pt-16 pb-32">
       <Button color="purple" buttonHandler={() => navigate("/products")}>
         Back to Products
       </Button>
@@ -151,8 +177,13 @@ const SingleProduct = () => {
             </ul>
           </div>
           <div className="w-[25%] flex flex-col gap-4">
-            <CartQuantityControl quantity={singleProduct.quantity} incrementProductQuantity={incrementProductQuantity} decrementProductQuantity={decrementProductQuantity } />
-            <Button color="purple" buttonHandler={() => navigate("/cart")}>
+            <CartQuantityControl
+              // id={singleProduct.id}
+              quantity={singleProduct.quantity}
+              incrementProductQuantity={incrementProductQuantity}
+              decrementProductQuantity={decrementProductQuantity}
+            />
+            <Button color="purple" buttonHandler={() => addToCartHandler()}>
               Add to Cart
             </Button>
           </div>
