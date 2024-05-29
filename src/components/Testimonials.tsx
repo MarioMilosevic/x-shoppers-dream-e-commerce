@@ -64,7 +64,7 @@ const Testimonials = () => {
           <ArrowContainer direction={"left"} clickHandler={previousSlide}>
             <HiOutlineArrowLongLeft className="w-10 h-10" />
           </ArrowContainer>
-          <div className="w-full relative h-[30rem] lg:h-[25rem]">
+          <div className="w-full relative h-[30rem] sm:h-[25rem]">
             {testimonials.map((el, index) => (
               <Slide
                 {...el}

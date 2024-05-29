@@ -16,7 +16,7 @@ const Operations = () => {
         subtitle="Operations"
         ref={sectionRef}
       >
-        <div className="flex lg:justify-between ">
+        <div className="flex sm:justify-between ">
           {operations.map((operation, index) => (
             <Button
               key={index}

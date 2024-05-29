@@ -13,7 +13,7 @@ const FilledCart = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate();
   return (
-    <div className="lg:max-w-[1200px] mx-auto pt-16 pb-32">
+    <div className="sm:max-w-[1200px] mx-auto pt-16 pb-32">
       <div className="flex justify-between border-b border-b-neutral-400 py-8">
         <div className="w-[250px] flex justify-center">
           <span>Item</span>

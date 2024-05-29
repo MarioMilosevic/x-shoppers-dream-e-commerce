@@ -35,8 +35,8 @@ const FeaturedProducts = () => {
       title="The art of modern living unlocked."
       ref={sectionRef}
     >
-      <div className="mx-auto w-[80%] flex flex-col lg:items-center gap-10 lg:w-[1200px]">
-        <div className="flex flex-col lg:gap-4 lg:flex-row lg:w-full ">
+      <div className="mx-auto w-[80%] flex flex-col sm:items-center gap-10 sm:w-[1200px]">
+        <div className="flex flex-col sm:gap-4 sm:flex-row sm:w-full ">
           {products.map((product) => (
             <Product key={product.id} {...product} textSize='large' hover={"true"} imgSize="large"/>
           ))}

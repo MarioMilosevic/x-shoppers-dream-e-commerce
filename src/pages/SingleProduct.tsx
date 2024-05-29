@@ -88,7 +88,7 @@ const SingleProduct = () => {
   if (!singleProduct) return;
 
   return (
-    <div className="lg:max-w-[1300px] mx-auto pt-16 pb-32">
+    <div className="sm:max-w-[1300px] mx-auto pt-16 pb-32">
       <Button color="purple" buttonHandler={() => navigate("/products")}>
         Back to Products
       </Button>
@@ -151,7 +151,6 @@ const SingleProduct = () => {
               <span className="capitalize">{singleProduct.company}</span>
             </div>
           </div>
-          {/*  */}
           {singleProduct.stock > 0 && (
             <div className="flex flex-col gap-8">
               <div className="flex gap-4">

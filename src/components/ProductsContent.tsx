@@ -8,16 +8,16 @@ const ProductsContent = () => {
   const filteredProducts = useFilteredProductsSlice();
   const dispatch = useDispatch();
   return (
-    <div className="flex flex-col text-sm lg:px-0 px-4">
-      <div className="flex justify-between items-center pb-6 lg:text-base text-xs">
-        <div className="lg:hidden cursor-pointer" onClick={() => dispatch(toggleisSidebarOpen())}>
+    <div className="flex flex-col text-sm sm:px-0 px-4">
+      <div className="flex justify-between items-center pb-6 sm:text-base text-xs">
+        <div className="sm:hidden cursor-pointer" onClick={() => dispatch(toggleisSidebarOpen())}>
         <BsLayoutTextSidebar className="w-4 h-4"/>
         </div>
-        <p className="font-medium lg:text-base lg:w-[25%]">
+        <p className="font-medium sm:text-base sm:w-[25%]">
           {filteredProducts?.length} products found
         </p>
-        <hr className="bg-fuchsia-500 lg:w-[40%] w-[30%] h-[2px]" />
-        <div className="flex items-center justify-end lg:w-[25%] gap-1">
+        <hr className="bg-fuchsia-500 sm:w-[40%] w-[30%] h-[2px]" />
+        <div className="flex items-center justify-end sm:w-[25%] gap-1">
           <label htmlFor="sort">Sort by:</label>
           <select
             name="sort"
@@ -32,7 +32,7 @@ const ProductsContent = () => {
           </select>
         </div>
       </div>
-      <div className="lg:grid lg:grid-cols-3 lg:gap-3 gap-6 flex flex-col ">
+      <div className="sm:grid sm:grid-cols-3 sm:gap-3 gap-6 flex flex-col ">
         {filteredProducts?.map((product) => {
           return (
             <Product

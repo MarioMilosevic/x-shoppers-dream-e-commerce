@@ -41,7 +41,7 @@ const Products = () => {
   if (loading) return <Loading />;
   if(error) return <ErrorFetch/>
   return (
-    <div className="lg:max-w-[1200px] lg:grid lg:grid-cols-[20%,1fr] lg:gap-12 relative mx-auto lg:py-16 pt-8 pb-16">
+    <div className="sm:max-w-[1200px] sm:grid sm:grid-cols-[20%,1fr] sm:gap-12 relative mx-auto sm:py-16 pt-8 pb-16">
       <Sidebar />
       <ProductsContent />
     </div>
