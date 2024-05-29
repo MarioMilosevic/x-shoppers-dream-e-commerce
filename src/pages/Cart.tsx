@@ -1,10 +1,10 @@
-import { useCartSlice } from "../hooks/useCartSlice";
 import EmptyCart from "../components/EmptyCart";
 import FilledCart from "../components/FilledCart";
+import { useSelector } from "react-redux";
+import { getTotalCartQuantity } from "../redux/features/cartSlice";
 const Cart = () => {
-  const { totalQuantity, cart } = useCartSlice();
-  console.log(totalQuantity)
-  console.log(cart)
+  const totalQuantity = useSelector(getTotalCartQuantity);
+
   return totalQuantity > 0 ? <FilledCart /> : <EmptyCart />;
 };
 

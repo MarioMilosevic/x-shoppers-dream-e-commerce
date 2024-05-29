@@ -14,7 +14,7 @@ const ColorButton = ({
         ? "underline underline-offset-[6px] opacity-100 decoration-fuchsia-500"
         : "opacity-100"
     }`,
-    false: "opacity-20",
+    false: "opacity-40",
   };
 
   const sizeOptions:colorButtonSizeOptions = {

@@ -24,9 +24,11 @@ const SingleProduct = () => {
       try {
         if (productId) {
           const fetchedProduct = await fetchSingleProduct(productId);
-          fetchedProduct.quantity = 1;
-          fetchedProduct.selectedColor = "";
-          setSingleProduct(fetchedProduct);
+          setSingleProduct({
+            ...fetchedProduct,
+            quantity: 1,
+            selectedColor: fetchedProduct.colors[0],
+          });
         }
       } catch (error) {
         console.error("Error fetching the product:", error);
@@ -50,8 +52,10 @@ const SingleProduct = () => {
   };
 
   const addToCartHandler = () => {
-    navigate("/cart");
-    dispatch(addToCart(singleProduct));
+    if (singleProduct) {
+      navigate("/cart");
+      dispatch(addToCart(singleProduct));
+    }
   };
 
   const colorHandler = (index: number) => {
@@ -99,11 +103,10 @@ const SingleProduct = () => {
             {singleProduct.images.map((image, index) => {
               const decoration =
                 activeImageIndex === index ? "border border-fuchsia-500" : "";
-
               return (
                 <li
                   key={index}
-                  className={`w-[80px] h-[80px] cursor-pointer rounded-md ${decoration}`}
+                  className={`w-[120px] h-[80px] cursor-pointer rounded-md ${decoration}`}
                   onClick={() => setactiveImageIndex(index)}
                 >
                   <img
@@ -148,35 +151,41 @@ const SingleProduct = () => {
               <span className="capitalize">{singleProduct.company}</span>
             </div>
           </div>
-          <div className="flex gap-4">
-            <div className="font-semibold w-[15%]">Colors:</div>
-            <ul className="flex items-center gap-2">
-              {singleProduct.colors.map((button, index) => {
-                const isActive = activeColorIndex === index ? "true" : "false";
-                return (
-                  <ColorButton
-                    key={index}
-                    button={button}
-                    isActive={isActive}
-                    index={index}
-                    size="medium"
-                    clickHandler={() => colorHandler(index)}
-                  />
-                );
-              })}
-            </ul>
-          </div>
-          <div className="w-[25%] flex flex-col gap-4">
-            <CartQuantityControl
-              quantity={singleProduct.quantity}
-              incrementProductQuantity={incrementProductQuantity}
-              decrementProductQuantity={decrementProductQuantity}
-              id=""
-            />
-            <Button color="purple" buttonHandler={() => addToCartHandler()}>
-              Add to Cart
-            </Button>
-          </div>
+          {/*  */}
+          {singleProduct.stock > 0 && (
+            <div className="flex flex-col gap-8">
+              <div className="flex gap-4">
+                <div className="font-semibold w-[15%]">Colors:</div>
+                <ul className="flex items-center gap-2">
+                  {singleProduct.colors.map((button, index) => {
+                    const isActive =
+                      activeColorIndex === index ? "true" : "false";
+                    return (
+                      <ColorButton
+                        key={index}
+                        button={button}
+                        isActive={isActive}
+                        index={index}
+                        size="medium"
+                        clickHandler={() => colorHandler(index)}
+                      />
+                    );
+                  })}
+                </ul>
+              </div>
+              <div className="w-[25%] flex flex-col gap-4">
+                <CartQuantityControl
+                  quantity={singleProduct.quantity}
+                  incrementProductQuantity={incrementProductQuantity}
+                  decrementProductQuantity={decrementProductQuantity}
+                  id=""
+                />
+                <Button color="purple" buttonHandler={() => addToCartHandler()}>
+                  Add to Cart
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

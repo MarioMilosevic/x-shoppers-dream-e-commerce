@@ -5,8 +5,11 @@ import { useNavigate } from "react-router";
 import { clearCart } from "../redux/features/cartSlice";
 import { useDispatch } from "react-redux";
 import { shippingFee } from "../utils/constants";
+import { getTotalCartPrice } from "../redux/features/cartSlice";
+import { useSelector } from "react-redux";
 const FilledCart = () => {
-  const { cart, totalPrice } = useCartSlice();
+  const { cart } = useCartSlice();
+  const totalPrice = useSelector(getTotalCartPrice)
   const dispatch = useDispatch()
   const navigate = useNavigate();
   return (
@@ -19,6 +22,7 @@ const FilledCart = () => {
         <div>Quantity</div>
         <div className="mr-32">Subtotal</div>
       </div>
+      {/* ako je isti proizvod razlicite boje */}
       <ul className="border-b border-b-neutral-500 flex flex-col gap-8 py-16">
         {cart.map((product) => (
           <ChosenProduct key={product.id} product={product} />

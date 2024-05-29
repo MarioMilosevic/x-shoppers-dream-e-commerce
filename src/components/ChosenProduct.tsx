@@ -34,7 +34,7 @@ const ChosenProduct = ({ product }: ChosenProductType) => {
         <CartQuantityControl
           quantity={product.quantity}
           id={product.id}
-          incrementProductQuantity={() =>
+          incrementProductQuantity={() =>  
             dispatch(incrementCartQuantity(product.id))
           }
           decrementProductQuantity={() =>

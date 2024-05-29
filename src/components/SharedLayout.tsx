@@ -8,17 +8,12 @@ import { pages } from "../utils/constants";
 import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router";
 import { getTotalCartQuantity } from "../redux/features/cartSlice";
-import { useCartSlice } from "../hooks/useCartSlice";
 import { useSelector } from "react-redux";
 import ListItem from "./ListItem";
 const SharedLayout = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activePageIndex, setActivePageIndex] = useState<number>(0);
-  const totalQuantityMario = useSelector(getTotalCartQuantity);
-  const { cart, totalQuantity } = useCartSlice();
-  console.log("total quantity cart", totalQuantity);
-  console.log("cart", cart);
-  console.log("total quantity computed", totalQuantityMario);
+  const totalQuantity = useSelector(getTotalCartQuantity);
   const navigate = useNavigate();
   const location = useLocation();
   const navRef = useRef<HTMLDivElement | null>(
@@ -80,7 +75,7 @@ const SharedLayout = () => {
             <span>Cart</span>
             <BsBag className="text-[1.25rem] self-start" />
             <span className="bg-fuchsia-500 text-fuchsia-50 text-sm w-[1.1rem] h-[1.1rem] flex items-center justify-center rounded-full absolute top-1 -right-3">
-              {totalQuantityMario}
+              {totalQuantity}
             </span>
           </Link>
 
