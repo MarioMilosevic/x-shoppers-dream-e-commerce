@@ -14,25 +14,26 @@ import { addToCart } from "../redux/features/cartSlice";
 const SingleProduct = () => {
   const [activeImageIndex, setactiveImageIndex] = useState<number>(0);
   const [activeColorIndex, setActiveColorIndex] = useState<number>(0);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   // const products = useProductsSlice();
   const { productId } = useParams();
   const navigate = useNavigate();
   const [singleProduct, setSingleProduct] = useState<singleProductType>();
   useEffect(() => {
-      const getProduct = async () => {
-        try {
-          if (productId) {
-            const fetchedProduct = await fetchSingleProduct(productId);
-            fetchedProduct.quantity = 1;
-            setSingleProduct(fetchedProduct);
-          }
-        } catch (error) {
-          console.error("Error fetching the product:", error);
+    const getProduct = async () => {
+      try {
+        if (productId) {
+          const fetchedProduct = await fetchSingleProduct(productId);
+          fetchedProduct.quantity = 1;
+          fetchedProduct.selectedColor = "";
+          setSingleProduct(fetchedProduct);
         }
-      };
-      getProduct();
-    }, [productId]);
+      } catch (error) {
+        console.error("Error fetching the product:", error);
+      }
+    };
+    getProduct();
+  }, [productId]);
   //   setSingleProduct(mario2);
   // }, []);
 
@@ -49,9 +50,20 @@ const SingleProduct = () => {
   };
 
   const addToCartHandler = () => {
-    navigate('/cart')
-    dispatch(addToCart(singleProduct))
-  }
+    navigate("/cart");
+    dispatch(addToCart(singleProduct));
+  };
+
+  const colorHandler = (index: number) => {
+    setActiveColorIndex(index);
+    setSingleProduct((prev) => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        selectedColor: prev.colors[index],
+      };
+    });
+  };
 
   const incrementProductQuantity = useCallback(() => {
     setSingleProduct((prev) =>
@@ -68,8 +80,6 @@ const SingleProduct = () => {
         : prev
     );
   }, []);
-
-  
 
   if (!singleProduct) return;
 
@@ -150,7 +160,7 @@ const SingleProduct = () => {
                     isActive={isActive}
                     index={index}
                     size="medium"
-                    clickHandler={() => setActiveColorIndex(index)}
+                    clickHandler={() => colorHandler(index)}
                   />
                 );
               })}

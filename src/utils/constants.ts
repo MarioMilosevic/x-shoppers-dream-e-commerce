@@ -107,6 +107,8 @@ export const initialFilters = {
 
 export type FilterKeys = keyof typeof initialFilters;
 
+export const shippingFee = 5.34;
+
 ////////////////////////////////////////////////////////////////////
 export const mario = [
   {

@@ -194,6 +194,7 @@ export type singleProductType = {
   stars: number;
   stock: number;
   quantity: number;
+  selectedColor: string;
 };
 
 export type colorButtonSizeOptions = {

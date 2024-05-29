@@ -9,7 +9,7 @@ import {
 } from "../redux/features/cartSlice";
 const ChosenProduct = ({ product }: ChosenProductType) => {
   const dispatch = useDispatch();
-  const subtotal = product.quantity * product.price
+  const subtotal = product.quantity * product.price;
   return (
     <li className="flex justify-between items-center relative">
       <div className="flex gap-4 w-[250px]">
@@ -22,15 +22,10 @@ const ChosenProduct = ({ product }: ChosenProductType) => {
           <h3 className="capitalize font-semibold">{product.name}</h3>
           <div className="flex gap-2 items-center">
             <span className="font-light text-sm">Color:</span>
-            {product.colors.map((button, index) => {
-              return (
-                <span
-                  key={index}
-                  className="flex justify-center items-center w-3 h-3 rounded-md"
-                  style={{ backgroundColor: `${button}` }}
-                ></span>
-              );
-            })}
+            <span
+              className="flex justify-center items-center w-3 h-3 rounded-md"
+              style={{ backgroundColor: `${product.selectedColor}` }}
+            ></span>
           </div>
         </div>
       </div>
@@ -49,7 +44,10 @@ const ChosenProduct = ({ product }: ChosenProductType) => {
       </div>
       <div className="text-neutral-500 mr-32">{`$${subtotal / 100}`}</div>
       <button className="bg-red-400 p-1 rounded-md absolute right-8">
-        <LuTrash fill="white" onClick={() => dispatch(removeProduct(product.id))}/>
+        <LuTrash
+          fill="white"
+          onClick={() => dispatch(removeProduct(product.id))}
+        />
       </button>
     </li>
   );

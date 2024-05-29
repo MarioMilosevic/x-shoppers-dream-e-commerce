@@ -2,11 +2,13 @@ import ChosenProduct from "./ChosenProduct";
 import Button from "./Button";
 import { useCartSlice } from "../hooks/useCartSlice";
 import { useNavigate } from "react-router";
+import { clearCart } from "../redux/features/cartSlice";
+import { useDispatch } from "react-redux";
+import { shippingFee } from "../utils/constants";
 const FilledCart = () => {
   const { cart, totalPrice } = useCartSlice();
+  const dispatch = useDispatch()
   const navigate = useNavigate();
-  const shippingFee = 5.34;
-  console.log(totalPrice);
   return (
     <div className="lg:max-w-[1200px] mx-auto pt-16 pb-32">
       <div className="flex justify-between border-b border-b-neutral-400 py-8">
@@ -26,7 +28,7 @@ const FilledCart = () => {
         <Button color="purple" buttonHandler={() => navigate("/products")}>
           Continue Shopping
         </Button>
-        <Button color="red" buttonHandler={() => console.log("da ocisti kart")}>
+        <Button color="red" buttonHandler={() => dispatch(clearCart())}>
           Clear Shopping Cart
         </Button>
       </div>
@@ -42,7 +44,7 @@ const FilledCart = () => {
           </div>
           <div className="border-t border-t-neutral-400 pt-8 pb-6 grid grid-cols-[75%_auto] w-[400px] text-2xl font-semibold">
             <h2>Order Total:</h2>
-            <span>{`$${totalPrice / 100 + shippingFee}`}</span>
+            <span>{`$${(totalPrice / 100 + shippingFee).toFixed(2)}`}</span>
           </div>
         </div>
       </div>
