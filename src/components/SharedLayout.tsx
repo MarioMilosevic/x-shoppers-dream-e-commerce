@@ -44,15 +44,15 @@ const SharedLayout = () => {
   return (
     <>
       <nav className="w-full" ref={navRef}>
-        <div className="flex relative justify-between pr-3 py-8 lg:max-w-[1200px] mx-auto">
+        <div className="flex relative justify-between pr-3 py-8 sm:max-w-[1200px] mx-auto">
           <div
-            className="hidden lg:flex items-center font-medium gap-[0.37rem] text-sm lg:text-base cursor-pointer"
+            className="hidden sm:flex items-center font-medium gap-[0.37rem] text-sm sm:text-base cursor-pointer"
             onClick={() => navigate("/")}
           >
             <BsBag className="text-[1.25rem]" />
             <span className=" text-slate-700">X Shoppers Dream</span>
           </div>
-          <div className="hidden lg:flex">
+          <div className="hidden sm:flex">
             <ul className="flex gap-10 text-base font-medium text-slate-700">
               {pages.map((page, index) => (
                 <ListItem
@@ -70,7 +70,7 @@ const SharedLayout = () => {
 
           <Link
             to={"/Cart"}
-            className="hidden lg:flex items-center gap-2 text-base relative cursor-pointer"
+            className="hidden sm:flex items-center gap-2 text-base relative cursor-pointer"
           >
             <span>Cart</span>
             <BsBag className="text-[1.25rem] self-start" />
@@ -79,15 +79,15 @@ const SharedLayout = () => {
             </span>
           </Link>
 
-          <div className="lg:hidden flex px-8 w-full relative">
+          <div className="sm:hidden flex px-8 w-full relative">
             <GiHamburgerMenu
-              className="w-6 h-6 cursor-pointer absolute -top-2 right-4 lg:hidden"
+              className="w-6 h-6 cursor-pointer absolute -top-2 right-4 sm:hidden"
               onClick={toggleIsOpen}
             />
             <div
               className={`bg-neutral-50  fixed w-full h-full z-10  transition-all duration-700 top-0 ${
                 isOpen ? "left-0" : "left-full"
-              } flex justify-center items-center lg:hidden`}
+              } flex justify-center items-center sm:hidden`}
             >
               <FaWindowClose
                 className="absolute h-6 w-6 top-12 right-12 cursor-pointer  text-fuchsia-500"
