@@ -7,12 +7,13 @@ import { handleStickyNav } from "../utils/helperFunctions";
 import { pages } from "../utils/constants";
 import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router";
-import { useCartSlice } from "../hooks/useCartSlice";
+import { getTotalCartQuantity } from "../redux/features/cartSlice";
+import { useSelector } from "react-redux";
 import ListItem from "./ListItem";
 const SharedLayout = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activePageIndex, setActivePageIndex] = useState<number>(0);
-  const {totalQuantity} = useCartSlice()
+  const totalQuantity = useSelector(getTotalCartQuantity);
   const navigate = useNavigate();
   const location = useLocation();
   const navRef = useRef<HTMLDivElement | null>(

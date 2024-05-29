@@ -1,5 +1,6 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../store/store";
 import { singleProductType } from "../../types/types";
 
 type CartState = {
@@ -37,13 +38,16 @@ export const cartSlice = createSlice({
             : product
         )
         .filter((product) => product.quantity > 0);
-      // moram nac total quantity to mogu preko reduca recimo
+      // moram nac total quantity
     },
     clearCart: (state) => {
       state.cart = [];
     },
   },
 });
+
+export const getTotalCartQuantity = (state: RootState) =>
+  state.cart.cart.reduce((acc, curr) => acc + curr.quantity, 0);
 
 export const {
   addToCart,
