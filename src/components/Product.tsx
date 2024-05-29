@@ -43,7 +43,6 @@ const Product = ({
         src={image}
         alt={name}
         className={`mx-auto w-full object-cover rounded-md cursor-pointer ${imgSizeOptions[imgSize]}`}
-        onClick={() => console.log(id)}
         />
         </Link>
       <div

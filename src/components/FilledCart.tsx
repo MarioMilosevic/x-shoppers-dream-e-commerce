@@ -3,8 +3,10 @@ import Button from "./Button";
 import { useCartSlice } from "../hooks/useCartSlice";
 import { useNavigate } from "react-router";
 const FilledCart = () => {
-    const { cart } = useCartSlice();
-    const navigate = useNavigate()
+  const { cart, totalPrice } = useCartSlice();
+  const navigate = useNavigate();
+  const shippingFee = 5.34;
+  console.log(totalPrice);
   return (
     <div className="lg:max-w-[1200px] mx-auto pt-16 pb-32">
       <div className="flex justify-between border-b border-b-neutral-400 py-8">
@@ -32,15 +34,15 @@ const FilledCart = () => {
         <div className="p-8 flex flex-col gap-4 border border-neutral-400 rounded-md">
           <div className="grid grid-cols-[75%_auto] w-[400px] font-semibold">
             <h2>Subtotal:</h2>
-            <span>$357.97</span>
+            <span>{`$${totalPrice / 100}`}</span>
           </div>
           <div className="grid grid-cols-[75%_auto] w-[400px] font-light">
             <h3>Shipping fee:</h3>
-            <span>$2.97</span>
+            <span>{`$${shippingFee}`}</span>
           </div>
           <div className="border-t border-t-neutral-400 pt-8 pb-6 grid grid-cols-[75%_auto] w-[400px] text-2xl font-semibold">
             <h2>Order Total:</h2>
-            <span>$363.98</span>
+            <span>{`$${totalPrice / 100 + shippingFee}`}</span>
           </div>
         </div>
       </div>

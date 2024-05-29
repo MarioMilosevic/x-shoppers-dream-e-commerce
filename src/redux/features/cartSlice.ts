@@ -22,26 +22,48 @@ export const cartSlice = createSlice({
     addToCart: (state, action: PayloadAction<singleProductType>) => {
       state.cart.push(action.payload);
       state.totalQuantity += action.payload.quantity;
+      state.totalPrice += action.payload.price * action.payload.quantity
     },
     incrementCartQuantity: (state, action: PayloadAction<string>) => {
-      state.cart = state.cart.map((product) =>
-        product.id === action.payload
-          ? { ...product, quantity: product.quantity + 1 }
-          : product
-      );
+      state.cart = state.cart
+        .map((product) => {
+          if (product.id === action.payload) {
+            state.totalQuantity += 1;
+            state.totalPrice += product.price;
+            return { ...product, quantity: product.quantity + 1 };
+          }
+          return product;
+        })
+        .filter((product) => product.quantity > 0);
     },
     decrementCartQuantity: (state, action: PayloadAction<string>) => {
       state.cart = state.cart
-        .map((product) =>
-          product.id === action.payload && product.quantity > 0
-            ? { ...product, quantity: product.quantity - 1 }
-            : product
-        )
+        .map((product) => {
+          if (product.id === action.payload && product.quantity > 1) {
+            state.totalQuantity -= 1;
+            state.totalPrice -= product.price;
+            return { ...product, quantity: product.quantity - 1 };
+          }
+          return product;
+        })
         .filter((product) => product.quantity > 0);
-      // moram nac total quantity
+    },
+    removeProduct: (state, action: PayloadAction<string>) => {
+      const product = state.cart.find(
+        (product) => product.id === action.payload
+      );
+      if (product) {
+        state.totalQuantity -= product.quantity;
+        state.totalPrice -= product.price * product.quantity;
+      }
+      state.cart = state.cart.filter(
+        (product) => product.id !== action.payload
+      );
     },
     clearCart: (state) => {
       state.cart = [];
+      state.totalPrice = 0;
+      state.totalQuantity = 0;
     },
   },
 });
@@ -53,6 +75,7 @@ export const {
   addToCart,
   incrementCartQuantity,
   decrementCartQuantity,
+  removeProduct,
   clearCart,
 } = cartSlice.actions;
 export default cartSlice.reducer;

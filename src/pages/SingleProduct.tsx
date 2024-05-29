@@ -20,27 +20,26 @@ const SingleProduct = () => {
   const navigate = useNavigate();
   const [singleProduct, setSingleProduct] = useState<singleProductType>();
   useEffect(() => {
-    //   const getProduct = async () => {
-    //     try {
-    //       if (productId) {
-    //         const fetchedProduct = await fetchSingleProduct(productId);
-    //         fetchedProduct.quantity = 1;
-    //         setSingleProduct(fetchedProduct);
-    //       }
-    //     } catch (error) {
-    //       console.error("Error fetching the product:", error);
-    //     }
-    //   };
-    //   getProduct();
-    // }, [productId]);
-    setSingleProduct(mario2);
-  }, []);
+      const getProduct = async () => {
+        try {
+          if (productId) {
+            const fetchedProduct = await fetchSingleProduct(productId);
+            fetchedProduct.quantity = 1;
+            setSingleProduct(fetchedProduct);
+          }
+        } catch (error) {
+          console.error("Error fetching the product:", error);
+        }
+      };
+      getProduct();
+    }, [productId]);
+  //   setSingleProduct(mario2);
+  // }, []);
 
   const createStarsArray = (stars: number) => {
     const starsArray = [];
     for (let i = 0; i < 5; i++) {
       const halfStar = i + 0.5;
-
       if (stars >= i + 1) starsArray.push(<FaStar color="orange" />);
       else if (stars >= halfStar) {
         starsArray.push(<FaRegStarHalfStroke color="orange" />);
@@ -48,24 +47,6 @@ const SingleProduct = () => {
     }
     return starsArray;
   };
-
-  // const incrementProductQuantity = () => {
-  //   if (singleProduct?.quantity < singleProduct?.stock) {
-  //     setSingleProduct((prev) => ({
-  //       ...prev,
-  //       quantity: prev.quantity + 1,
-  //     }));
-  //   }
-  // };
-
-  // const decrementProductQuantity = () => {
-  //   if (singleProduct?.quantity > 1) {
-  //     setSingleProduct((prev) => ({
-  //       ...prev,
-  //       quantity: prev.quantity - 1,
-  //     }));
-  //   }
-  // };
 
   const addToCartHandler = () => {
     navigate('/cart')
@@ -91,7 +72,6 @@ const SingleProduct = () => {
   
 
   if (!singleProduct) return;
-  console.log(singleProduct);
 
   return (
     <div className="lg:max-w-[1300px] mx-auto pt-16 pb-32">

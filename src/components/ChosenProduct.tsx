@@ -5,9 +5,11 @@ import { ChosenProductType } from "../types/types";
 import {
   decrementCartQuantity,
   incrementCartQuantity,
+  removeProduct,
 } from "../redux/features/cartSlice";
 const ChosenProduct = ({ product }: ChosenProductType) => {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const subtotal = product.quantity * product.price
   return (
     <li className="flex justify-between items-center relative">
       <div className="flex gap-4 w-[250px]">
@@ -35,16 +37,19 @@ const ChosenProduct = ({ product }: ChosenProductType) => {
       <div className="text-fuchsia-500 ">{`$${product.price / 100}`}</div>
       <div className="w-[100px]">
         <CartQuantityControl
-                  quantity={product.quantity}
-                  id={ product.id}
-          incrementProductQuantity={() => dispatch(incrementCartQuantity(product.id))}
-          decrementProductQuantity={() => dispatch(decrementCartQuantity(product.id))}
+          quantity={product.quantity}
+          id={product.id}
+          incrementProductQuantity={() =>
+            dispatch(incrementCartQuantity(product.id))
+          }
+          decrementProductQuantity={() =>
+            dispatch(decrementCartQuantity(product.id))
+          }
         />
       </div>
-      {/* subtotal */}
-      <div className="text-neutral-500 mr-32">{`$${product.price / 100}`}</div>
+      <div className="text-neutral-500 mr-32">{`$${subtotal / 100}`}</div>
       <button className="bg-red-400 p-1 rounded-md absolute right-8">
-        <LuTrash fill="white" />
+        <LuTrash fill="white" onClick={() => dispatch(removeProduct(product.id))}/>
       </button>
     </li>
   );
