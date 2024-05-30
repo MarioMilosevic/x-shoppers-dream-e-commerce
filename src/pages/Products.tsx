@@ -7,7 +7,7 @@ import { url } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { setProducts } from "../redux/features/productsSlice";
 import { useAppSlice } from "../hooks/useAppSlice";
-import { setError, setLoading } from "../redux/features/appSlice";
+import { setActivePageIndex, setError, setLoading } from "../redux/features/appSlice";
 import ErrorFetch from "../components/ErrorFetch";
 // test
 // import { mario } from "../utils/constants";
@@ -16,6 +16,7 @@ const Products = () => {
   // const products = useProductsSlice();
   const { loading, error } = useAppSlice();
   const dispatch = useDispatch();
+  dispatch(setActivePageIndex(1))
   useEffect(() => {
     const fetchData = async () => {
       try {

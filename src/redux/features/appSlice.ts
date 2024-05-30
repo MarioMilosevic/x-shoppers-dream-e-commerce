@@ -5,12 +5,14 @@ export type appState = {
   loading: boolean;
   error: boolean;
   isSidebarOpen: boolean;
+  activePageIndex: number;
 };
 
 const initialState: appState = {
   loading: false,
   error: false,
   isSidebarOpen: false,
+  activePageIndex: 0
 };
 
 export const appSlice = createSlice({
@@ -23,12 +25,14 @@ export const appSlice = createSlice({
     setError: (state, action: PayloadAction<boolean>) => {
       state.error = action.payload;
     },
-    // console.log
     toggleisSidebarOpen: (state) => {
       state.isSidebarOpen = !state.isSidebarOpen;
     },
+    setActivePageIndex: (state, action:PayloadAction<number>) => {
+      state.activePageIndex = action.payload
+    }
   },
 });
 
-export const { setLoading, setError, toggleisSidebarOpen } = appSlice.actions;
+export const { setLoading, setError, toggleisSidebarOpen, setActivePageIndex } = appSlice.actions;
 export default appSlice.reducer;

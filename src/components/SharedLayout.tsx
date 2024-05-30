@@ -8,19 +8,23 @@ import { pages } from "../utils/constants";
 import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router";
 import { getTotalCartQuantity } from "../redux/features/cartSlice";
+import { setActivePageIndex } from "../redux/features/appSlice";
 import { useSelector } from "react-redux";
 import ListItem from "./ListItem";
+import { useAppSlice } from "../hooks/useAppSlice";
 const SharedLayout = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [activePageIndex, setActivePageIndex] = useState<number>(0);
+  // const [activePageIndex, setActivePageIndex] = useState<number>(0);
+  const { activePageIndex } = useAppSlice();
   const totalQuantity = useSelector(getTotalCartQuantity);
   const navigate = useNavigate();
   const location = useLocation();
   const navRef = useRef<HTMLDivElement | null>(
     null
   ) as React.RefObject<HTMLElement>;
+
   useEffect(() => {
-    if (location.pathname === "/") {
+    if (location.pathname === "/" && window.innerWidth >= 600) {
       const handleScroll = () => {
         handleStickyNav(navRef, "sticky");
       };
@@ -85,7 +89,7 @@ const SharedLayout = () => {
               onClick={toggleIsOpen}
             />
             <div
-              className={`bg-neutral-50  fixed w-full h-full z-10  transition-all duration-700 top-0 ${
+              className={`bg-neutral-50 fixed w-full h-full z-10 transition-all duration-700 top-0 ${
                 isOpen ? "left-0" : "left-full"
               } flex justify-center items-center sm:hidden`}
             >
