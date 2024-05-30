@@ -34,16 +34,16 @@ const FilledCart = () => {
         </Button>
       </div>
       <div className="flex flex-col items-center sm:items-end">
-        <div className="p-8 flex flex-col gap-4 border border-neutral-400 rounded-md">
-          <div className="grid grid-cols-[75%_auto] w-[400px] font-semibold">
+        <div className="lg:p-8 p-4 flex flex-col gap-4 border border-neutral-400 rounded-md">
+          <div className="grid  grid-cols-[60%_auto] place-items-center lg:place-items-stretch lg:grid-cols-[75%_auto] w-[400px] font-semibold">
             <h2>Subtotal:</h2>
             <span>{`$${totalPrice / 100}`}</span>
           </div>
-          <div className="grid grid-cols-[75%_auto] w-[400px] font-light">
+          <div className="grid grid-cols-[60%_auto] place-items-center lg:place-items-stretch lg:grid-cols-[75%_auto] w-[400px] font-light">
             <h3>Shipping fee:</h3>
             <span>{`$${shippingFee}`}</span>
           </div>
-          <div className="border-t border-t-neutral-400 pt-8 pb-6 grid grid-cols-[75%_auto] w-[400px] text-2xl font-semibold">
+          <div className="border-t border-t-neutral-400 pt-8 pb-6 grid grid-cols-[65%_auto] place-items-center lg:place-items-stretch lg:grid-cols-[75%_auto] w-[400px] text-2xl font-semibold">
             <h2>Order Total:</h2>
             <span>{`$${(totalPrice / 100 + shippingFee).toFixed(2)}`}</span>
           </div>
