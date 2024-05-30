@@ -6,9 +6,11 @@ import Button from "./Button";
 import { useIntersecting } from "../hooks/useIntersecting";
 import { useNavigate } from "react-router";
 import { ProductState } from "../types/types";
+import { useDispatch } from "react-redux";
 
 const FeaturedProducts = () => {
   const [products, setProducts] = useState<ProductState[]>([]);
+  const dispatch = useDispatch();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -23,7 +25,7 @@ const FeaturedProducts = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [dispatch]);
   const sectionRef = useRef(null);
   useIntersecting(sectionRef);
   const navigate = useNavigate();
@@ -35,16 +37,22 @@ const FeaturedProducts = () => {
       title="The art of modern living unlocked."
       ref={sectionRef}
     >
-      <div className="mx-auto w-[80%] flex flex-col sm:items-center gap-10 sm:w-[1200px]">
-        <div className="flex flex-col sm:gap-4 sm:flex-row sm:w-full ">
+      <div className="mx-auto w-[80%] flex flex-col lg:items-center gap-10 lg:w-[1200px]">
+        <div className="flex flex-col sm:gap-10 lg:gap-4 lg:flex-row lg:w-full">
           {products.map((product) => (
-            <Product key={product.id} {...product} textSize='large' hover={"true"} imgSize="large"/>
+            <Product
+              key={product.id}
+              {...product}
+              textSize="large"
+              hover={"true"}
+              imgSize="large"
+            />
           ))}
         </div>
         <div className="flex justify-center">
-        <Button color="purple" buttonHandler={() => navigate("/Products")}>
-          All Products
-        </Button>
+          <Button color="purple" buttonHandler={() => navigate("/Products")}>
+            All Products
+          </Button>
         </div>
       </div>
     </Section>

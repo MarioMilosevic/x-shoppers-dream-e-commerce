@@ -32,7 +32,7 @@ const ProductsContent = () => {
           </select>
         </div>
       </div>
-      <div className="sm:grid sm:grid-cols-3 sm:gap-3 gap-6 flex flex-col ">
+      <div className="sm:grid sm:grid-cols-3 sm:gap-3 gap-12 flex flex-col ">
         {filteredProducts?.map((product) => {
           return (
             <Product

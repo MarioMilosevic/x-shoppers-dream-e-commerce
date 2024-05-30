@@ -7,14 +7,14 @@ const Section = forwardRef(
     ref: ForwardedRef<HTMLElement>
   ) => {
     const widthOptions: widthOptions = {
-      large: "lg:max-w-[1200px]",
-      medium: "lg:max-w-[1000px]",
-      small: "lg:max-w-[800px]",
+      large: "w-[95%] lg:max-w-[1200px]",
+      medium: "w-[95%] lg:max-w-[1000px]",
+      small: "w-[95%] lg:max-w-[800px]",
     };
 
     return (
       <section
-        className="border-t border-t-neutral-300 flex  opacity-0 translate-y-[10rem] transition-all duration-1000"
+        className="border-t border-t-neutral-300 flex opacity-0 translate-y-[10rem] transition-all duration-1000"
         ref={ref}
       >
         <div

@@ -23,6 +23,7 @@ export const appSlice = createSlice({
     setError: (state, action: PayloadAction<boolean>) => {
       state.error = action.payload;
     },
+    // console.log
     toggleisSidebarOpen: (state) => {
       state.isSidebarOpen = !state.isSidebarOpen;
     },

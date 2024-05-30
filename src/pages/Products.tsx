@@ -20,6 +20,7 @@ const Products = () => {
     const fetchData = async () => {
       try {
         dispatch(setLoading(true));
+        dispatch(setError(false))
         const response = await fetch(url);
         if (!response.ok) {
           throw new Error("Network response was not ok");
