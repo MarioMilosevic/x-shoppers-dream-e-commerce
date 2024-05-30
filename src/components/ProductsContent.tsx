@@ -13,11 +13,11 @@ const ProductsContent = () => {
         <div className="sm:hidden cursor-pointer" onClick={() => dispatch(toggleisSidebarOpen())}>
         <BsLayoutTextSidebar className="w-4 h-4"/>
         </div>
-        <p className="font-medium sm:text-base sm:w-[25%]">
+        <p className="font-medium sm:text-base sm:w-[36%] lg:w-[25%]">
           {filteredProducts?.length} products found
         </p>
-        <hr className="bg-fuchsia-500 sm:w-[40%] w-[30%] h-[2px]" />
-        <div className="flex items-center justify-end sm:w-[25%] gap-1">
+        <hr className="bg-fuchsia-500 sm:w-[15%] lg:w-[40%] w-[15%] h-[2px]" />
+        <div className="flex items-center justify-end sm:w-[50%] lg:w-[35%] gap-1">
           <label htmlFor="sort">Sort by:</label>
           <select
             name="sort"
@@ -32,7 +32,7 @@ const ProductsContent = () => {
           </select>
         </div>
       </div>
-      <div className="sm:grid sm:grid-cols-3 sm:gap-3 gap-12 flex flex-col ">
+      <div className="sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-3 gap-12 flex flex-col ">
         {filteredProducts?.map((product) => {
           return (
             <Product

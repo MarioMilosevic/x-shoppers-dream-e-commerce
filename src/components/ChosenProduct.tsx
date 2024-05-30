@@ -11,7 +11,7 @@ const ChosenProduct = ({ product }: ChosenProductType) => {
   const dispatch = useDispatch();
   const subtotal = product.quantity * product.price;
   return (
-    <li className="flex justify-between items-center relative">
+    <li className="flex gap-10 lg:gap-0 sm:justify-between lg:justify-between items-center relative">
       <div className="flex gap-4 w-[250px]">
         <img
           src={product.images[0].url}
@@ -29,7 +29,7 @@ const ChosenProduct = ({ product }: ChosenProductType) => {
           </div>
         </div>
       </div>
-      <div className="text-fuchsia-500 ">{`$${product.price / 100}`}</div>
+      <div className="hidden sm:block lg:block text-fuchsia-500">{`$${product.price / 100}`}</div>
       <div className="w-[100px]">
         <CartQuantityControl
           quantity={product.quantity}
@@ -41,7 +41,7 @@ const ChosenProduct = ({ product }: ChosenProductType) => {
           }
         />
       </div>
-      <div className="text-neutral-500 mr-32">{`$${subtotal / 100}`}</div>
+      <div className="hidden sm:block lg:block text-neutral-500 mr-32">{`$${subtotal / 100}`}</div>
       <button className="bg-red-400 p-1 rounded-md absolute right-8">
         <LuTrash
           fill="white"

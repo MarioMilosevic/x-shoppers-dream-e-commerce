@@ -53,8 +53,8 @@ const Product = ({
           ${(price / 100).toFixed(2)}
         </span>
       </div>
-      <p className="lg:hidden text-xs">{description}</p>
-      <div className="lg:hidden flex items-center justify-start">
+      <p className="sm:hidden lg:hidden text-xs">{description}</p>
+      <div className="sm:hidden lg:hidden flex items-center justify-start">
         <Button
           color="purple"
           buttonHandler={() => console.log("treba d aode")}

@@ -13,16 +13,13 @@ const FilledCart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
-    <div className="sm:max-w-[1200px] mx-auto pt-16 pb-32">
-      <div className="flex justify-between border-b border-b-neutral-400 py-8">
-        <div className="w-[250px] flex justify-center">
-          <span>Item</span>
-        </div>
+    <div className="lg:max-w-[1200px] mx-auto pt-16 pb-32 px-4 lg:px-0">
+      <div className="hidden lg:flex justify-between border-b border-b-neutral-400 py-8">
+        <div className="lg:w-[250px] flex justify-center">Item</div>
         <div>Price</div>
         <div>Quantity</div>
         <div className="mr-32">Subtotal</div>
       </div>
-      {/* ako je isti proizvod razlicite boje */}
       <ul className="border-b border-b-neutral-500 flex flex-col gap-8 py-16">
         {cart.map((product) => (
           <ChosenProduct key={product.customId} product={product} />
@@ -36,7 +33,7 @@ const FilledCart = () => {
           Clear Shopping Cart
         </Button>
       </div>
-      <div className="flex flex-col items-end">
+      <div className="flex flex-col items-center sm:items-end">
         <div className="p-8 flex flex-col gap-4 border border-neutral-400 rounded-md">
           <div className="grid grid-cols-[75%_auto] w-[400px] font-semibold">
             <h2>Subtotal:</h2>
