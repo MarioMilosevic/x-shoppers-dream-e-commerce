@@ -14,10 +14,10 @@ const Hero = () => {
   };
   return (
     <section
-      className="flex flex-col sm:flex-col lg:flex-row justify-between sm:items-center lg:items-stretch  lg:max-w-[1200px] mx-auto py-12 border border-black"
+      className="flex flex-col sm:flex-col lg:flex-row justify-between sm:items-center lg:items-stretch  lg:max-w-[1200px] mx-auto py-12"
       ref={heroRef}
     >
-      <div className="mx-auto py-16 w-[90%] sm:max-w-[90%] border border-black lg:w-auto flex flex-col gap-7">
+      <div className="mx-auto py-16 w-[90%] sm:max-w-[90%] lg:w-auto flex flex-col gap-7">
         <h1 className="text-3xl lg:text-5xl font-bold lg:leading-[4.2rem]">
           Furniture design to <br /> make you feel at home
         </h1>
@@ -34,7 +34,7 @@ const Hero = () => {
           </Button>
         </div>
       </div>
-      <div className="mx-auto w-[90%] sm:max-w-[90%] lg:w-[41%] border border-black sm:mx-0 flex flex-col">
+      <div className="mx-auto w-[90%] sm:max-w-[90%] lg:w-[41%] sm:mx-0 flex flex-col">
         <img src={heroImg} className="w-full h-full" alt="Hero img" />
       </div>
     </section>

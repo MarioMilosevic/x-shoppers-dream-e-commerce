@@ -26,7 +26,7 @@ export const productsSlice = createSlice({
     },
     setFilters: (
       state,
-      action: PayloadAction<{ key: FilterKeys; value: string | boolean | null }>
+      action: PayloadAction<{ key: FilterKeys; value: never }>
     ) => {
       const { key, value } = action.payload;
       state.filters[key] = value;

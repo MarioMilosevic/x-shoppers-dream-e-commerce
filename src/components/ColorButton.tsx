@@ -1,4 +1,5 @@
 import { colorButtonProps, colorButtonIsActive, colorButtonSizeOptions } from "../types/types";
+import { FaCheck } from "react-icons/fa";
 const ColorButton = ({
   button,
   isActive,
@@ -29,6 +30,7 @@ const ColorButton = ({
       onClick={(e) => clickHandler(e, index, button)}
     >
       {button === "All" ? "All" : ""}
+      {isActive === "true" && <FaCheck color="white" />}
     </button>
   );
 };

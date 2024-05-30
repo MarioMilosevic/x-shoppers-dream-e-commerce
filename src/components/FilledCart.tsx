@@ -15,7 +15,7 @@ const FilledCart = () => {
   return (
     <div className="lg:max-w-[1200px] mx-auto pt-16 pb-32 px-4 lg:px-0">
       <div className="hidden lg:flex justify-between border-b border-b-neutral-400 py-8">
-        <div className="lg:w-[250px] flex justify-center">Item</div>
+        <div className="lg:w-[224px] flex justify-center">Item</div>
         <div>Price</div>
         <div>Quantity</div>
         <div className="mr-32">Subtotal</div>

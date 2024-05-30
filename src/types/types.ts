@@ -148,6 +148,16 @@ export type productSliceInitialState = {
   filteredProducts: productResponseType[];
 };
 
+export type initialFiltersType = {
+  category: string;
+  company: string;
+  color: string;
+  search: string;
+  price: number;
+  shipping: boolean;
+  sort: string;
+};
+
 export type colorButtonProps = {
   button: string;
   isActive: keyof colorButtonIsActive;
