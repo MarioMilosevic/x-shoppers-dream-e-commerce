@@ -4,7 +4,7 @@ import { fetchSingleProduct } from "../utils/helperFunctions";
 import { FaStar } from "react-icons/fa";
 import { useEffect, useState, useCallback } from "react";
 import { FaRegStarHalfStroke, FaRegStar } from "react-icons/fa6";
-// import { mario2 } from "../utils/constants";
+import { mario2 } from "../utils/constants";
 import { useAppSlice } from "../hooks/useAppSlice";
 import ColorButton from "../components/ColorButton";
 import Button from "../components/Button";
@@ -25,28 +25,28 @@ const SingleProduct = () => {
   const navigate = useNavigate();
   const [singleProduct, setSingleProduct] = useState<singleProductType>();
   useEffect(() => {
-    const getProduct = async () => {
-      try {
-        dispatch(setLoading(true));
-        if (productId) {
-          const fetchedProduct = await fetchSingleProduct(productId);
-          setSingleProduct({
-            ...fetchedProduct,
-            quantity: 1,
-            selectedColor: fetchedProduct.colors[0],
-            customId: "",
-          });
-        }
-      } catch (error) {
-        console.error("Error fetching the product:", error);
-      } finally {
-        dispatch(setLoading(false))
-      }
-    };
-    getProduct();
-  }, [productId, dispatch]);
-  //   setSingleProduct(mario2);
-  // }, []);
+  //   const getProduct = async () => {
+  //     try {
+  //       dispatch(setLoading(true));
+  //       if (productId) {
+  //         const fetchedProduct = await fetchSingleProduct(productId);
+  //         setSingleProduct({
+  //           ...fetchedProduct,
+  //           quantity: 1,
+  //           selectedColor: fetchedProduct.colors[0],
+  //           customId: "",
+  //         });
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching the product:", error);
+  //     } finally {
+  //       dispatch(setLoading(false))
+  //     }
+  //   };
+  //   getProduct();
+  // }, [productId, dispatch]);
+    setSingleProduct(mario2);
+  }, []);
 
   const createStarsArray = (stars: number) => {
     const starsArray = [];
@@ -101,24 +101,26 @@ const SingleProduct = () => {
 
   return (
     <div className="sm:max-w-[1300px] mx-auto pt-16 pb-32">
+      <div className="w-[90%] mx-auto lg:mx-0 lg:w-full">
       <Button color="purple" buttonHandler={() => navigate("/products")}>
         Back to Products
       </Button>
-      <div className="flex justify-between gap-2 py-8">
-        <div className="w-[50%] flex flex-col gap-4 rounded-md">
+      </div>
+      <div className="flex flex-col items-center lg:flex-row lg:justify-between gap-16 lg:gap-4 py-8">
+        <div className="w-[90%] lg:w-[50%] flex flex-col gap-4 rounded-md">
           <img
             src={`${singleProduct?.images[activeImageIndex].url}`}
             alt={`${singleProduct?.images[activeImageIndex].url}`}
-            className="w-full h-[600px] rounded-md"
+            className="w-full h-[600px] rounded-md object-cover"
           />
-          <ul className="flex justify-between">
+          <ul className="flex justify-between gap-2">
             {singleProduct.images.map((image, index) => {
               const decoration =
                 activeImageIndex === index ? "border border-fuchsia-500" : "";
               return (
                 <li
                   key={index}
-                  className={`w-[120px] h-[80px] cursor-pointer rounded-md ${decoration}`}
+                  className={`w-[20%] h-[100px] lg:w-[120px] lg:h-[80px] cursor-pointer rounded-md ${decoration}`}
                   onClick={() => setactiveImageIndex(index)}
                 >
                   <img
@@ -131,7 +133,7 @@ const SingleProduct = () => {
             })}
           </ul>
         </div>
-        <div className="flex flex-col justify-between w-[45%]">
+        <div className="flex flex-col justify-between w-[90%] text-sm lg:text-base gap-2 lg:gap-0 lg:w-[45%]">
           <h2 className="capitalize font-semibold text-4xl">
             {singleProduct.name}
           </h2>
@@ -146,27 +148,27 @@ const SingleProduct = () => {
           <span className="text-fuchsia-500 text-xl">{`$${
             singleProduct.price / 100
           }`}</span>
-          <p className="leading-6">{singleProduct.description}</p>
+          <p className="leading-5 lg:leading-6">{singleProduct.description}</p>
           <div className="flex flex-col gap-4 pb-8 border-b border-b-fuchsia-500">
             <div className="flex gap-4">
-              <div className="font-semibold w-[15%]">Available:</div>
+              <div className="font-semibold w-[100px] lg:w-[15%]">Available:</div>
               <span>
                 {`${singleProduct.stock > 0 ? "In stock" : "Out of stock"}`}
               </span>
             </div>
             <div className="flex gap-4">
-              <div className="font-semibold w-[15%]">SKU:</div>
+              <div className="font-semibold w-[100px] lg:w-[15%]">SKU:</div>
               <span className="capitalize">{singleProduct.id}</span>
             </div>
             <div className="flex gap-4">
-              <div className="font-semibold w-[15%]">Brand:</div>
+              <div className="font-semibold w-[100px] lg:w-[15%]">Brand:</div>
               <span className="capitalize">{singleProduct.company}</span>
             </div>
           </div>
           {singleProduct.stock > 0 && (
             <div className="flex flex-col gap-8">
-              <div className="flex gap-4">
-                <div className="font-semibold w-[15%]">Colors:</div>
+              <div className="flex gap-4 pt-4 lg:pt-0">
+                <div className="font-semibold w-[100px] lg:w-[15%]">Colors:</div>
                 <ul className="flex items-center gap-2">
                   {singleProduct.colors.map((button, index) => {
                     const isActive =
@@ -184,15 +186,17 @@ const SingleProduct = () => {
                   })}
                 </ul>
               </div>
-              <div className="w-[25%] flex flex-col gap-4">
+              <div className="w-[150px] lg:w-[25%] flex flex-col gap-4">
                 <CartQuantityControl
                   quantity={singleProduct.quantity}
                   incrementProductQuantity={incrementProductQuantity}
                   decrementProductQuantity={decrementProductQuantity}
                 />
-                <Button color="purple" buttonHandler={() => addToCartHandler()}>
+                <div className="flex items-center justify-center">
+                <Button color="purple" buttonHandler={addToCartHandler}>
                   Add to Cart
                 </Button>
+                </div>
               </div>
             </div>
           )}
