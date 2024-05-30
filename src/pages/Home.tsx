@@ -6,9 +6,12 @@ import Operations from "../components/Operations";
 import Testimonials from "../components/Testimonials";
 import { setActivePageIndex } from "../redux/features/appSlice";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 const Home = () => {
-  const dispatch = useDispatch()
-  dispatch(setActivePageIndex(0))
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setActivePageIndex(0));
+  }, [dispatch]);
   return (
     <>
       <Hero />

@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { initialFilters, FilterKeys } from "../../utils/constants";
 import {
+  initialFiltersType,
   productResponseType,
   productSliceInitialState,
 } from "../../types/types";
@@ -26,10 +27,13 @@ export const productsSlice = createSlice({
     },
     setFilters: (
       state,
-      action: PayloadAction<{ key: FilterKeys; value: never }>
+      action: PayloadAction<{
+        key: FilterKeys;
+        value: string | number | null | boolean;
+      }>
     ) => {
       const { key, value } = action.payload;
-      state.filters[key] = value;
+      state.filters[key as keyof initialFiltersType] = value as never;
       let filteredProducts = [...state.products];
 
       if (state.filters.company && state.filters.company !== "All") {

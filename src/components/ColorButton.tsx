@@ -1,11 +1,15 @@
-import { colorButtonProps, colorButtonIsActive, colorButtonSizeOptions } from "../types/types";
+import {
+  colorButtonProps,
+  colorButtonIsActive,
+  colorButtonSizeOptions,
+} from "../types/types";
 import { FaCheck } from "react-icons/fa";
 const ColorButton = ({
   button,
   isActive,
   clickHandler,
   index,
-  size
+  size,
 }: colorButtonProps) => {
   const styling = button === "All" ? "" : "rounded-full";
 
@@ -18,10 +22,10 @@ const ColorButton = ({
     false: "opacity-40",
   };
 
-  const sizeOptions:colorButtonSizeOptions = {
+  const sizeOptions: colorButtonSizeOptions = {
     small: "w-3 h-3",
-    medium:"w-5 h-5"
-  }
+    medium: "w-5 h-5",
+  };
 
   return (
     <button

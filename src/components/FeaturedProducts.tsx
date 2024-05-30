@@ -38,7 +38,7 @@ const FeaturedProducts = () => {
       ref={sectionRef}
     >
       <div className="mx-auto w-[80%] flex flex-col lg:items-center gap-10 lg:w-[1200px]">
-        <div className="flex flex-col sm:gap-10 lg:gap-4 lg:flex-row lg:w-full">
+        <div className="flex flex-col gap-10 sm:gap-10 lg:gap-4 lg:flex-row lg:w-full">
           {products.map((product) => (
             <Product
               key={product.id}

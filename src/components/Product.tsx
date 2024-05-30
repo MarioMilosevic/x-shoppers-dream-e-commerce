@@ -5,7 +5,7 @@ import {
   imgSizeOptions,
 } from "../types/types";
 import Button from "./Button";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Product = ({
   id,
@@ -17,7 +17,7 @@ const Product = ({
   hover,
   imgSize,
 }: ProductProps) => {
-
+  const navigate = useNavigate()
   const textSizeOptions: textSizeOptions = {
     large: "lg:text-xl ",
     medium: "lg:text-lg",
@@ -38,13 +38,12 @@ const Product = ({
     <article
       className={`flex flex-col pb-2 gap-4 lg:gap-4 lg:w-full transition-all duration-700 ${hoverOptions[hover]}`}
     >
-      <Link to={`/products/${id}`} >
-      <img
-        src={image}
-        alt={name}
-        className={`mx-auto w-full object-cover rounded-md cursor-pointer ${imgSizeOptions[imgSize]}`}
+        <img
+          src={image}
+          alt={name}
+          className={`mx-auto w-full object-cover rounded-md cursor-pointer ${imgSizeOptions[imgSize]}`}
+          onClick={() => navigate(`/products/${id}`)}
         />
-        </Link>
       <div
         className={`mx-auto w-full flex justify-between text-lg ${textSizeOptions[textSize]}`}
       >
@@ -57,7 +56,7 @@ const Product = ({
       <div className="sm:hidden lg:hidden flex items-center justify-start">
         <Button
           color="purple"
-          buttonHandler={() => console.log("treba d aode")}
+          buttonHandler={() => navigate(`/products/${id}`)}
         >
           Details
         </Button>

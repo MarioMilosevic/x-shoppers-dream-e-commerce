@@ -1,7 +1,7 @@
 import { CartQuantityControlProps } from "../types/types";
 const CartQuantityControl = ({
-   quantity,
-   incrementProductQuantity,
+  quantity,
+  incrementProductQuantity,
   decrementProductQuantity,
 }: CartQuantityControlProps) => {
   return (

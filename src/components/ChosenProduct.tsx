@@ -46,11 +46,11 @@ const ChosenProduct = ({ product }: ChosenProductType) => {
       <div className="hidden lg:block text-neutral-500 mr-32">{`$${
         subtotal / 100
       }`}</div>
-      <button className="bg-red-400 p-1 rounded-md lg:absolute lg:right-8">
-        <LuTrash
-          fill="white"
-          onClick={() => dispatch(removeProduct(product.id))}
-        />
+      <button
+        className="bg-red-400 p-1 rounded-md lg:absolute lg:right-8"
+        onClick={() => dispatch(removeProduct(product.customId))}
+      >
+        <LuTrash fill="white" />
       </button>
     </li>
   );

@@ -20,9 +20,6 @@ export const calculateHighestNumber = (arr: productResponseType[]) => {
   );
 };
 
-// const mario =
-//   "https://www.course-api.com/react-store-single-product?id=";
-
 export const fetchSingleProduct = async (id:string) => {
   try {
     const response = await fetch(

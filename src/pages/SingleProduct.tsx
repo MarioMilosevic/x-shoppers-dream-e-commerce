@@ -1,10 +1,8 @@
 import { useParams, useNavigate } from "react-router";
-// import { useProductsSlice } from "../hooks/useProductsSlice";
 import { fetchSingleProduct } from "../utils/helperFunctions";
 import { FaStar } from "react-icons/fa";
 import { useEffect, useState, useCallback } from "react";
 import { FaRegStarHalfStroke, FaRegStar } from "react-icons/fa6";
-// import { mario2 } from "../utils/constants";
 import { useAppSlice } from "../hooks/useAppSlice";
 import ColorButton from "../components/ColorButton";
 import Button from "../components/Button";
@@ -20,7 +18,6 @@ const SingleProduct = () => {
   const [activeColorIndex, setActiveColorIndex] = useState<number>(0);
   const {loading, error} = useAppSlice()
   const dispatch = useDispatch();
-  // const products = useProductsSlice();
   const { productId } = useParams();
   const navigate = useNavigate();
   const [singleProduct, setSingleProduct] = useState<singleProductType>();
@@ -45,8 +42,7 @@ const SingleProduct = () => {
     };
     getProduct();
   }, [productId, dispatch]);
-  //   setSingleProduct(mario2);
-  // }, []);
+ 
 
   const createStarsArray = (stars: number) => {
     const starsArray = [];

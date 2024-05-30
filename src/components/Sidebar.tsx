@@ -10,10 +10,10 @@ import { useAppSlice } from "../hooks/useAppSlice";
 
 const Sidebar = () => {
   const products = useProductsSlice();
+  const { isSidebarOpen } = useAppSlice();
+  const filters = useFiltersSlice();
   const [activeCategoryIndex, setActiveCategoryIndex] = useState<number>(0);
   const [activeColorIndex, setActiveColorIndex] = useState<number>(0);
-  const filters = useFiltersSlice();
-  const {isSidebarOpen } = useAppSlice()
   const dispatch = useDispatch();
   const categoriesSet = new Set(products.map((product) => product.category));
   const companiesSet = new Set(products.map((product) => product.company));
@@ -59,10 +59,12 @@ const Sidebar = () => {
     setActiveColorIndex(0);
   };
 
-  const sidebar = isSidebarOpen ? "translate-x-0" : "-translate-x-[100%]"
+  const sidebar = isSidebarOpen ? "translate-x-0" : "-translate-x-[100%]";
 
   return (
-    <aside className={`sm:relative absolute z-10 bg-neutral-100 sm:top-0 top-20 p-4 rounded-md sm:text-base text-sm sm:translate-x-0 sm:transition-none transition-all duration-700 ${sidebar}`}>
+    <aside
+      className={`sm:relative h-[670px] absolute z-20 bg-neutral-100 sm:top-0 top-20 p-4 rounded-md sm:text-base text-sm sm:translate-x-0 sm:transition-none transition-all duration-700 ${sidebar}`}
+    >
       <input
         type="text"
         id="search"

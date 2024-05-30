@@ -10,11 +10,10 @@ import { useNavigate, useLocation } from "react-router";
 import { getTotalCartQuantity } from "../redux/features/cartSlice";
 import { setActivePageIndex } from "../redux/features/appSlice";
 import { useSelector } from "react-redux";
-import ListItem from "./ListItem";
 import { useAppSlice } from "../hooks/useAppSlice";
+import ListItem from "./ListItem";
 const SharedLayout = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  // const [activePageIndex, setActivePageIndex] = useState<number>(0);
   const { activePageIndex } = useAppSlice();
   const totalQuantity = useSelector(getTotalCartQuantity);
   const navigate = useNavigate();
