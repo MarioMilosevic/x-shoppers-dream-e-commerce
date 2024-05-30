@@ -9,8 +9,9 @@ import { getTotalCartPrice } from "../redux/features/cartSlice";
 import { useSelector } from "react-redux";
 const FilledCart = () => {
   const { cart } = useCartSlice();
-  const totalPrice = useSelector(getTotalCartPrice)
-  const dispatch = useDispatch()
+  console.log("stanje u kartu", cart);
+  const totalPrice = useSelector(getTotalCartPrice);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
     <div className="sm:max-w-[1200px] mx-auto pt-16 pb-32">
@@ -25,7 +26,7 @@ const FilledCart = () => {
       {/* ako je isti proizvod razlicite boje */}
       <ul className="border-b border-b-neutral-500 flex flex-col gap-8 py-16">
         {cart.map((product) => (
-          <ChosenProduct key={product.id} product={product} />
+          <ChosenProduct key={product.customId} product={product} />
         ))}
       </ul>
       <div className="flex justify-between items-center pt-12 pb-16">

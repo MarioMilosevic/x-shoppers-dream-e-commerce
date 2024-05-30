@@ -28,6 +28,7 @@ const SingleProduct = () => {
             ...fetchedProduct,
             quantity: 1,
             selectedColor: fetchedProduct.colors[0],
+            customId: "",
           });
         }
       } catch (error) {
@@ -65,6 +66,7 @@ const SingleProduct = () => {
       return {
         ...prev,
         selectedColor: prev.colors[index],
+        customId: `${prev.id}${prev.colors[index]}`,
       };
     });
   };
@@ -177,7 +179,6 @@ const SingleProduct = () => {
                   quantity={singleProduct.quantity}
                   incrementProductQuantity={incrementProductQuantity}
                   decrementProductQuantity={decrementProductQuantity}
-                  id=""
                 />
                 <Button color="purple" buttonHandler={() => addToCartHandler()}>
                   Add to Cart

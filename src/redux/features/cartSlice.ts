@@ -16,13 +16,34 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<singleProductType>) => {
-      state.cart.push(action.payload);
+      const { id, selectedColor, quantity } = action.payload;
+
+      const existingProduct = state.cart.find(
+        (product) =>
+          product.id === id && product.selectedColor === selectedColor
+      );
+      existingProduct
+        ? (existingProduct.quantity += quantity)
+        : state.cart.push(action.payload);
+      // console.log(action.payload.id)
+      // console.log(action.payload.selectedColor)
+      // state.cart.find((product) => product.id === action.payload.id && product.selectedColor === action.payload.selectedColor ? product.quantity += action.payload.quantity : state.cart.push(action.payload))
+      /*
+      na inicijalni id dadam boju 
+      ukoliko je isti id (ista boja) povecam kvantiti za broj taj koji sam poslao
+      const stateProductId = `${action.payload.id}${action.payload.selectedColor}`
+      ///////////////////
+      ukoliko selected color === action.payload.selectedColor && id === action.payload.id
+      quantity++ else
+      push
+      */
+      // state.cart.push(action.payload);
     },
     incrementCartQuantity: (state, action: PayloadAction<string>) => {
       state.cart = state.cart
         .map((product) => {
           if (
-            product.id === action.payload &&
+            product.customId === action.payload &&
             product.quantity < product.stock
           ) {
             return { ...product, quantity: product.quantity + 1 };
@@ -34,7 +55,7 @@ export const cartSlice = createSlice({
     decrementCartQuantity: (state, action: PayloadAction<string>) => {
       state.cart = state.cart
         .map((product) =>
-          product.id === action.payload && product.quantity > 1
+          product.customId === action.payload && product.quantity > 1
             ? { ...product, quantity: product.quantity - 1 }
             : product
         )

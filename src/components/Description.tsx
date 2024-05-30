@@ -14,7 +14,7 @@ const Description = () => {
       title="Elevate your home with our attitude of excellence and timeless style."
       ref={sectionRef}
     >
-      <div className="flex flex-col sm:flex-row gap-10 justify-between">
+      <div className="flex flex-col lg:flex-row gap-10 justify-between">
         <Info icon={HiOutlineSparkles} title={"Radiance"}>
           Our commitment to providing sparkling solutions ensures every customer
           enjoys a shining, glowing experience with unmatched quality.

@@ -17,7 +17,7 @@ const Hero = () => {
       className="flex flex-col sm:flex-col lg:flex-row justify-between sm:items-center lg:items-stretch  lg:max-w-[1200px] mx-auto py-12"
       ref={heroRef}
     >
-      <div className="mx-auto py-16 w-[90%] sm:max-w-[60%] lg:w-auto sm:mx-0 flex flex-col gap-7 border border-black">
+      <div className="mx-auto py-16 w-[90%] sm:max-w-[60%] lg:w-auto sm:mx-0 flex flex-col gap-7">
         <h1 className="text-3xl lg:text-5xl font-bold lg:leading-[4.2rem]">
           Furniture design to <br /> make you feel at home
         </h1>

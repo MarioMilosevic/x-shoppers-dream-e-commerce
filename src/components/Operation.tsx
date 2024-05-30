@@ -12,7 +12,7 @@ const Operation = ({ title, text, icon }:OperationProps) => {
         <h3 className="font-bold text-lg lg:text-xl pt-2">
         {title}
         </h3>
-        <p className="leading-7 text-base lg:leading-9 lg:text-lg">
+        <p className="leading-6 text-sm lg:leading-9 lg:text-lg">
         {text}
         </p>
       </div>

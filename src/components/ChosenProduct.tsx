@@ -33,12 +33,11 @@ const ChosenProduct = ({ product }: ChosenProductType) => {
       <div className="w-[100px]">
         <CartQuantityControl
           quantity={product.quantity}
-          id={product.id}
-          incrementProductQuantity={() =>  
-            dispatch(incrementCartQuantity(product.id))
+          incrementProductQuantity={() =>
+            dispatch(incrementCartQuantity(product.customId))
           }
           decrementProductQuantity={() =>
-            dispatch(decrementCartQuantity(product.id))
+            dispatch(decrementCartQuantity(product.customId))
           }
         />
       </div>

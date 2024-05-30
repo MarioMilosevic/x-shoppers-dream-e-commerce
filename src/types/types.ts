@@ -195,6 +195,7 @@ export type singleProductType = {
   stock: number;
   quantity: number;
   selectedColor: string;
+  customId: string;
 };
 
 export type colorButtonSizeOptions = {
@@ -207,7 +208,6 @@ export type ChosenProductType = {
 };
 
 export type CartQuantityControlProps = {
-  id: string;
   quantity: number;
   incrementProductQuantity: () => void;
   decrementProductQuantity: () => void;
