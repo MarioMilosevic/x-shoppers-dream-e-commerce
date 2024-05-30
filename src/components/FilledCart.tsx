@@ -9,7 +9,6 @@ import { getTotalCartPrice } from "../redux/features/cartSlice";
 import { useSelector } from "react-redux";
 const FilledCart = () => {
   const { cart } = useCartSlice();
-  console.log("stanje u kartu", cart);
   const totalPrice = useSelector(getTotalCartPrice);
   const dispatch = useDispatch();
   const navigate = useNavigate();

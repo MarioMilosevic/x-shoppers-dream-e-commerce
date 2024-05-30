@@ -4,16 +4,21 @@ import { fetchSingleProduct } from "../utils/helperFunctions";
 import { FaStar } from "react-icons/fa";
 import { useEffect, useState, useCallback } from "react";
 import { FaRegStarHalfStroke, FaRegStar } from "react-icons/fa6";
-import { mario2 } from "../utils/constants";
+// import { mario2 } from "../utils/constants";
+import { useAppSlice } from "../hooks/useAppSlice";
 import ColorButton from "../components/ColorButton";
 import Button from "../components/Button";
 import { singleProductType } from "../types/types";
 import CartQuantityControl from "../components/CartQuantityControl";
 import { useDispatch } from "react-redux";
+import { setLoading } from "../redux/features/appSlice";
 import { addToCart } from "../redux/features/cartSlice";
+import Loading from "../components/Loading";
+import ErrorFetch from "../components/ErrorFetch";
 const SingleProduct = () => {
   const [activeImageIndex, setactiveImageIndex] = useState<number>(0);
   const [activeColorIndex, setActiveColorIndex] = useState<number>(0);
+  const {loading, error} = useAppSlice()
   const dispatch = useDispatch();
   // const products = useProductsSlice();
   const { productId } = useParams();
@@ -22,6 +27,7 @@ const SingleProduct = () => {
   useEffect(() => {
     const getProduct = async () => {
       try {
+        dispatch(setLoading(true));
         if (productId) {
           const fetchedProduct = await fetchSingleProduct(productId);
           setSingleProduct({
@@ -33,10 +39,12 @@ const SingleProduct = () => {
         }
       } catch (error) {
         console.error("Error fetching the product:", error);
+      } finally {
+        dispatch(setLoading(false))
       }
     };
     getProduct();
-  }, [productId]);
+  }, [productId, dispatch]);
   //   setSingleProduct(mario2);
   // }, []);
 
@@ -87,6 +95,8 @@ const SingleProduct = () => {
     );
   }, []);
 
+  if(loading) return <Loading/>
+  if(error) return <ErrorFetch/>
   if (!singleProduct) return;
 
   return (
