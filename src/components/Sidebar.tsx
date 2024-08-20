@@ -63,7 +63,7 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={`sm:relative h-[670px] absolute z-20 bg-neutral-100 sm:top-0 top-20 p-4 rounded-md sm:text-base text-sm sm:translate-x-0 sm:transition-none transition-all duration-700 ${sidebar}`}
+      className={`sm:relative sm:h-[670px] absolute z-20 bg-neutral-100 sm:top-0 top-0 p-4 rounded-md sm:text-base text-sm sm:translate-x-0 sm:transition-none transition-all duration-700 ${sidebar}`}
     >
       <input
         type="text"

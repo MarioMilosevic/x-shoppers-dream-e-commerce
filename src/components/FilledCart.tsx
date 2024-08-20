@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { shippingFee } from "../utils/constants";
 import { getTotalCartPrice } from "../redux/features/cartSlice";
 import { useSelector } from "react-redux";
+
 const FilledCart = () => {
   const { cart } = useCartSlice();
   const totalPrice = useSelector(getTotalCartPrice);

@@ -116,7 +116,7 @@ const SharedLayout = () => {
       <main>
         <Outlet />
       </main>
-      <footer className="pb-12">
+      <footer className="pb-12 mt-12">
         <div className="flex justify-center gap-1">
           Copyright &copy; Mario Milošević
           <a href="https://github.com/MarioMilosevic" target="_blank">

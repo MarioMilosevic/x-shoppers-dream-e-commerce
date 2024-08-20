@@ -32,7 +32,6 @@ const ChosenProduct = ({ product }: ChosenProductType) => {
       <div className="hidden lg:block text-fuchsia-500">{`$${
         product.price / 100
       }`}</div>
-      <div className="w-[100px]">
         <CartQuantityControl
           quantity={product.quantity}
           incrementProductQuantity={() =>
@@ -42,7 +41,6 @@ const ChosenProduct = ({ product }: ChosenProductType) => {
             dispatch(decrementCartQuantity(product.customId))
           }
         />
-      </div>
       <div className="hidden lg:block text-neutral-500 mr-32">{`$${
         subtotal / 100
       }`}</div>
