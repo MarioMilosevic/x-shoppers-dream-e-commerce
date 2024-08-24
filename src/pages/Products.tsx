@@ -38,6 +38,7 @@ const Products = () => {
     fetchData();
   }, [dispatch]);
 
+
   if (loading) return <Loading />;
   if (error) return <ErrorFetch />;
   return (

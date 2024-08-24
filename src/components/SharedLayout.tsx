@@ -23,7 +23,7 @@ const SharedLayout = () => {
   ) as React.RefObject<HTMLElement>;
 
   useEffect(() => {
-    if (location.pathname === "/" && window.innerWidth >= 600) {
+    if (window.innerWidth >= 600) {
       const handleScroll = () => {
         handleStickyNav(navRef, "sticky");
       };
