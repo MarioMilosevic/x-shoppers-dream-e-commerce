@@ -1,12 +1,12 @@
 import { useRef, useState, useEffect, useCallback } from "react";
-import { useIntersecting } from "../hooks/useIntersecting";
-import Section from "./Section";
-import { testimonials } from "../shared/utils/constants";
+import { useIntersecting } from "../../../hooks/useIntersecting";
+import Section from "../../../components/Section";
+import { testimonials } from "../../../shared/utils/constants";
 import {
   HiOutlineArrowLongLeft,
   HiOutlineArrowLongRight,
 } from "react-icons/hi2";
-import Slide from "./Slide";
+import Slide from "../../../components/Slide";
 import ArrowContainer from "./ArrowContainer";
 
 const Testimonials = () => {
