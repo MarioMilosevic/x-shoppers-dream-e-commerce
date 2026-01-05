@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { clearFilters, setFilters } from "../redux/features/productsSlice";
 import { useProductsSlice } from "../hooks/useProductsSlice";
 import { useState } from "react";
-import { calculateHighestNumber } from "../utils/helperFunctions";
+import { calculateHighestNumber } from "../shared/utils/helperFunctions";
 import { useFiltersSlice } from "../hooks/useFiltersSlice";
 import { useAppSlice } from "../hooks/useAppSlice";
 

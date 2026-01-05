@@ -1,18 +1,18 @@
-import Sidebar from "../components/Sidebar";
-import ProductsContent from "../components/ProductsContent";
-import Loading from "../components/Loading";
-import { useEffect } from "react";
-import { url } from "../utils/constants";
-import { useDispatch } from "react-redux";
-import { setProducts } from "../redux/features/productsSlice";
-import { useAppSlice } from "../hooks/useAppSlice";
+import Sidebar from "../../components/Sidebar";
+import ProductsContent from "../../components/ProductsContent";
+import Loading from "../../components/Loading";
+import { url } from "../../shared/utils/constants";
+import { setProducts } from "../../redux/features/productsSlice";
+import { useAppSlice } from "../../hooks/useAppSlice";
 import {
   setActivePageIndex,
   setError,
   setLoading,
-} from "../redux/features/appSlice";
-import ErrorFetch from "../components/ErrorFetch";
-import Overlay from "../components/Overlay";
+} from "../../redux/features/appSlice";
+import { useDispatch } from "react-redux";
+import Overlay from "../../components/Overlay";
+import ErrorFetch from "../../components/ErrorFetch";
+import { useEffect } from "react";
 
 const Products = () => {
   const { loading, error } = useAppSlice();
@@ -37,7 +37,6 @@ const Products = () => {
     };
     fetchData();
   }, [dispatch]);
-
 
   if (loading) return <Loading />;
   if (error) return <ErrorFetch />;

@@ -1,5 +1,5 @@
 import { ForwardedRef, forwardRef } from "react";
-import { SectionProps, widthOptions } from "../types/types";
+import { SectionProps, widthOptions } from "../shared/types/types";
 
 const Section = forwardRef(
   (

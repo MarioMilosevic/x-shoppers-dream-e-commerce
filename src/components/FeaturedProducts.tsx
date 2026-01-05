@@ -1,11 +1,11 @@
 import { useEffect, useState, useRef } from "react";
-import { url } from "../utils/constants";
+import { url } from "../shared/utils/constants";
 import Product from "./Product";
 import Section from "./Section";
 import Button from "./Button";
 import { useIntersecting } from "../hooks/useIntersecting";
 import { useNavigate } from "react-router";
-import { ProductState } from "../types/types";
+import { ProductState } from "../shared/types/types";
 import { useDispatch } from "react-redux";
 
 const FeaturedProducts = () => {

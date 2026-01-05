@@ -1,5 +1,5 @@
-import { images } from "../utils/constants";
-import { handleStickyNav } from "../utils/helperFunctions";
+import { images } from "../shared/utils/constants";
+import { handleStickyNav } from "../shared/utils/helperFunctions";
 import { useRef, useEffect } from "react";
 import NewsImg from "./NewsImg";
 const News = () => {

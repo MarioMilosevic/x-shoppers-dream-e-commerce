@@ -1,7 +1,7 @@
 import CartQuantityControl from "./CartQuantityControl";
 import { useDispatch } from "react-redux";
 import { LuTrash } from "react-icons/lu";
-import { ChosenProductType } from "../types/types";
+import { ChosenProductType } from "../shared/types/types";
 import {
   decrementCartQuantity,
   incrementCartQuantity,
@@ -32,15 +32,15 @@ const ChosenProduct = ({ product }: ChosenProductType) => {
       <div className="hidden lg:block text-fuchsia-500">{`$${
         product.price / 100
       }`}</div>
-        <CartQuantityControl
-          quantity={product.quantity}
-          incrementProductQuantity={() =>
-            dispatch(incrementCartQuantity(product.customId))
-          }
-          decrementProductQuantity={() =>
-            dispatch(decrementCartQuantity(product.customId))
-          }
-        />
+      <CartQuantityControl
+        quantity={product.quantity}
+        incrementProductQuantity={() =>
+          dispatch(incrementCartQuantity(product.customId))
+        }
+        decrementProductQuantity={() =>
+          dispatch(decrementCartQuantity(product.customId))
+        }
+      />
       <div className="hidden lg:block text-neutral-500 mr-32">{`$${
         subtotal / 100
       }`}</div>

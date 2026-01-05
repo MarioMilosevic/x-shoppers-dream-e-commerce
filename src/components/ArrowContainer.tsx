@@ -1,4 +1,7 @@
-import { ArrowContainerProps, ArrowContainerOptions } from "../types/types";
+import {
+  ArrowContainerProps,
+  ArrowContainerOptions,
+} from "../shared/types/types";
 
 const ArrowContainer = ({
   direction,

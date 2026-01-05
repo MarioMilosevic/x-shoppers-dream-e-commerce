@@ -1,5 +1,5 @@
-import { ButtonProps } from "../types/types";
-import { ButtonColors } from "../types/types";
+import { ButtonProps } from "../shared/types/types";
+import { ButtonColors } from "../shared/types/types";
 const Button = ({ children, color, buttonHandler }: ButtonProps) => {
   const buttonColors: ButtonColors = {
     purple:

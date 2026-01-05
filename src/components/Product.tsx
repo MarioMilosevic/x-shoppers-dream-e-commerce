@@ -3,7 +3,7 @@ import {
   textSizeOptions,
   ProductHoverOptions,
   imgSizeOptions,
-} from "../types/types";
+} from "../shared/types/types";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 
@@ -17,7 +17,7 @@ const Product = ({
   hover,
   imgSize,
 }: ProductProps) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const textSizeOptions: textSizeOptions = {
     large: "lg:text-xl ",
     medium: "lg:text-lg",
@@ -38,12 +38,12 @@ const Product = ({
     <article
       className={`flex flex-col pb-2 gap-4 lg:gap-4 lg:w-full transition-all duration-700 ${hoverOptions[hover]}`}
     >
-        <img
-          src={image}
-          alt={name}
-          className={`mx-auto w-full object-cover rounded-md cursor-pointer ${imgSizeOptions[imgSize]}`}
-          onClick={() => navigate(`/products/${id}`)}
-        />
+      <img
+        src={image}
+        alt={name}
+        className={`mx-auto w-full object-cover rounded-md cursor-pointer ${imgSizeOptions[imgSize]}`}
+        onClick={() => navigate(`/products/${id}`)}
+      />
       <div
         className={`mx-auto w-full flex justify-between text-lg ${textSizeOptions[textSize]}`}
       >

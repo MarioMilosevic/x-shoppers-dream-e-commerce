@@ -2,7 +2,7 @@ import {
   colorButtonProps,
   colorButtonIsActive,
   colorButtonSizeOptions,
-} from "../types/types";
+} from "../shared/types/types";
 import { FaCheck } from "react-icons/fa";
 const ColorButton = ({
   button,

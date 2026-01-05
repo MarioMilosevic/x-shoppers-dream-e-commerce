@@ -4,7 +4,7 @@ import { useCartSlice } from "../hooks/useCartSlice";
 import { useNavigate } from "react-router";
 import { clearCart } from "../redux/features/cartSlice";
 import { useDispatch } from "react-redux";
-import { shippingFee } from "../utils/constants";
+import { shippingFee } from "../shared/utils/constants";
 import { getTotalCartPrice } from "../redux/features/cartSlice";
 import { useSelector } from "react-redux";
 

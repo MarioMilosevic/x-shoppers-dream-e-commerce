@@ -1,4 +1,4 @@
-import { operations } from "../utils/constants";
+import { operations } from "../shared/utils/constants";
 import Operation from "./Operation";
 import Button from "./Button";
 import { useRef, useState } from "react";

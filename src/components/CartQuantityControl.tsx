@@ -1,4 +1,4 @@
-import { CartQuantityControlProps } from "../types/types";
+import { CartQuantityControlProps } from "../shared/types/types";
 const CartQuantityControl = ({
   quantity,
   incrementProductQuantity,

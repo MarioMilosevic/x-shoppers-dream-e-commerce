@@ -20,7 +20,7 @@ export const calculateHighestNumber = (arr: productResponseType[]) => {
   );
 };
 
-export const fetchSingleProduct = async (id:string) => {
+export const fetchSingleProduct = async (id: string) => {
   try {
     const response = await fetch(
       `https://www.course-api.com/react-store-single-product?id=${id}`
@@ -37,7 +37,6 @@ export const fetchSingleProduct = async (id:string) => {
     throw error;
   }
 };
-
 
 export const sortProductsUtil = (
   products: productResponseType[],
@@ -56,4 +55,3 @@ export const sortProductsUtil = (
       return products;
   }
 };
-

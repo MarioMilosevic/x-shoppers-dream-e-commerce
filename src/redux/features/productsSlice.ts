@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { initialFilters, FilterKeys } from "../../utils/constants";
+import { initialFilters, FilterKeys } from "../../shared/utils/constants";
 import {
   initialFiltersType,
   productResponseType,
   productSliceInitialState,
-} from "../../types/types";
-import { sortProductsUtil } from "../../utils/helperFunctions";
+} from "../../shared/types/types";
+import { sortProductsUtil } from "../../shared/utils/helperFunctions";
 
 const initialState: productSliceInitialState = {
   products: [],

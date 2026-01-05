@@ -1,4 +1,4 @@
-import { ListItemProps, ListItemOptions } from "../types/types";
+import { ListItemProps, ListItemOptions } from "../shared/types/types";
 import { Link } from "react-router-dom";
 
 const ListItem = ({
@@ -6,7 +6,7 @@ const ListItem = ({
   isActive,
   path,
   index,
-  clickHandler
+  clickHandler,
 }: ListItemProps) => {
   const listItemOptions: ListItemOptions = {
     true: "underline underline-offset-[6px] decoration-fuchsia-500",

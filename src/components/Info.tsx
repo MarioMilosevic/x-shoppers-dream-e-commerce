@@ -1,4 +1,4 @@
-import { InfoProps } from "../types/types";
+import { InfoProps } from "../shared/types/types";
 const Info = ({ icon, title, children }: InfoProps) => {
   const Icon = icon;
 

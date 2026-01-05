@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { useIntersecting } from "../hooks/useIntersecting";
 import Section from "./Section";
-import { testimonials } from "../utils/constants";
+import { testimonials } from "../shared/utils/constants";
 import {
   HiOutlineArrowLongLeft,
   HiOutlineArrowLongRight,

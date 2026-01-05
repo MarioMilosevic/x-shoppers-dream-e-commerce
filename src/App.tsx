@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Products from "./pages/Products";
-import Home from "./pages/Home";
-import Cart from "./pages/Cart";
+import Products from "./pages/products/Products";
+import Home from "./pages/home/Home";
+import Cart from "./pages/cart/Cart";
 import SharedLayout from "./components/SharedLayout";
-import SingleProduct from "./pages/SingleProduct";
+import SingleProduct from "./pages/singleProduct/SingleProduct";
 import { ErrorRoute } from "./components/ErrorRoute";
 function App() {
   return (

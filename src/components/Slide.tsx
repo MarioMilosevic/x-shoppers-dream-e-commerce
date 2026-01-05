@@ -1,4 +1,4 @@
-import { SlideProps } from "../types/types";
+import { SlideProps } from "../shared/types/types";
 import { ForwardedRef, forwardRef } from "react";
 
 const Slide = forwardRef(

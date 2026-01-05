@@ -1,4 +1,4 @@
-import { OperationProps } from "../types/types";
+import { OperationProps } from "../shared/types/types";
 
 const Operation = ({ title, text, icon }: OperationProps) => {
   const Icon = icon;

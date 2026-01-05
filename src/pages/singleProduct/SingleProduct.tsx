@@ -1,22 +1,22 @@
 import { useParams, useNavigate } from "react-router";
-import { fetchSingleProduct } from "../utils/helperFunctions";
+import { fetchSingleProduct } from "../../shared/utils/helperFunctions";
 import { FaStar } from "react-icons/fa";
 import { useEffect, useState, useCallback } from "react";
 import { FaRegStarHalfStroke, FaRegStar } from "react-icons/fa6";
-import { useAppSlice } from "../hooks/useAppSlice";
-import ColorButton from "../components/ColorButton";
-import Button from "../components/Button";
-import { singleProductType } from "../types/types";
-import CartQuantityControl from "../components/CartQuantityControl";
+import { useAppSlice } from "../../hooks/useAppSlice";
+import ColorButton from "../../components/ColorButton";
+import Button from "../../components/Button";
+import { singleProductType } from "../../shared/types/types";
+import CartQuantityControl from "../../components/CartQuantityControl";
+import { setLoading } from "../../redux/features/appSlice";
+import { addToCart } from "../../redux/features/cartSlice";
 import { useDispatch } from "react-redux";
-import { setLoading } from "../redux/features/appSlice";
-import { addToCart } from "../redux/features/cartSlice";
-import Loading from "../components/Loading";
-import ErrorFetch from "../components/ErrorFetch";
+import Loading from "../../components/Loading";
+import ErrorFetch from "../../components/ErrorFetch";
 const SingleProduct = () => {
   const [activeImageIndex, setactiveImageIndex] = useState<number>(0);
   const [activeColorIndex, setActiveColorIndex] = useState<number>(0);
-  const {loading, error} = useAppSlice()
+  const { loading, error } = useAppSlice();
   const dispatch = useDispatch();
   const { productId } = useParams();
   const navigate = useNavigate();
@@ -37,12 +37,11 @@ const SingleProduct = () => {
       } catch (error) {
         console.error("Error fetching the product:", error);
       } finally {
-        dispatch(setLoading(false))
+        dispatch(setLoading(false));
       }
     };
     getProduct();
   }, [productId, dispatch]);
- 
 
   const createStarsArray = (stars: number) => {
     const starsArray = [];
@@ -91,16 +90,16 @@ const SingleProduct = () => {
     );
   }, []);
 
-  if(loading) return <Loading/>
-  if(error) return <ErrorFetch/>
+  if (loading) return <Loading />;
+  if (error) return <ErrorFetch />;
   if (!singleProduct) return;
 
   return (
     <div className="sm:max-w-[1300px] mx-auto pt-16 pb-32">
       <div className="w-[90%] mx-auto lg:mx-0 lg:w-full lg:py-4">
-      <Button color="purple" buttonHandler={() => navigate("/products")}>
-        Back to Products
-      </Button>
+        <Button color="purple" buttonHandler={() => navigate("/products")}>
+          Back to Products
+        </Button>
       </div>
       <div className="flex flex-col items-center lg:items-stretch lg:flex-row lg:justify-between gap-16 lg:gap-4 py-8">
         <div className="w-[90%] lg:w-[50%] flex flex-col gap-4 rounded-md">
@@ -147,7 +146,9 @@ const SingleProduct = () => {
           <p className="leading-5 lg:leading-6">{singleProduct.description}</p>
           <div className="flex flex-col gap-4 pb-8 border-b border-b-fuchsia-500">
             <div className="flex gap-4">
-              <div className="font-semibold w-[100px] lg:w-[15%]">Available:</div>
+              <div className="font-semibold w-[100px] lg:w-[15%]">
+                Available:
+              </div>
               <span>
                 {`${singleProduct.stock > 0 ? "In stock" : "Out of stock"}`}
               </span>
@@ -164,7 +165,9 @@ const SingleProduct = () => {
           {singleProduct.stock > 0 && (
             <div className="flex flex-col gap-8">
               <div className="flex gap-4 pt-4 lg:0">
-                <div className="font-semibold w-[100px] lg:w-[15%]">Colors:</div>
+                <div className="font-semibold w-[100px] lg:w-[15%]">
+                  Colors:
+                </div>
                 <ul className="flex items-center gap-2">
                   {singleProduct.colors.map((button, index) => {
                     const isActive =
@@ -189,9 +192,9 @@ const SingleProduct = () => {
                   decrementProductQuantity={decrementProductQuantity}
                 />
                 <div className="flex items-center justify-center">
-                <Button color="purple" buttonHandler={addToCartHandler}>
-                  Add to Cart
-                </Button>
+                  <Button color="purple" buttonHandler={addToCartHandler}>
+                    Add to Cart
+                  </Button>
                 </div>
               </div>
             </div>
